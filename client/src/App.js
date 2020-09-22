@@ -13,16 +13,16 @@ import './App.css';
 class App extends React.Component {
   render() {
     return (
-        <Router>
-          <Navbar />
-          <div className="container-fluid text-center">
-            <div className="row justify-content-center">
-              <Switch>
-                <Route exact path="/" component={Home} />
-              </Switch>
-            </div>
+      <Router>
+        <Navbar />
+        <div className="container-fluid text-center">
+          <div className="row justify-content-center">
+            <Switch>
+              <Route exact path="/" component={Home} />
+            </Switch>
           </div>
-        </Router>
+        </div>
+      </Router>
     );
   }
 }
