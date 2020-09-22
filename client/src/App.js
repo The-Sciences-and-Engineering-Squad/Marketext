@@ -7,7 +7,7 @@ import {
   NavLink
 } from 'react-router-dom';
 
-import HomePage from './pages/HomePage';
+import Home from './components/Home/Home';
 import AboutUsPage from './pages/AboutUsPage';
 
 import './App.css';
@@ -38,7 +38,7 @@ class App extends React.Component {
             <div className="row justify-content-center">
               <Switch>
                 <Route path="/about-us" component={AboutUsPage} />
-                <Route path="/" component={HomePage} />
+                <Route path="/" component={Home} />
               </Switch>
             </div>
           </div>
