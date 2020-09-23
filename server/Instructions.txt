@@ -1,1 +1,3 @@
-Backend goes here.
+Install all the require dependencies
+
+pip install -r requirements.txt
