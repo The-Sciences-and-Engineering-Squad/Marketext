@@ -1,3 +1,8 @@
-Install all the require dependencies
+Install all the require dependencies:
 
 pip install -r requirements.txt
+
+Also create a .env file  outside the server folder and paste:
+
+FLASK_APP=server
+FLASK_ENV=development
