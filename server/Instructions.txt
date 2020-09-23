@@ -1,6 +1,7 @@
 '''''''''''''''''''''''''''''''''''''''''''
 
 Install all the require dependencies:
+Make sure you are in the server folder before running this command!
 
 pip install -r requirements.txt
 
