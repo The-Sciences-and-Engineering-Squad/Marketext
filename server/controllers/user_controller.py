@@ -13,3 +13,7 @@ def login():
     user = user_model.UserModel()
     return None
 
+@bp.route('/register',methods=['POST'])
+def register():
+    user = user_model.UserModel()
+    return None
