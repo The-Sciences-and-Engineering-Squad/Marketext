@@ -27,6 +27,9 @@ def create_app():
     from server.controllers import balance_controller
     app.register_blueprint(balance_controller.bp)
 
+    from server.controllers import currently_controller
+    app.register_blueprint(currently_controller.bp)
+
     return app
 
     
