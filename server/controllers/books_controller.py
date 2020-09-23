@@ -28,3 +28,8 @@ def trade():
 def sell():
     books = books_model.BooksModel()
     return None
+
+@bp.route('/swap',methods=['GET'])
+def swap():
+    books = books_model.BooksModel()
+    return None
