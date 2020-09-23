@@ -10,10 +10,10 @@ def create_app():
     app = Flask(__name__)
     
     # database connection credentials
-    app.config['MYSQL_USER'] = 'root'
-    app.config['MYSQL_PASSWORD'] ='2641034@Er12'
-    app.config['MYSQL_HOST'] = 'localhost'
-    app.config['MYSQL_DB'] = 'martketext'
+    app.config['MYSQL_USER'] = 'sql9367122'
+    app.config['MYSQL_PASSWORD'] ='YFyDn7Yvrk'
+    app.config['MYSQL_HOST'] = 'sql9.freemysqlhosting.net'
+    app.config['MYSQL_DB'] = 'sql9367122'
     app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
     db.init_app(app)
