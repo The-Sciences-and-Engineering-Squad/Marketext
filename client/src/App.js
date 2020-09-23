@@ -12,6 +12,7 @@ import Sell from './components/MainPages/Sell/Sell';
 import Trade from './components/MainPages/Trade/Trade';
 import Swap from './components/MainPages/Swap/Swap';
 import Login from './components/AccessPages/Login/Login';
+import Register from './components/AccessPages/Register/Register';
 import Profile from './components/UserPages/Profile/Profile';
 import Balance from './components/UserPages/Balance/Balance';
 import Message from './components/UserPages/Message/Message';
@@ -34,6 +35,7 @@ class App extends React.Component {
               <Route path="/Trade" component={Trade} />
               <Route path="/Swap" component={Swap} />
               <Route path="/Login" component={Login} />
+              <Route path="/Register" component={Register} />
               <Route path="/Profile" component={Profile} />
               <Route path="/Balance" component={Balance} />
               <Route path="/Message" component={Message} />
