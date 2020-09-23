@@ -6,11 +6,11 @@ import {
 } from 'react-router-dom';
 
 import Navbar from './components/Navbar/Navbar';
-import Home from './components/Home/Home';
-import Buy from './components/Buy/Buy';
-import Sell from './components/Sell/Sell';
-import Trade from './components/Trade/Trade';
-import Swap from './components/Swap/Swap';
+import Home from './components/MainPages/Home/Home';
+import Buy from './components/MainPages/Buy/Buy';
+import Sell from './components/MainPages/Sell/Sell';
+import Trade from './components/MainPages/Trade/Trade';
+import Swap from './components/MainPages/Swap/Swap';
 import Profile from './components/Profile/Profile';
 import Balance from './components/Balance/Balance';
 import Message from './components/Message/Message';
