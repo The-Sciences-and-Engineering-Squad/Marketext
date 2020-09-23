@@ -3,8 +3,10 @@ import {
   Link,
   NavLink
 } from 'react-router-dom';
+import './Navbar1.css'
+// This Navbar is for the Home/Buy/Sell/Trade/Swap Pages.
 
-function Navbar(props) {
+function Navbar1(props) {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
       <Link className="navbar-brand" to="/">Marketext</Link>
@@ -19,4 +21,4 @@ function Navbar(props) {
   );
 }
 
-export default Navbar;
+export default Navbar1;
