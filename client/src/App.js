@@ -10,6 +10,7 @@ import Home from './components/Home/Home';
 import Buy from './components/Buy/Buy';
 import Sell from './components/Sell/Sell';
 import Trade from './components/Trade/Trade';
+import Swap from './components/Swap/Swap';
 
 import './App.css';
 
@@ -24,6 +25,7 @@ class App extends React.Component {
               <Route path="/Buy" component={Buy} />
               <Route path="/Sell" component={Sell} />
               <Route path="/Trade" component={Trade} />
+              <Route path="/Swap" component={Swap} />
               <Route exact path="/" component={Home} />
             </Switch>
           </div>
