@@ -11,9 +11,9 @@ import Buy from './components/MainPages/Buy/Buy';
 import Sell from './components/MainPages/Sell/Sell';
 import Trade from './components/MainPages/Trade/Trade';
 import Swap from './components/MainPages/Swap/Swap';
-import Profile from './components/Profile/Profile';
-import Balance from './components/Balance/Balance';
-import Message from './components/Message/Message';
+import Profile from './components/UserPages/Profile/Profile';
+import Balance from './components/UserPages/Balance/Balance';
+import Message from './components/UserPages/Message/Message';
 
 import './App.css';
 
