@@ -21,6 +21,9 @@ def create_app():
     from server.controllers import user_controller
     app.register_blueprint(user_controller.bp)
 
+    from server.controllers import books_controller
+    app.register_blueprint(books_controller.bp)
+
     return app
 
     
