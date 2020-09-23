@@ -17,3 +17,8 @@ def login():
 def register():
     user = user_model.UserModel()
     return None
+
+@bp.route('/forgot_password',methods=['POST'])
+def forgot_password():
+    user = user_model.UserModel()
+    return None
