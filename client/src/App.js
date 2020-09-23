@@ -12,6 +12,7 @@ import Sell from './components/Sell/Sell';
 import Trade from './components/Trade/Trade';
 import Swap from './components/Swap/Swap';
 import Profile from './components/Profile/Profile';
+import Balance from './components/Balance/Balance';
 import Message from './components/Message/Message';
 
 import './App.css';
@@ -29,6 +30,7 @@ class App extends React.Component {
               <Route path="/Trade" component={Trade} />
               <Route path="/Swap" component={Swap} />
               <Route path="/Profile" component={Profile} />
+              <Route path="/Balance" component={Balance} />
               <Route path="/Message" component={Message} />
               <Route exact path="/" component={Home} />
             </Switch>
