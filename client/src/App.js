@@ -8,6 +8,7 @@ import {
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Buy from './components/Buy/Buy';
+import Sell from './components/Sell/Sell';
 
 import './App.css';
 
@@ -20,6 +21,7 @@ class App extends React.Component {
           <div className="row justify-content-center">
             <Switch>
               <Route path="/Buy" component={Buy} />
+              <Route path="/Sell" component={Sell} />
               <Route exact path="/" component={Home} />
             </Switch>
           </div>
