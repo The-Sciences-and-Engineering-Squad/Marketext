@@ -15,6 +15,7 @@ import Profile from './components/UserPages/Profile/Profile';
 import Balance from './components/UserPages/Balance/Balance';
 import Message from './components/UserPages/Message/Message';
 import CurrentlyListed from './components/UserPages/CurrentlyListed/CurrentlyListed';
+import AddNew from './components/UserPages/AddNew/AddNew';
 import TransactionHistory from './components/UserPages/TransactionHistory/TransactionHistory';
 
 import './App.css';
@@ -35,6 +36,7 @@ class App extends React.Component {
               <Route path="/Balance" component={Balance} />
               <Route path="/Message" component={Message} />
               <Route path="/CurrentlyListed" component={CurrentlyListed} />
+              <Route path="/AddNew" component={AddNew} />
               <Route path="/TransactionHistory" component={TransactionHistory} />
               <Route exact path="/" component={Home} />
             </Switch>
