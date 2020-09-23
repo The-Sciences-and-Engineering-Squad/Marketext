@@ -24,6 +24,9 @@ def create_app():
     from server.controllers import books_controller
     app.register_blueprint(books_controller.bp)
 
+    from server.controllers import balance_controller
+    app.register_blueprint(balance_controller.bp)
+
     return app
 
     
