@@ -14,6 +14,7 @@ import Swap from './components/MainPages/Swap/Swap';
 import Profile from './components/UserPages/Profile/Profile';
 import Balance from './components/UserPages/Balance/Balance';
 import Message from './components/UserPages/Message/Message';
+import CurrentlyListed from './components/UserPages/CurrentlyListed/CurrentlyListed';
 
 import './App.css';
 
@@ -32,6 +33,7 @@ class App extends React.Component {
               <Route path="/Profile" component={Profile} />
               <Route path="/Balance" component={Balance} />
               <Route path="/Message" component={Message} />
+              <Route path="/CurrentlyListed" component={CurrentlyListed} />
               <Route exact path="/" component={Home} />
             </Switch>
           </div>
