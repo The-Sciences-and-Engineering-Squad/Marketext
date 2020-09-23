@@ -12,3 +12,9 @@ bp = Blueprint('books', __name__, url_prefix='/books')
 def search():
     books = books_model.BooksModel()
     return None
+
+# Boiler Plate Test Code
+@bp.route('/buy',methods=['GET'])
+def buy():
+    books = books_model.BooksModel()
+    return None
