@@ -11,7 +11,7 @@ In the client folder run command:
 
 npm run dev
 
-now go to visit site to check if it is working:
+now visit site ths url to check if it working:
 
 http://127.0.0.1:5000/auth/login
 
