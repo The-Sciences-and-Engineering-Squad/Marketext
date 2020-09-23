@@ -8,10 +8,10 @@ from werkzeug.security import check_password_hash, generate_password_hash
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 # Boiler Plate Test Code
-@bp.route('/login',methods=['POST'])
+@bp.route('/login',methods=['GET'])
 def login():
     user = user_model.UserModel()
-    return None
+    return user.getUserName()
 
 @bp.route('/register',methods=['POST'])
 def register():
