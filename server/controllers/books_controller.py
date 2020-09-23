@@ -23,3 +23,8 @@ def buy():
 def trade():
     books = books_model.BooksModel()
     return None
+
+@bp.route('/sell',methods=['GET'])
+def sell():
+    books = books_model.BooksModel()
+    return None
