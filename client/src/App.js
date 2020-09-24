@@ -28,7 +28,7 @@ class App extends React.Component {
     return (
       <Router>
         <Navbar1 />
-        <div className="container-fluid text-center">
+        <div className="container-fluid">
           <div className="row justify-content-center">
             <Switch>
               <Route path="/Buy" component={Buy} />
