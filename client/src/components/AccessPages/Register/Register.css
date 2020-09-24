@@ -1,0 +1,13 @@
+.center {
+  height: 80%;  /* Fallback for browsers do NOT support vh unit */
+  height: 80vh; /* These two lines are counted as one :-)       */
+  width: 50%;  /* Fallback for browsers do NOT support vh unit */
+  width: 50vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.container-bg{
+  background-color: #0069B6;
+}
