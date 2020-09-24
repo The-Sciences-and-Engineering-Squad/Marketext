@@ -38,7 +38,7 @@ export default class Register extends React.Component {
   render() {
     return (
       <div className="center">
-        <div className="container container-bg rounded px-5 py-4">
+        <div className="container container-bg rounded px-5 py-4 mx-4">
           <form>
             <div className="form-group">
               <label className="text-light">Username:</label>
