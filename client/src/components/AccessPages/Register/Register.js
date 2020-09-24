@@ -37,30 +37,30 @@ export default class Register extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container bg-primary">
         <form>
           <div className="form-group">
-            <label>Username:</label>
+            <label className="text-light">Username:</label>
             <input id="username" type="text" placeholder="Enter Username" className="form-control"
               onChange={this.handleChange("username")}/>
           </div>
           <div className="form-group">
-            <label>E-mail:</label>
+            <label className="text-light">E-mail:</label>
             <input id="email" type="email" placeholder="Enter Email" className="form-control"
               onChange={this.handleChange("email")}/>
           </div>
           <div className="form-group">
-            <label>Password:</label>
+            <label className="text-light">Password:</label>
             <input id="password" type="password" placeholder="Enter Password" className="form-control"
               onChange={this.handleChange("password")}/>
           </div>
           <div className="form-group">
-            <label>Confirm Password:</label>
+            <label className="text-light">Confirm Password:</label>
             <input id="password2" type="password" placeholder="Reenter Password" className="form-control"
               onChange={this.handleChange("password2")}/>
           </div>
         </form>
-        <button type="submit" className="btn btn-danger"
+        <button type="submit" className="btn btn-danger btn-lg btn-block"
           onClick={this.handleSubmit}>
           Register
         </button>
