@@ -17,6 +17,24 @@ export default class Register extends React.Component {
     this.setState({ [input]: e.target.value });
   };
 
+  // eventually api call to call the backend
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { username, email, password, password2 } = this.state;
+    if (username === "") {
+      alert("Please Enter a Username");
+    } else if (email === "") {
+      alert("Please Enter a Email");
+    } else if (password === "") {
+      alert("Please Enter a Password");
+    } else if (password !== password2) {
+      alert("Your Password and Confirmation Password Do Not Match.");
+    } else {
+      // Insert Backend Here.
+
+    }
+  };
+
   render() {
     return (
       <div>
@@ -42,7 +60,8 @@ export default class Register extends React.Component {
               onChange={this.handleChange("password2")}/>
           </div>
         </form>
-        <button type="submit" className="btn btn-danger">
+        <button type="submit" className="btn btn-danger"
+          onClick={this.handleSubmit}>
           Register
         </button>
       </div>
