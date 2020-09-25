@@ -1,8 +1,25 @@
 '''''''''''''''''''''''''''''''''''''''''''
 
+Make sure you have a version of Python 3 that is compatiable with using from flask_mysqldb import MySQL
+In addition to having Visual Studio installed.
+You would also need to have MySQL properly installed.
+Make sure all the versions you downloaded are all the same bit sizes.
+
+'''''''''''''''''''''''''''''''''''''''''''
 Install all the require dependencies:
 Make sure you are in the server folder before running this command!
 
+pip install -r requirements.txt
+
+If there is any problems with
+pip install -r requirements.txt 
+Make sure you have an environment set up by following
+https://flask.palletsprojects.com/en/1.1.x/installation/
+After you do
+devenv\Scripts\activate
+and
+pip install Flask
+go back into the server folder to perform, ( make sure you're still in activated environment (venv mode) )
 pip install -r requirements.txt
 
 '''''''''''''''''''''''''''''''''''''''''''
