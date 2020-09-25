@@ -18,8 +18,8 @@ Make sure you are in the server folder before running this command!
 Create a .env file outside the server folder.
 In that .env file, paste the following text:
 
-`FLASK_APP=server`
-`FLASK_ENV=development`
+FLASK_APP=server
+FLASK_ENV=development
 
 ### Step 3
 
