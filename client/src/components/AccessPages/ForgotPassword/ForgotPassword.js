@@ -2,11 +2,22 @@ import React from 'react';
 import './ForgotPassword.css'
 
 export default class ForgotPassword extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+    };
+  }
+
   // Handle field change
   handleChange = (input) => (e) => {
     this.setState({ [input]: e.target.value });
   };
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+  };
+  
   render() {
     return (
       <div className="center">
