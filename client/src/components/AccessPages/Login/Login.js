@@ -19,7 +19,7 @@ export default class Login extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault(); 
     const { email, password, errors } = this.state;
-    this.setState( {errors: []} );
+    this.setState({ errors: [] });
     if (email === "") {
       this.setState(({errors}) => ({
         errors: errors.concat("Please Enter an Email")

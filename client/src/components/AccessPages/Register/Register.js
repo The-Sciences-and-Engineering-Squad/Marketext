@@ -9,6 +9,7 @@ export default class Register extends React.Component {
       email: "",
       password: "",
       password2: "",
+      errors: [],
     };
   }
 
@@ -20,16 +21,29 @@ export default class Register extends React.Component {
   // eventually api call to call the backend
   handleSubmit = (e) => {
     e.preventDefault();
-    const { username, email, password, password2 } = this.state;
+    const { username, email, password, password2, errors } = this.state;
+    this.setState({ errors: [] });
     if (username === "") {
-      alert("Please Enter a Username");
-    } else if (email === "") {
-      alert("Please Enter a Email");
-    } else if (password === "") {
-      alert("Please Enter a Password");
-    } else if (password !== password2) {
-      alert("Your Password and Confirmation Password Do Not Match.");
-    } else {
+      this.setState(({errors}) => ({
+        errors: errors.concat("Please Enter a Username")
+      }));
+    }
+    if (email === "") {
+      this.setState(({errors}) => ({
+        errors: errors.concat("Please Enter an Email")
+      }));
+    } 
+    if (password === "" || password2 === "") {
+      this.setState(({errors}) => ({
+        errors: errors.concat("Please Enter a Password or Check Password Fields")
+      }));
+    } 
+    if (password !== password2) {
+      this.setState(({errors}) => ({
+        errors: errors.concat("Your Password and Confirmation Password Do Not Match")
+      }));
+    } 
+    if (errors.length === 0) {
       // Insert Backend Here.
 
     }
@@ -40,6 +54,13 @@ export default class Register extends React.Component {
       <div className="center">
         <div className="container container-bg rounded px-5 py-4 mx-4">
           <h2 className="text-light text-center">Create Your Account</h2>
+          { this.state.errors.length > 0 ?  
+            this.state.errors.map((error,index) => {
+              return <li key={index} className="text-warning"> {error} </li>
+          })
+          : 
+          <div></div>
+          } 
           <form>
             <div className="form-group">
               <label className="text-light">Username:</label>
