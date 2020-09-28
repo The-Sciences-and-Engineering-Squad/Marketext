@@ -7,6 +7,7 @@ export default class Login extends React.Component {
     this.state = {
       email: "",
       password: "",
+      errors: [],
     };
   }
 
@@ -17,12 +18,36 @@ export default class Login extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault(); 
+    const { email, password, errors } = this.state;
+    this.setState({ errors: [] });
+    if (email === "") {
+      this.setState(({errors}) => ({
+        errors: errors.concat("Please Enter an Email")
+      }));
+    }
+    if (password === "") {
+      this.setState(({errors}) => ({
+        errors: errors.concat("Please Enter a Password")
+      }));
+    }
+    if(errors.length === 0) {
+      // Insert Backend Here.
+      
+    }
   };
 
   render() {
     return (
       <div className="center">
         <div className="container container-bg rounded px-5 py-4 mx-4">
+        <h2 className="text-light text-center">Login to Your Marketext Account</h2>
+          { this.state.errors.length > 0 ?  
+            this.state.errors.map((error,index) => {
+              return <li key={index} className="text-warning"> {error} </li>
+          })
+          : 
+          <div></div>
+          } 
           <form>
             <div className="form-group">
               <label className="text-light">E-mail:</label>
@@ -40,9 +65,9 @@ export default class Login extends React.Component {
             Login
           </button>
           <br/>
-          <label className="text-light">Don't have an account? <a href="Register"><span>Sign Up</span></a></label>  
+          <label className="text-light">Don't have an account? <a href="Register" className="text-danger">Sign Up</a></label>  
           <br/>
-          <a href="ForgotPassword"><span>Forgot Your Password?</span></a>
+          <a href="ForgotPassword" className="text-danger">Forgot Your Password?</a>
         </div>
       </div>
     );
