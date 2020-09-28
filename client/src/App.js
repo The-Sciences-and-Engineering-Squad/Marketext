@@ -1,11 +1,11 @@
 import React from 'react';
-import { 
-  BrowserRouter as Router, 
-  Switch, 
+import {
+  BrowserRouter as Router,
+  Switch,
   Route
 } from 'react-router-dom';
 
-import Navbar1 from './components/Navbar1/Navbar1';
+import Navbar2 from './components/Navbar2/Navbar2';
 import Home from './components/MainPages/Home/Home';
 import Buy from './components/MainPages/Buy/Buy';
 import Sell from './components/MainPages/Sell/Sell';
@@ -27,7 +27,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <Navbar1 />
+        <Navbar2/>
         <div className="container-fluid">
           <div className="row justify-content-center">
             <Switch>

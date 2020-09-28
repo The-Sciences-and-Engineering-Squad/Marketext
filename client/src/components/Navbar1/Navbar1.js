@@ -1,5 +1,5 @@
 import React from 'react';
-import { 
+import {
   Link,
   NavLink
 } from 'react-router-dom';

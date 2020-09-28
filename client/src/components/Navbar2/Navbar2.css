@@ -1,0 +1,19 @@
+.navbar-custom {
+  background-color: #0069B6;
+}
+.navbar-custom .navbar-nav a {
+  padding: 0px;
+  margin: 15px;
+}
+.navbar-custom .navbar-nav a.active {
+  border-bottom: 4px solid red;
+}
+
+#navbar-items {
+  margin-left: 420px;
+}
+
+.navbar-nav > li {
+  float: left;
+  position: relative;
+}

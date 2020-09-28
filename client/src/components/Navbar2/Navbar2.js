@@ -1,5 +1,5 @@
 import React from 'react';
-import { 
+import {
   Link,
   NavLink
 } from 'react-router-dom';
@@ -8,15 +8,29 @@ import './Navbar2.css'
 
 function Navbar2(props) {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
+    <nav className="navbar navbar-custom navbar-expand-sm navbar-dark mb-3">
+    <div id="navbar-icon">
       <Link className="navbar-brand" to="/">Marketext</Link>
-      <ul className="navbar-nav mr-auto">
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/">
-            Home
-          </NavLink>
-        </li>
-      </ul>
+    </div>
+      <div id="navbar-items">
+        <ul className="navbar-nav mx-auto">
+          <li className="nav-item">
+            <NavLink className="nav-link" exact to="/Login">
+              Login
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" exact to="/Register">
+              Register
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" exact to="/ForgotPassword">
+              Forgot Password
+            </NavLink>
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 }
