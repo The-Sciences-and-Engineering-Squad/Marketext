@@ -6,6 +6,7 @@ export default class ForgotPassword extends React.Component {
     super(props);
     this.state = {
       email: "",
+      errors: [],
     };
   }
 
@@ -16,6 +17,17 @@ export default class ForgotPassword extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const { email, errors } = this.state;
+    this.setState({ errors: [] });
+    if (email === "") {
+      this.setState(({errors}) => ({
+        errors: errors.concat("Please Enter an Email")
+      }));
+    }
+    if(errors.length === 0) {
+      // Insert Backend Here.
+      
+    }
   };
   
   render() {
@@ -23,7 +35,13 @@ export default class ForgotPassword extends React.Component {
       <div className="center">
         <div className="container container-bg rounded px-5 py-4 mx-4">
           <h2 className="text-light text-center">Forgot Password</h2>
-          <p></p>
+          { this.state.errors.length > 0 ?  
+            this.state.errors.map((error,index) => {
+              return <li key={index} className="text-warning"> {error} </li>
+          })
+          : 
+          <div></div>
+          } 
           <form>
             <div className="form-group">
               <label className="text-light">E-mail:</label>
