@@ -73,7 +73,7 @@ Since Flask-MySQLdb might not be compatiable with what you are using.
 ## Steps to set up the Database 
 ### Step 1
 
-Create a .env file outside the server folder.
+Create a .env file inside the server folder.
 
 ### Step 2
 Make sure to change the value of these variables to the credentials of your database!<br/>
