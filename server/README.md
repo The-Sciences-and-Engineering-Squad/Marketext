@@ -68,3 +68,19 @@ If you are getting errors stating:<br/>
 You might need to reinstall another Python 3 version.
 Since Flask-MySQLdb might not be compatiable with what you are using.
 [https://stackoverflow.com/questions/57130527/getting-flask-fail-to-import-error-for-flask-mysqldb-when-the-module-is-already](https://stackoverflow.com/questions/57130527/getting-flask-fail-to-import-error-for-flask-mysqldb-when-the-module-is-already)
+
+
+## Steps to set up the Database 
+### Step 1
+
+Create a .env file inside the server folder.
+
+### Step 2
+Make sure to change the value of these variables to the credentials of your database!<br/>
+In that .env file, paste the following text:<br/>
+
+
+MYSQL_USER=Your database username<br/>
+MYSQL_PASSWORD=Your database password<br/>
+MYSQL_HOST=localhost<br/>
+MYSQL_DB=Your Database name<br/>
