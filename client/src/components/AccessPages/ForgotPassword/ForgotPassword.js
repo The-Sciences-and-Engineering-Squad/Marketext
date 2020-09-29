@@ -1,4 +1,8 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
 import './ForgotPassword.css'
 
 export default class ForgotPassword extends React.Component {
@@ -33,7 +37,7 @@ export default class ForgotPassword extends React.Component {
   render() {
     return (
       <div className="center">
-        <div className="container container-bg rounded px-5 py-4 mx-4">
+        <Container className="container-bg rounded px-5 py-4 mx-4">
           <h2 className="text-light text-center">Forgot Password</h2>
           { this.state.errors.length > 0 ?  
             this.state.errors.map((error,index) => {
@@ -42,18 +46,18 @@ export default class ForgotPassword extends React.Component {
           : 
           <div></div>
           } 
-          <form>
-            <div className="form-group">
-              <label className="text-light">E-mail:</label>
-              <input id="email" type="email" placeholder="Enter Email" className="form-control"
+          <Form>
+            <Form.Group controlId="formEmail">
+              <Form.Label className="text-light">Email Address:</Form.Label>
+              <Form.Control type="email" placeholder="Enter Email" 
                 onChange={this.handleChange("email")}/>
-            </div>
-          </form>
-          <button type="submit" className="btn btn-danger btn-lg btn-block"
+            </Form.Group>
+          </Form>
+          <Button variant="danger" type="submit" size="lg" block
             onClick={this.handleSubmit}>
             Send
-          </button>
-        </div>
+          </Button>
+        </Container>
       </div>
     );
   }
