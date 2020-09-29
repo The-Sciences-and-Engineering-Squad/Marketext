@@ -32,7 +32,7 @@ class App extends React.Component {
       <Router>
         <Navbar1 />
         <Container fluid>
-          <Row classname="justify-content-center">
+          <Row className="justify-content-center">
             <Switch>
               <Route path="/Buy" component={Buy} />
               <Route path="/Sell" component={Sell} />
