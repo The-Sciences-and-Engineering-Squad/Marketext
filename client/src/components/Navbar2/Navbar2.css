@@ -1,0 +1,29 @@
+.navbar {
+    background-color: #0069B6;
+    color: white !important;
+    text-align: center;
+}
+
+.navItem {
+    font-weight: bold;
+    color: white !important;
+    padding-right: 5vw !important;
+    position: relative;
+}
+
+.nav-item {
+    font-weight: bold;
+    color: white !important;
+    padding-right: 5vw !important;
+}
+
+.navbar .navbar-nav a.active {
+    border-bottom: 4px solid red;
+}
+
+#navbar-items {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    padding-right: 7vw;
+}

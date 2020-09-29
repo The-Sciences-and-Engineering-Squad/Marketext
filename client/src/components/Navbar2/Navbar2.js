@@ -1,23 +1,47 @@
 import React from 'react';
-import { 
+import {
   Link,
   NavLink
 } from 'react-router-dom';
 import './Navbar2.css'
+import {
+  Navbar,
+  Nav,
+  NavDropdown
+} from 'react-bootstrap';
 // This Navbar is for the Login/Register/Forgot Password Pages.
 
 function Navbar2(props) {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
-      <Link className="navbar-brand" to="/">Marketext</Link>
-      <ul className="navbar-nav mr-auto">
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/">
-            Home
-          </NavLink>
-        </li>
-      </ul>
-    </nav>
+    <div id="box">
+    <Navbar className="navbar m-auto navbar-dark" expand="lg">
+        <Navbar.Brand className="navItem" href="#home">Marketext</Navbar.Brand>
+         <Navbar.Toggle>
+
+        </Navbar.Toggle>
+        <Navbar.Collapse id="basic-navbar-nav">
+        <div id="navbar-items">
+          <ul className="navbar-nav mx-auto">
+            <li className="nav-item">
+              <NavLink className="nav-link" exact to="/Login">
+              Login
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" exact to="/Register">
+              Register
+              </NavLink>
+            </li>
+            <li className="nav-item" id="thirditem">
+              <NavLink className="nav-link" exact to="/ForgotPassword">
+              Forgot Password
+              </NavLink>
+            </li>
+          </ul>
+          </div>
+        </Navbar.Collapse>
+      </Navbar>
+    </div>
   );
 }
 
