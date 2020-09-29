@@ -4,6 +4,9 @@ import {
   Switch, 
   Route
 } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 import Navbar1 from './components/Navbar1/Navbar1';
 import Home from './components/MainPages/Home/Home';
@@ -28,8 +31,8 @@ class App extends React.Component {
     return (
       <Router>
         <Navbar1 />
-        <div className="container-fluid">
-          <div className="row justify-content-center">
+        <Container fluid>
+          <Row className="justify-content-center">
             <Switch>
               <Route path="/Buy" component={Buy} />
               <Route path="/Sell" component={Sell} />
@@ -46,8 +49,8 @@ class App extends React.Component {
               <Route path="/TransactionHistory" component={TransactionHistory} />
               <Route exact path="/" component={Home} />
             </Switch>
-          </div>
-        </div>
+          </Row>
+        </Container>
       </Router>
     );
   }
