@@ -14,7 +14,7 @@ import {
 function Navbar2(props) {
   return (
     <Navbar variant="dark" expand="lg">
-      <Navbar.Brand as={Link} to="/">
+      <Navbar.Brand  href="/">
         <img
           alt=""
           src={require ('../../public/logo192.png')}

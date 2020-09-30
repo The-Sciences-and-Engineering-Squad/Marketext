@@ -2,7 +2,8 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  withRouter
 } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
@@ -27,11 +28,28 @@ import TransactionHistory from './components/UserPages/TransactionHistory/Transa
 
 import './App.css';
 
+
 class App extends React.Component {
+
+  // Add navbar here correspoding to there pages. if need a new case add it with the correct path 
+  changeNav = (path) => {
+
+    switch(path){
+      case '/Login':
+      case '/Register':
+      case '/ForgotPassword':
+        return <Navbar2 />
+      case '/':
+        return <Navbar1/>
+    }
+    
+  }
+
+
   render() {
     return (
       <Router>
-        <Navbar2/>
+        {this.changeNav(this.props.location.pathname)}
         <Container fluid>
           <Row className="justify-content-center">
             <Switch>
@@ -58,4 +76,4 @@ class App extends React.Component {
 }
 
 
-export default App;
+export default withRouter(App);
