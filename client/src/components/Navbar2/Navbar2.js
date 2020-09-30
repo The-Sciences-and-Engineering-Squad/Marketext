@@ -8,6 +8,10 @@ import {
   Navbar,
   NavItem
 } from 'react-bootstrap';
+
+import {
+  NavLink
+} from 'react-router-dom';
 // This Navbar is for the Login/Register/Forgot Password Pages.
 
 function Navbar2(props) {
@@ -24,23 +28,12 @@ function Navbar2(props) {
         Marketext
       </Navbar.Brand>
       <Navbar.Toggle />
-      <Navbar.Collapse>
-        <Nav>
-          <NavItem className="navbar-nav">
-            <Nav.Link as={Link} to="/Login">
-              Login
-            </Nav.Link>
-          </NavItem>
-          <NavItem>
-            <Nav.Link as={Link} to="/Register">
-              Register
-            </Nav.Link>
-          </NavItem>
-          <NavItem>
-            <Nav.Link as={Link} to="/ForgotPassword">
-              Forgot Password
-            </Nav.Link>
-          </NavItem>
+
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="navItem m-auto">
+          <Nav.Link className="navItem" id="item1" href="/Login">Login</Nav.Link>
+          <Nav.Link className="navItem" id="item2" href="/Register">Register</Nav.Link>
+          <Nav.Link className="navItem" id="item3" href="/ForgotPassword">Forgot Password</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

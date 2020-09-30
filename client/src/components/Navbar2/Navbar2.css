@@ -5,25 +5,34 @@
 }
 
 .navItem {
-    font-weight: bold;
-    color: white !important;
-    padding-right: 5vw !important;
-    position: relative;
+    /* color: white !important; */
+    margin: auto;
+    padding-right: 9vw;
 }
 
-.nav-item {
+#basic-nav-bar .navItem {
+    background: black;
+}
+
+#basic-navbar-nav .navItem a.active {
     font-weight: bold;
-    color: white !important;
-    padding-right: 5vw !important;
+    border-bottom: 4px solid red;
+}
+
+#item1 {
+    padding-right: 0.8vw;
+}
+
+#item2 {
+    padding-left: 0.8vw;
+    padding-right: 0.8vw;
+}
+
+#item3 {
+    padding-left: 0.8vw;
 }
 
 .navbar .navbar-nav a.active {
     border-bottom: 4px solid red;
-}
-
-#navbar-items {
-    display: flex;
-    align-items: center;
     margin: auto;
-    padding-right: 7vw;
 }
