@@ -14,6 +14,13 @@ function Navbar2(props) {
   return (
     <Navbar variant="dark" expand="lg">
       <Navbar.Brand as={Link} to="/">
+        <img
+          alt=""
+          src={require ('../../public/logo192.png')}
+          width="30"
+          height="30"
+          className="d-inline-block align-top"
+        />
         Marketext
       </Navbar.Brand>
       <Navbar.Toggle />
