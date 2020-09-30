@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+  Link
+} from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -70,9 +73,9 @@ export default class Login extends React.Component {
           </Button>
           <br/>
           <p className="text-light">
-            Don't have an account? <a href="Register" className="text-danger">Sign Up</a>
+            Don't have an account? <Link to="Register" className="text-danger">Sign Up</Link>
           </p>  
-          <a href="ForgotPassword" className="text-danger">Forgot Your Password?</a>
+          <Link to="ForgotPassword" className="text-danger">Forgot Your Password?</Link>
         </Container>
       </div>
     );
