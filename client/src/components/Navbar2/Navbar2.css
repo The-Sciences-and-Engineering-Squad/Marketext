@@ -1,0 +1,38 @@
+.navbar {
+    background-color: #0069B6;
+    color: white !important;
+    text-align: center;
+}
+
+.navItem {
+    /* color: white !important; */
+    margin: auto;
+    padding-right: 9vw;
+}
+
+#basic-nav-bar .navItem {
+    background: black;
+}
+
+#basic-navbar-nav .navItem a.active {
+    font-weight: bold;
+    border-bottom: 4px solid red;
+}
+
+#item1 {
+    padding-right: 0.8vw;
+}
+
+#item2 {
+    padding-left: 0.8vw;
+    padding-right: 0.8vw;
+}
+
+#item3 {
+    padding-left: 0.8vw;
+}
+
+.navbar .navbar-nav a.active {
+    border-bottom: 4px solid red;
+    margin: auto;
+}
