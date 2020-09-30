@@ -34,9 +34,9 @@ class App extends React.Component {
   // Add navbar here correspoding to there pages. if need a new case add it with the correct path 
   changeNav = (path) => {
     switch(path){
-      case '/Login':
-      case '/Register':
-      case '/ForgotPassword':
+      case '/login':
+      case '/register':
+      case '/forgotpassword':
         return <Navbar2 />
       case '/':
         return <Navbar1 />
@@ -49,7 +49,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        {this.changeNav(this.props.location.pathname)}
+        {this.changeNav(this.props.location.pathname.toLowerCase())}
         <Container fluid>
           <Row className="justify-content-center">
             <Switch>
