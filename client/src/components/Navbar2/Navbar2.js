@@ -1,20 +1,20 @@
 import React from 'react';
 import {
-  Link,NavLink
+  NavLink
 } from 'react-router-dom';
-import './Navbar2.css'
 import {
   Nav,
-  Navbar,
+  Navbar
 } from 'react-bootstrap';
 
+import './Navbar2.css'
 
 // This Navbar is for the Login/Register/Forgot Password Pages.
 
 function Navbar2(props) {
   return (
     <Navbar variant="dark" expand="lg">
-      <Navbar.Brand  href="/">
+      <Navbar.Brand href="/">
         <img
           alt=""
           src={require ('../../public/logo192.png')}
@@ -28,9 +28,9 @@ function Navbar2(props) {
 
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="nav m-auto">
-          <Nav.Link as={Link,NavLink} to="/Login">Login</Nav.Link>
-          <Nav.Link as={Link,NavLink} to="/Register">Register</Nav.Link>
-          <Nav.Link as={Link,NavLink} to="/ForgotPassword">Forgot Password</Nav.Link>
+          <Nav.Link as={NavLink} to="/Login">Login</Nav.Link>
+          <Nav.Link as={NavLink} to="/Register">Register</Nav.Link>
+          <Nav.Link as={NavLink} to="/ForgotPassword">Forgot Password</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
