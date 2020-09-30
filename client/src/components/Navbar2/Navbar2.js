@@ -1,47 +1,42 @@
 import React from 'react';
 import {
-  Link,
-  NavLink
+  Link
 } from 'react-router-dom';
 import './Navbar2.css'
 import {
-  Navbar,
   Nav,
-  NavDropdown
+  Navbar,
+  NavItem
 } from 'react-bootstrap';
 // This Navbar is for the Login/Register/Forgot Password Pages.
 
 function Navbar2(props) {
   return (
-    <div id="box">
-    <Navbar className="navbar m-auto navbar-dark" expand="lg">
-        <Navbar.Brand className="navItem" href="#home">Marketext</Navbar.Brand>
-         <Navbar.Toggle>
-
-        </Navbar.Toggle>
-        <Navbar.Collapse id="basic-navbar-nav">
-        <div id="navbar-items">
-          <ul className="navbar-nav mx-auto">
-            <li className="nav-item">
-              <NavLink className="nav-link" exact to="/Login">
+    <Navbar variant="dark" expand="lg">
+      <Navbar.Brand as={Link} to="/">
+        Marketext
+      </Navbar.Brand>
+      <Navbar.Toggle />
+      <Navbar.Collapse>
+        <Nav>
+          <NavItem className="navbar-nav">
+            <Nav.Link as={Link} to="/Login">
               Login
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" exact to="/Register">
+            </Nav.Link>
+          </NavItem>
+          <NavItem>
+            <Nav.Link as={Link} to="/Register">
               Register
-              </NavLink>
-            </li>
-            <li className="nav-item" id="thirditem">
-              <NavLink className="nav-link" exact to="/ForgotPassword">
+            </Nav.Link>
+          </NavItem>
+          <NavItem>
+            <Nav.Link as={Link} to="/ForgotPassword">
               Forgot Password
-              </NavLink>
-            </li>
-          </ul>
-          </div>
-        </Navbar.Collapse>
-      </Navbar>
-    </div>
+            </Nav.Link>
+          </NavItem>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
 
