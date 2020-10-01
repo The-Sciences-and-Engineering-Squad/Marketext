@@ -1,14 +1,16 @@
 import React from 'react';
-import { 
-  BrowserRouter as Router, 
-  Switch, 
-  Route
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  withRouter
 } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
 import Navbar1 from './components/Navbar1/Navbar1';
+import Navbar2 from './components/Navbar2/Navbar2';
 import Home from './components/MainPages/Home/Home';
 import Buy from './components/MainPages/Buy/Buy';
 import Sell from './components/MainPages/Sell/Sell';
@@ -26,11 +28,28 @@ import TransactionHistory from './components/UserPages/TransactionHistory/Transa
 
 import './App.css';
 
+
 class App extends React.Component {
+
+  // Add navbar here correspoding to there pages. if need a new case add it with the correct path 
+  changeNav = (path) => {
+    switch(path){
+      case '/login':
+      case '/register':
+      case '/forgotpassword':
+        return <Navbar2 />
+      case '/':
+        return <Navbar1 />
+      default:
+        return null
+    }
+  }
+
+
   render() {
     return (
       <Router>
-        <Navbar1 />
+        {this.changeNav(this.props.location.pathname.toLowerCase())}
         <Container fluid>
           <Row className="justify-content-center">
             <Switch>
@@ -57,4 +76,4 @@ class App extends React.Component {
 }
 
 
-export default App;
+export default withRouter(App);
