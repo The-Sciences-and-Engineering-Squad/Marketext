@@ -10,15 +10,15 @@
 }
 /* Text In the Navbar Styling */
 .nav a {
-  color: white !important;
   margin-left: 24px;
   border-bottom: 3px solid transparent;
-  font-weight: bold;
+  margin: auto;
 }
 /* Underline the Current Page */
 .nav a.active {
   text-decoration: none;
   border-bottom: 3px solid #F93C3C !important;
+  font-weight: bold;
 }
 /* Underline the Hovered Pages */
 .nav a:hover{
