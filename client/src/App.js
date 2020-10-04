@@ -41,7 +41,7 @@ class App extends React.Component {
       case '/':
         return <Navbar1 />
       default:
-        return null
+        return <Navbar1 />
     }
   }
 

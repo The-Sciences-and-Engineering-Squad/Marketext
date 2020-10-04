@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Link,
   NavLink
 } from 'react-router-dom';
 import {
@@ -12,7 +13,7 @@ import './Navbar1.css'
 function Navbar1(props) {
   return (
     <Navbar variant="dark" expand="lg">
-      <Navbar.Brand href="/">
+      <Navbar.Brand as={Link} to="/">
         <img
           alt=""
           src={require ('../../public/logo192.png')}
@@ -23,18 +24,19 @@ function Navbar1(props) {
         Marketext
       </Navbar.Brand>
       <Navbar.Toggle />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="nav m-auto" id="homepage-navbar">
-          <Nav.Link id="Home" as={NavLink} to="/Home">Home</Nav.Link>
-          <Nav.Link id="Buy" as={NavLink} to="/Buy">Buy</Nav.Link>
-          <Nav.Link id="Sell" as={NavLink} to="/Sell">Sell</Nav.Link>
-          <Nav.Link id="trade" as={NavLink} to="/Trade">Trade</Nav.Link>
-          <Nav.Link id="swap" as={NavLink} to="/Swap">Swap</Nav.Link>
+      <Navbar.Collapse>
+        <Nav className="nav m-auto">
+          <Nav.Link as={NavLink} exact to="/" style={{ marginRight: 30, marginLeft: 30 }}>Home</Nav.Link>
+          <Nav.Link as={NavLink} to="/Buy" style={{ marginRight: 30, marginLeft: 30 }}>Buy</Nav.Link>
+          <Nav.Link as={NavLink} to="/Sell" style={{ marginRight: 30, marginLeft: 30 }}>Sell</Nav.Link>
+          <Nav.Link as={NavLink} to="/Trade" style={{ marginRight: 30, marginLeft: 30 }}>Trade</Nav.Link>
+          <Nav.Link as={NavLink} to="/Swap" style={{ marginRight: 30, marginLeft: 30 }}>Swap</Nav.Link>
+        </Nav>
+        <Nav className="nav">
+          <Nav.Link href="/Login">Sign In</Nav.Link>
         </Nav>
       </Navbar.Collapse>
-      <Navbar.Brand href="/login">
-        Sign In
-      </Navbar.Brand>
+        
     </Navbar>
   );
 }
