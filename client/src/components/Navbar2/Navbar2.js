@@ -25,12 +25,11 @@ function Navbar2(props) {
         Marketext
       </Navbar.Brand>
       <Navbar.Toggle />
-
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="nav m-auto">
-          <Nav.Link as={NavLink} to="/Login">Login</Nav.Link>
-          <Nav.Link as={NavLink} to="/Register">Register</Nav.Link>
-          <Nav.Link as={NavLink} to="/ForgotPassword">Forgot Password</Nav.Link>
+          <Nav.Link as={NavLink} to="/Login" style={{ marginRight: 30, marginLeft: 30 }}>Login</Nav.Link>
+          <Nav.Link as={NavLink} to="/Register" style={{ marginRight: 30, marginLeft: 30 }}>Register</Nav.Link>
+          <Nav.Link as={NavLink} to="/ForgotPassword" style={{ marginRight: 30, marginLeft: 30 }}>Forgot Password</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
