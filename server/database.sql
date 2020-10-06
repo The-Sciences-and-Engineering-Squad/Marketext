@@ -10,7 +10,7 @@ CREATE TABLE User(
     password VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     verified BOOLEAN DEFAULT 0,
-    resgistrationDate DATETIME NOT NULL
+    registrationDate DATETIME NOT NULL
 );
 
 CREATE TABLE Profile(
@@ -39,7 +39,7 @@ CREATE TABLE Balance(
 CREATE TABLE CurrentlyListed (
     listedId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     category VARCHAR(255) NOT NULL,
-    price INT NOT NULL,
+    price VARCHAR(255) NOT NULL,
     `condition` VARCHAR(255) NOT NULL,
     userId INT NOT NULL,
     ISBN INT NOT NULL,
