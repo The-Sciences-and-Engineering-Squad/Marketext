@@ -49,7 +49,7 @@ CREATE TABLE CurrentlyListed (
 
 CREATE TABLE Transaction (
     transactionId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    price INT NOT NULL,
+    price VARCHAR(255) NOT NULL,
     transactionDate DATETIME NOT NULL,
     quantity INT NOT NULL,
     paymentMethod VARCHAR(255) NOT NULL,
