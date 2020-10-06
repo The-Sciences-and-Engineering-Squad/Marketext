@@ -10,7 +10,7 @@ CREATE TABLE User(
     password VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     verified BOOLEAN DEFAULT 0,
-    resgistrationDate DATETIME NOT NULL
+    registrationDate DATETIME NOT NULL
 );
 
 CREATE TABLE Profile(
