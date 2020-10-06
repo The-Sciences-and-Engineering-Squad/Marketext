@@ -91,7 +91,7 @@ MYSQL_DB=Your Database name<br/>
 If you are accesing MySql via terminal run the following script
 Make sure to change the path to the corresponding path of where the database.sql live
 
-soure PATH/database.sql
+SOURCE PATH/database.sql
 
 ### Option two
 If you are using MySql worknech them there are two ways of running the script
