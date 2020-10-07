@@ -2,6 +2,22 @@
   background-color: #309220;
 }
 
+.bg-darkred{
+  background-color: #d6212e;
+}
+
+.bg-darkblue{
+  background-color: #3300cc;
+}
+
+.bg-darkpurple{
+  background-color: #8300c4;
+}
+
+.bg-darkorange{
+  background-color: #cf5300;
+}
+
 .box{
   outline-style: solid;
   outline-width: medium;

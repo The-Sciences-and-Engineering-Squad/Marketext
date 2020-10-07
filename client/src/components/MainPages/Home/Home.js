@@ -71,7 +71,7 @@ export default class Home extends React.Component {
             </Row>
           </Container>
         </Row>
-        <Row className="my-4 mx-3 p-4 justify-content-center bg-dark text-white">
+        <Row className="my-4 mx-3 p-4 justify-content-center bg-darkred text-white">
           <Col md="auto" className="d-none d-md-block">
             <Image src={Buy} fluid />
           </Col>
@@ -82,7 +82,7 @@ export default class Home extends React.Component {
             <p>Target: Buyers</p>
           </Col>
         </Row>
-        <Row className="my-4 mx-3 p-4 justify-content-center bg-dark text-white">
+        <Row className="my-4 mx-3 p-4 justify-content-center bg-darkblue text-white">
           <Col md="auto" className="d-none d-md-block">
             <Image src={Sell} fluid />
           </Col>
@@ -93,7 +93,7 @@ export default class Home extends React.Component {
             <p>Target: Sellers</p>
           </Col>
         </Row>
-        <Row className="my-4 mx-3 p-4 justify-content-center bg-dark text-white">
+        <Row className="my-4 mx-3 p-4 justify-content-center bg-darkpurple text-white">
           <Col md="auto" className="d-none d-md-block">
             <Image src={Trade} fluid />
           </Col>
@@ -104,7 +104,7 @@ export default class Home extends React.Component {
             <p>Target: Both Buyers and Sellers</p>
           </Col>
         </Row>
-        <Row className="my-4 mx-3 p-4 justify-content-center bg-dark text-white">
+        <Row className="my-4 mx-3 p-4 justify-content-center bg-darkorange text-white">
           <Col md="auto" className="d-none d-md-block">
             <Image src={Swap} fluid />
           </Col>
