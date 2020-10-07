@@ -9,12 +9,13 @@ import textbook from '../../../public/textbook.png';
 import Checklist from '../../../public/Checklist.png';
 import Send from '../../../public/Send.png';
 import Goods from '../../../public/Goods.png';
+import Buy from '../../../public/Buy.png';
 
 export default class Home extends React.Component {
   render() {
     return (
       <Container fluid>
-        <Row className="my-4 mx-3 p-4 justify-content-center bg-home text-white">
+        <Row className="my-4 mx-3 p-4 justify-content-center bg-darkgreen text-white">
           <Col md="auto" className="d-none d-md-block">
             <Image src={textbook} fluid />
           </Col>
@@ -27,45 +28,55 @@ export default class Home extends React.Component {
         <Row className="my-4 mx-3 p-4 justify-content-center">
           <Container>
             <Row>
-            <h3>
-              How It Works:
-            </h3>
-            <Container className="box">
-              <Row className="my-5 justify-content-center">
-                <Col md="3" className="text-center vl">
-                  <img
-                    alt=""
-                    src={Checklist}
-                    height="80"
-                    className="d-inline-block align-top"
-                  />
-                  <h1>1. List</h1>
-                  <h4>Your Textbook</h4>
-                </Col>
-                <Col md="3" className="text-center vl">
-                  <img
-                    alt=""
-                    src={Send}
-                    height="80"
-                    className="d-inline-block align-top"
-                  />
-                  <h1>2. Send</h1>
-                  <h4>It Out</h4>
-                </Col>
-                <Col md="3" className="text-center">
-                  <img
-                    alt=""
-                    src={Goods}
-                    height="80"
-                    className="d-inline-block align-top"
-                  />
-                  <h1>3. Obtain</h1>
-                  <h4>The Goods</h4>
-                </Col>
-              </Row>
-            </Container>
+              <h3>
+                How It Works:
+              </h3>
+              <Container className="box">
+                <Row className="my-5 justify-content-center">
+                  <Col md="3" className="text-center vl">
+                    <img
+                      alt=""
+                      src={Checklist}
+                      height="80"
+                      className="d-inline-block align-top"
+                    />
+                    <h1>1. List</h1>
+                    <h4>Your Textbook</h4>
+                  </Col>
+                  <Col md="3" className="text-center vl">
+                    <img
+                      alt=""
+                      src={Send}
+                      height="80"
+                      className="d-inline-block align-top"
+                    />
+                    <h1>2. Send</h1>
+                    <h4>It Out</h4>
+                  </Col>
+                  <Col md="3" className="text-center">
+                    <img
+                      alt=""
+                      src={Goods}
+                      height="80"
+                      className="d-inline-block align-top"
+                    />
+                    <h1>3. Obtain</h1>
+                    <h4>The Goods</h4>
+                  </Col>
+                </Row>
+              </Container>
             </Row>
           </Container>
+        </Row>
+        <Row className="my-4 mx-3 p-4 justify-content-center bg-dark text-white">
+          <Col md="auto" className="d-none d-md-block">
+            <Image src={Buy} fluid />
+          </Col>
+          <Col md="auto" className="text-center">
+            <h3>What is Buy?</h3>
+            <p>Buy is for people who are looking to buy a certain textbook.</p>
+            <p>After typing in what you are looking for, it will show a list of sellers for that textbook.</p>
+          </Col>
         </Row>
       </Container>
     );
