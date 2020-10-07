@@ -78,7 +78,7 @@ export default class Home extends React.Component {
           <Col md="auto" className="text-center">
             <h3>What is Buy?</h3>
             <p>Buy is for people who are looking to buy a certain textbook.</p>
-            <p>After typing in what you are looking for, it will show a list of sellers for that textbook.</p>
+            <p>It will list information of textbooks as well as the different prices and conditions from all seller's postings.</p>
             <p>Target: Buyers</p>
           </Col>
         </Row>
@@ -89,7 +89,7 @@ export default class Home extends React.Component {
           <Col md="auto" className="text-center">
             <h3>What is Sell?</h3>
             <p>Sell is for people who are looking to sell a certain textbook.</p>
-            <p>After typing in what you are looking for, it will show a list of buyers for that textbook.</p>
+            <p>It will list information of textbooks as well as the price and condition from all buyer's postings.</p>
             <p>Target: Sellers</p>
           </Col>
         </Row>
@@ -99,8 +99,8 @@ export default class Home extends React.Component {
           </Col>
           <Col md="auto" className="text-center">
             <h3>What is Trade?</h3>
-            <p>Trade is for people who are looking to trade a certain textbook for another textbook.</p>
-            <p>After typing in what you are looking for, it will show a specific textbooks that the owner is willing to trade it for.</p>
+            <p>Trade is for people who are looking to trade a certain textbook for a specific textbook. Value does not play a factor.</p>
+            <p>It will list specific textbooks that the owner is willing to trade it for. Mainly something specific.</p>
             <p>Target: Both Buyers and Sellers</p>
           </Col>
         </Row>
@@ -110,8 +110,8 @@ export default class Home extends React.Component {
           </Col>
           <Col md="auto" className="text-center">
             <h3>What is Swap?</h3>
-            <p>Swap is similar to trade, except it is more flexible.</p>
-            <p>Swap is flexible by how the textbooks that are being swapped, does not have to be around the same price range.</p>
+            <p>Swap is similar to trade, except it is more flexible. Value does play a factor.</p>
+            <p>Swap is flexible by how the owners are not looking for anything specific and is open to offers.</p>
             <p>Target: Both Buyers and Sellers</p>
           </Col>
         </Row>
