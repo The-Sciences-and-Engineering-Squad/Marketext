@@ -10,6 +10,7 @@ import Checklist from '../../../public/Checklist.png';
 import Send from '../../../public/Send.png';
 import Goods from '../../../public/Goods.png';
 import Buy from '../../../public/Buy.png';
+import Sell from '../../../public/Sell.png';
 
 export default class Home extends React.Component {
   render() {
@@ -76,6 +77,18 @@ export default class Home extends React.Component {
             <h3>What is Buy?</h3>
             <p>Buy is for people who are looking to buy a certain textbook.</p>
             <p>After typing in what you are looking for, it will show a list of sellers for that textbook.</p>
+            <p>Target: Buyers</p>
+          </Col>
+        </Row>
+        <Row className="my-4 mx-3 p-4 justify-content-center bg-dark text-white">
+          <Col md="auto" className="d-none d-md-block">
+            <Image src={Sell} fluid />
+          </Col>
+          <Col md="auto" className="text-center">
+            <h3>What is Sell?</h3>
+            <p>Sell is for people who are looking to sell a certain textbook.</p>
+            <p>After typing in what you are looking for, it will show a list of buyers for that textbook.</p>
+            <p>Target: Sellers</p>
           </Col>
         </Row>
       </Container>
