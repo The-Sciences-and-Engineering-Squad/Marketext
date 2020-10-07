@@ -12,6 +12,7 @@ import Goods from '../../../public/Goods.png';
 import Buy from '../../../public/Buy.png';
 import Sell from '../../../public/Sell.png';
 import Trade from '../../../public/Trade.png';
+import Swap from '../../../public/Swap.png';
 
 export default class Home extends React.Component {
   render() {
@@ -100,6 +101,17 @@ export default class Home extends React.Component {
             <h3>What is Trade?</h3>
             <p>Trade is for people who are looking to trade a certain textbook for another textbook.</p>
             <p>After typing in what you are looking for, it will show a specific textbooks that the owner is willing to trade it for.</p>
+            <p>Target: Both Buyers and Sellers</p>
+          </Col>
+        </Row>
+        <Row className="my-4 mx-3 p-4 justify-content-center bg-dark text-white">
+          <Col md="auto" className="d-none d-md-block">
+            <Image src={Swap} fluid />
+          </Col>
+          <Col md="auto" className="text-center">
+            <h3>What is Swap?</h3>
+            <p>Swap is similar to trade, except it is more flexible.</p>
+            <p>Swap is flexible by how the textbooks that are being swapped, does not have to be around the same price range.</p>
             <p>Target: Both Buyers and Sellers</p>
           </Col>
         </Row>
