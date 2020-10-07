@@ -1,3 +1,15 @@
 .bg-home{
-    background-color: #309220;
+  background-color: #309220;
+}
+
+.box{
+  outline-style: solid;
+  outline-width: medium;
+}
+
+@media screen and (min-width: 766px) {
+  .vl {
+    border-right: solid;
+    border-width: medium;
+  }
 }

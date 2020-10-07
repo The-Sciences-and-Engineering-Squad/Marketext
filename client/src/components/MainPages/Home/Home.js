@@ -6,6 +6,9 @@ import Image from 'react-bootstrap/Image';
 
 import './Home.css'
 import textbook from '../../../public/textbook.png';
+import Checklist from '../../../public/Checklist.png';
+import Send from '../../../public/Send.png';
+import Goods from '../../../public/Goods.png';
 
 export default class Home extends React.Component {
   render() {
@@ -20,6 +23,49 @@ export default class Home extends React.Component {
             <p>Ready to sell, buy, trade, or swap your textbooks?</p>
             <p>Join Marketext a platform to negotiate with others!</p>
           </Col>
+        </Row>
+        <Row className="my-4 mx-3 p-4 justify-content-center">
+          <Container>
+            <Row>
+            <h3>
+              How It Works:
+            </h3>
+            <Container className="box">
+              <Row className="my-5 justify-content-center">
+                <Col md="3" className="text-center vl">
+                  <img
+                    alt=""
+                    src={Checklist}
+                    height="80"
+                    className="d-inline-block align-top"
+                  />
+                  <h1>1. List</h1>
+                  <h4>Your Textbook</h4>
+                </Col>
+                <Col md="3" className="text-center vl">
+                  <img
+                    alt=""
+                    src={Send}
+                    height="80"
+                    className="d-inline-block align-top"
+                  />
+                  <h1>2. Send</h1>
+                  <h4>It Out</h4>
+                </Col>
+                <Col md="3" className="text-center">
+                  <img
+                    alt=""
+                    src={Goods}
+                    height="80"
+                    className="d-inline-block align-top"
+                  />
+                  <h1>3. Obtain</h1>
+                  <h4>The Goods</h4>
+                </Col>
+              </Row>
+            </Container>
+            </Row>
+          </Container>
         </Row>
       </Container>
     );
