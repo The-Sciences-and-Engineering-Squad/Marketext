@@ -25,7 +25,7 @@ import Message from './components/UserPages/Message/Message';
 import CurrentlyListed from './components/UserPages/CurrentlyListed/CurrentlyListed';
 import AddNew from './components/UserPages/AddNew/AddNew';
 import TransactionHistory from './components/UserPages/TransactionHistory/TransactionHistory';
-
+import Footer from './components/Footer/Footer';
 import './App.css';
 
 
@@ -70,6 +70,7 @@ class App extends React.Component {
             </Switch>
           </Row>
         </Container>
+        <Footer />
       </Router>
     );
   }
