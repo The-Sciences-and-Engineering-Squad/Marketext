@@ -25,32 +25,26 @@ export default class Register extends React.Component {
   // eventually api call to call the backend
   handleSubmit = (e) => {
     e.preventDefault();
-    const { username, email, password, password2, errors } = this.state;
-    this.setState({ errors: [] });
+    const { username, email, password, password2 } = this.state;
+    var newState = Object.assign({}, this.state);
+    newState.errors = [];
     if (username === "") {
-      this.setState(({errors}) => ({
-        errors: errors.concat("Please Enter a Username")
-      }));
+      newState.errors.push("Please Enter a Username");
     }
     if (email === "") {
-      this.setState(({errors}) => ({
-        errors: errors.concat("Please Enter an Email")
-      }));
+      newState.errors.push("Please Enter an Email");
     } 
     if (password === "" || password2 === "") {
-      this.setState(({errors}) => ({
-        errors: errors.concat("Please Enter a Password or Check Password Fields")
-      }));
+      newState.errors.push("Please Enter a Password or Check Password Fields");
     } 
     if (password !== password2) {
-      this.setState(({errors}) => ({
-        errors: errors.concat("Your Password and Confirmation Password Do Not Match")
-      }));
+      newState.errors.push("Your Password and Confirmation Password Do Not Match");
     } 
-    if (errors.length === 0) {
+    if (newState.errors.length === 0) {
       // Insert Backend Here.
-
+      
     }
+    this.setState(newState);
   };
 
   render() {
