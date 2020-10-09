@@ -21,17 +21,17 @@ export default class ForgotPassword extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { email, errors } = this.state;
-    this.setState({ errors: [] });
+    const { email } = this.state;
+    var newState = Object.assign({}, this.state);
+    newState.errors = [];
     if (email === "") {
-      this.setState(({errors}) => ({
-        errors: errors.concat("Please Enter an Email")
-      }));
+      newState.errors.push("Please Enter an Email");
     }
-    if(errors.length === 0) {
+    if(newState.errors.length === 0) {
       // Insert Backend Here.
       
     }
+    this.setState(newState);
   };
   
   render() {

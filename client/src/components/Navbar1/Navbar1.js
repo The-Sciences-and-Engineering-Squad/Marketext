@@ -12,7 +12,7 @@ import './Navbar1.css'
 
 function Navbar1(props) {
   return (
-    <Navbar variant="dark" expand="lg">
+    <Navbar variant="dark" expand="lg" sticky="top">
       <Navbar.Brand as={Link} to="/">
         <img
           alt=""
