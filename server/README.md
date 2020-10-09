@@ -84,3 +84,18 @@ MYSQL_USER=Your database username<br/>
 MYSQL_PASSWORD=Your database password<br/>
 MYSQL_HOST=localhost<br/>
 MYSQL_DB=Your Database name<br/>
+
+# Steps to create the database and tables needed
+
+### Option One
+If you are accesing MySql via terminal run the following script
+Make sure to change the path to the corresponding path of where the database.sql live
+
+SOURCE PATH/database.sql
+
+### Option two
+If you are using MySql worknech them there are two ways of running the script
+
+1. File -> Open SQL Script: This simply loads the file contents into a new SQL query tab in the SQL editor. From here, execute the query exactly like you would if you typed it in.
+
+2. File -> Run SQL Script: This opens the SQL script in its own "Run SQL Script" wizard that includes a [Run] button to execute the query. This only displays part of the query, but does allow the user to override the selected schema and character set. Note: This feature was added in Workbench 6.2.
