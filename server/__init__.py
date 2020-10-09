@@ -12,7 +12,7 @@ db = MySQL()
 def create_app():
     # create and configure the app
     app = Flask(__name__)
-    app.secret_key = "super secret key"
+    app.secret_key = os.urandom(12)
     # database connection credentials
     app.config['MYSQL_USER'] = os.getenv("MYSQL_USER")
     app.config['MYSQL_PASSWORD'] = os.getenv("MYSQL_PASSWORD")
