@@ -46,7 +46,7 @@ export default class Login extends React.Component {
       }).then((response) => {
         return response.json();
       }).then((response) => {
-        console.log(response)
+        
         if(response['authenticated']){
           const cookies = new Cookies();
           cookies.set('username', response['username'], { path: '/' });
