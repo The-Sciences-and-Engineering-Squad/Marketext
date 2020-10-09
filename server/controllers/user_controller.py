@@ -17,7 +17,7 @@ def login():
         password = req['password']
         user = user_model.UserModel(email)
         error = None
-        
+          
         if user.getEmail() is None:
             error = 'Incorrect username.'
         elif user.getPassword() != md5(password.encode('utf-8')).hexdigest():
@@ -30,7 +30,7 @@ def login():
             return json.dumps({'authenticated': True,'username': user.getUserName()})
 
         flash(error)
-    
+        
     return json.dumps({'authenticated': False, 'error': 'Invalid email or password'})
 
 @bp.route('/register',methods=['GET', 'POST'])
