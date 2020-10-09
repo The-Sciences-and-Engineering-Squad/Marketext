@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask
 from flask_mysqldb import MySQL
-
+from flask_cors import CORS
 
 load_dotenv()
 
@@ -12,7 +12,7 @@ db = MySQL()
 def create_app():
     # create and configure the app
     app = Flask(__name__)
-    
+    app.secret_key = "super secret key"
     # database connection credentials
     app.config['MYSQL_USER'] = os.getenv("MYSQL_USER")
     app.config['MYSQL_PASSWORD'] = os.getenv("MYSQL_PASSWORD")

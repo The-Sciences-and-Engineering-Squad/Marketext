@@ -39,9 +39,31 @@ export default class Login extends React.Component {
     }
     if(errors.length === 0) {
       // Insert Backend Here.
-      
+      const data = this.state
+      fetch( '/auth/login',  {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }).then((response) => {
+        return response.json();
+      }).then((response) => {
+        if(response['authenticated']){
+          this.props.history.push('/home')
+          window.location.reload(); 
+        }else{
+              
+          this.setState(({errors}) => ({
+            errors: errors.concat(response['error'])
+          }));
+          
+        }
+      })
     }
   };
+
+  
 
   render() {
     return (
