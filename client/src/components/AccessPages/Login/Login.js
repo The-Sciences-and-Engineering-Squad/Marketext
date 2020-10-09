@@ -5,7 +5,7 @@ import {
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
+import Cookies from 'universal-cookie';
 import './Login.css'
 
 export default class Login extends React.Component {
@@ -46,7 +46,10 @@ export default class Login extends React.Component {
       }).then((response) => {
         return response.json();
       }).then((response) => {
+        console.log(response)
         if(response['authenticated']){
+          const cookies = new Cookies();
+          cookies.set('username', response['username'], { path: '/' });
           this.props.history.push('/home')
           window.location.reload(); 
         }else{
