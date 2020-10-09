@@ -19,7 +19,7 @@ def create_app():
     app.config['MYSQL_HOST'] = os.getenv("MYSQL_HOST")
     app.config['MYSQL_DB'] = os.getenv("MYSQL_DB")
     app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
-
+    app.config['SESSION_COOKIE_SAMESITE'] = "Strict"
     db.init_app(app)
     
     from server.controllers import user_controller

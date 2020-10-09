@@ -5,7 +5,7 @@ import hashlib
 class UserModel:
     def __init__(self,username = None):
         self.database = db.connection.cursor()
-        self.database.execute('SELECT * FROM User WHERE email = ' + "'" + username + "'" )
+        self.database.execute('SELECT * FROM User WHERE email = ' + "'" + username + "'" + ' OR userName = ' "'" + username + "'" )
         results = self.database.fetchone()
         if results:
             self.userId =  results['userId']

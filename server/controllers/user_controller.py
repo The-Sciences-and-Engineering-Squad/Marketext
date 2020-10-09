@@ -27,23 +27,23 @@ def login():
             session.clear()
             session['user_id'] = user.getUserId()
 
-            return json.dumps({'authenticated': True})
+            return json.dumps({'authenticated': True,'username': user.getUserName()})
 
         flash(error)
     
     return json.dumps({'authenticated': False, 'error': 'Invalid email or password'})
 
-@bp.route('/register',methods=['POST'])
+@bp.route('/register',methods=['GET', 'POST'])
 def register():
     user = user_model.UserModel()
     return None
 
-@bp.route('/forgot_password',methods=['POST'])
+@bp.route('/forgot_password',methods=['GET', 'POST'])
 def forgot_password():
     user = user_model.UserModel()
     return None
 
-@bp.route('/profile',methods=['POST'])
+@bp.route('/profile',methods=['GET', 'POST'])
 def profile():
     user = user_model.UserModel()
     return None
