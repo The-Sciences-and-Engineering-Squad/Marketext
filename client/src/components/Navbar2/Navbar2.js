@@ -13,7 +13,7 @@ import './Navbar2.css'
 
 function Navbar2(props) {
   return (
-    <Navbar variant="dark" expand="lg">
+    <Navbar variant="dark" expand="lg" sticky="top">
       <Navbar.Brand href="/">
         <img
           alt=""
