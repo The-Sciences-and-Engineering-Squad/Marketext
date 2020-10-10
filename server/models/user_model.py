@@ -45,7 +45,7 @@ class UserModel:
         self.password = md5(password.encode('utf-8')).hexdigest()
     
     def insertUser(self):
-        self.dataCur.execute('INSERT INTO User(userName,password,email,resgistrationDate) VALUES (' +  "'" + self.username + "'," +  "'" + self.password + "'," +  "'" + self.email + "'," + ' NOW() )')
+        self.dataCur.execute('INSERT INTO User(userName,password,email,registrationDate) VALUES (' +  "'" + self.username + "'," +  "'" + self.password + "'," +  "'" + self.email + "'," + ' NOW() )')
         self.database.commit()
     
     def isExist(self,field,attribute):
