@@ -8,18 +8,20 @@ class UserModel:
     def __init__(self,username = None):
         self.database = db.connection
         self.dataCur = db.connection.cursor()
-        self.dataCur.execute('SELECT * FROM User WHERE email = ' + "'" + username + "'" + ' OR userName = ' "'" + username + "'" )
-        results = self.dataCur.fetchone()
-        if results:
-            self.userId =  results['userId']
-            self.username = results['userName']
-            self.password = results['password']
-            self.email = results['email']
-        else:
-            self.userId = None
-            self.username = None
-            self.password = None
-            self.email = None
+        self.userId = None
+        self.username = None
+        self.password = None
+        self.email = None
+
+        if username is not None:
+            self.dataCur.execute('SELECT * FROM User WHERE userName = ' + "'" + username + "'" )
+            results = self.dataCur.fetchone()
+            if results:
+                self.userId =  results['userId']
+                self.username = results['userName']
+                self.password = results['password']
+                self.email = results['email']
+    
 
     def getUserId(self):
         return self.userId 
