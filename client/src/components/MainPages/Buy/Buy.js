@@ -14,15 +14,15 @@ export default class Buy extends React.Component {
     super(props);
     this.state = {
       textbooks: [
-        {title: "Insert Book Title 1", author: "Insert Author 1"},
-        {title: "Insert Book Title 2", author: "Insert Author 2"},
-        {title: "Insert Book Title 3", author: "Insert Author 3"},
-        {title: "Insert Book Title 4", author: "Insert Author 4"},
-        {title: "Insert Book Title 5", author: "Insert Author 5"},
-        {title: "Insert Book Title 6", author: "Insert Author 6"},
-        {title: "Insert Book Title 7", author: "Insert Author 7"},
-        {title: "Insert Book Title 8", author: "Insert Author 8"},
-        {title: "Insert Book Title 9", author: "Insert Author 9"},
+        {title: "Insert Book Title 1", author: "Insert Author 1", image: sampletextbook},
+        {title: "Insert Book Title 2", author: "Insert Author 2", image: sampletextbook},
+        {title: "Insert Book Title 3", author: "Insert Author 3", image: sampletextbook},
+        {title: "Insert Book Title 4", author: "Insert Author 4", image: sampletextbook},
+        {title: "Insert Book Title 5", author: "Insert Author 5", image: sampletextbook},
+        {title: "Insert Book Title 6", author: "Insert Author 6", image: sampletextbook},
+        {title: "Insert Book Title 7", author: "Insert Author 7", image: sampletextbook},
+        {title: "Insert Book Title 8", author: "Insert Author 8", image: sampletextbook},
+        {title: "Insert Book Title 9", author: "Insert Author 9", image: sampletextbook},
       ],
     };
   }
@@ -42,13 +42,19 @@ export default class Buy extends React.Component {
               <Card className="text-center books">
                 <Card.Header>
                   <strong>
-                    Click For Seller
+                    Click For Sellers
                   </strong>
                 </Card.Header>
-                <Card.Img src={sampletextbook} />
+                <Card.Img src={list.image} />
                 <ListGroup className="list-group-flush">
-                  <ListGroupItem>{list.title}</ListGroupItem>
-                  <ListGroupItem>{list.author}</ListGroupItem>
+                  <ListGroupItem>
+                    <Card.Title>
+                      {list.title}
+                    </Card.Title>
+                    <Card.Text>
+                      {list.author}
+                    </Card.Text>
+                  </ListGroupItem>
                 </ListGroup>
               </Card>
             </Col>

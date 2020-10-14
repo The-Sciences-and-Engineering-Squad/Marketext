@@ -16,6 +16,6 @@
 }
 
 .book-selection:hover{
-  text-decoration: none;
+  border-radius: 10px;
   background-color: #C4C4C4;
 }
