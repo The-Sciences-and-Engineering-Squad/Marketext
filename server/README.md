@@ -94,7 +94,7 @@ Make sure to change the path to the corresponding path of where the database.sql
 SOURCE PATH/database.sql
 
 ### Option two
-If you are using MySql worknech them there are two ways of running the script
+If you are using MySql workbechn them there are two ways of running the script
 
 1. File -> Open SQL Script: This simply loads the file contents into a new SQL query tab in the SQL editor. From here, execute the query exactly like you would if you typed it in.
 

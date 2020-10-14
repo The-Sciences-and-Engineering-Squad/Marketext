@@ -5,7 +5,7 @@ import {
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
+import Cookies from 'universal-cookie';
 import './Login.css'
 
 export default class Login extends React.Component {
@@ -36,10 +36,35 @@ export default class Login extends React.Component {
     }
     if(newState.errors.length === 0) {
       // Insert Backend Here.
-      
+      const data = this.state
+      fetch( '/auth/login',  {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }).then((response) => {
+        return response.json();
+      }).then((response) => {
+        
+        if(response['authenticated']){
+          const cookies = new Cookies();
+          cookies.set('username', response['username'], { path: '/' });
+          this.props.history.push('/home')
+          window.location.reload(); 
+        }else{
+              
+          this.setState(({errors}) => ({
+            errors: errors.concat(response['error'])
+          }));
+          
+        }
+      })
     }
     this.setState(newState);
   };
+
+  
 
   render() {
     return (

@@ -8,9 +8,13 @@ import {
   Navbar
 } from 'react-bootstrap';
 import './Navbar1.css'
+import Cookies from 'universal-cookie';
 // This Navbar is for the Home/Buy/Sell/Trade/Swap Pages.
 
 function Navbar1(props) {
+  // This is what you need to use to get the cookies!
+  const cookies = new Cookies();
+  console.log(cookies.get('username'))
   return (
     <Navbar variant="dark" expand="lg" sticky="top">
       <Navbar.Brand as={Link} to="/">
