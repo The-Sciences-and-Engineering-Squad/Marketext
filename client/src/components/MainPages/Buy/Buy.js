@@ -10,6 +10,13 @@ import sampletextbook from '../../../public/sampletextbook.jpg'
 import './Buy.css'
 
 export default class Buy extends React.Component {
+
+  selectedTextbook = index => (e) => {
+    e.preventDefault(); 
+    // Add Backend For When Textbook Is Clicked
+    console.log("clicked " + index);
+  }
+
   render() {
     var textbooks = [
       {title: "Insert Book Title 1", author: "Insert Author 1"},
@@ -22,15 +29,16 @@ export default class Buy extends React.Component {
       {title: "Insert Book Title 8", author: "Insert Author 8"},
       {title: "Insert Book Title 9", author: "Insert Author 9"},
     ];
-
     return (
       <Container fluid>
         <Row className="row-resize">
           {textbooks.map((list, index) => (
-            <Col key={index} sm="6" md="4" lg="3" className="book-selection">
+            <Col key={index} sm="6" md="4" lg="3" className="book-selection" onClick={this.selectedTextbook(index)}>
               <Card className="text-center books">
                 <Card.Header>
-                  Click For Seller
+                  <strong>
+                    Click For Seller
+                  </strong>
                 </Card.Header>
                 <Card.Img src={sampletextbook} />
                 <ListGroup className="list-group-flush">
