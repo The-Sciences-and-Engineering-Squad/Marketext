@@ -33,16 +33,35 @@ export default class Register extends React.Component {
     }
     if (email === "") {
       newState.errors.push("Please Enter an Email");
-    } 
+    }
     if (password === "" || password2 === "") {
       newState.errors.push("Please Enter a Password or Check Password Fields");
-    } 
+    }
     if (password !== password2) {
       newState.errors.push("Your Password and Confirmation Password Do Not Match");
-    } 
+    }
     if (newState.errors.length === 0) {
       // Insert Backend Here.
-      
+      const data = this.state
+      fetch( '/auth/register',  {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }).then((response) => {
+        return response.json();
+      }).then((response) => {
+
+        if(response['registered']){
+          this.props.history.push('/login')
+        }else{
+          this.setState(({errors}) => ({
+            errors: errors.concat(response['error'])
+          }));
+
+        }
+      })
     }
     this.setState(newState);
   };
@@ -52,32 +71,32 @@ export default class Register extends React.Component {
       <div className="center">
         <Container className="container-bg rounded px-5 py-4 mx-4">
           <h2 className="text-light text-center">Create Your Account</h2>
-          { this.state.errors.length > 0 ?  
+          { this.state.errors.length > 0 ?
             this.state.errors.map((error,index) => {
               return <li key={index} className="text-warning"> {error} </li>
           })
-          : 
+          :
           <div></div>
-          } 
+          }
           <Form>
             <Form.Group controlId="formUsername">
               <Form.Label className="text-light">Username:</Form.Label>
-              <Form.Control type="text" placeholder="Enter Username" 
+              <Form.Control type="text" placeholder="Enter Username"
                 onChange={this.handleChange("username")}/>
             </Form.Group>
             <Form.Group controlId="formEmail">
               <Form.Label className="text-light">Email Address:</Form.Label>
-              <Form.Control type="email" placeholder="Enter Email" 
+              <Form.Control type="email" placeholder="Enter Email"
                 onChange={this.handleChange("email")}/>
             </Form.Group>
             <Form.Group controlId="formPassword">
               <Form.Label className="text-light">Password:</Form.Label>
-              <Form.Control type="password" placeholder="Enter Password" 
+              <Form.Control type="password" placeholder="Enter Password"
                 onChange={this.handleChange("password")}/>
             </Form.Group>
             <Form.Group controlId="formConfirmPassword">
               <Form.Label className="text-light">Confirm Password:</Form.Label>
-              <Form.Control type="password" placeholder="Reenter Password" 
+              <Form.Control type="password" placeholder="Reenter Password"
                 onChange={this.handleChange("password2")}/>
             </Form.Group>
           </Form>
