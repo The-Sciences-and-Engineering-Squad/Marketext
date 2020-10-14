@@ -27,8 +27,8 @@ export default class Buy extends React.Component {
       <Container fluid>
         <Row className="row-resize">
           {textbooks.map((list, index) => (
-            <Col key={index} sm="6" md="4" lg="3" className="my-3">
-              <Card className="text-center">
+            <Col key={index} sm="6" md="4" lg="3" className="book-selection">
+              <Card className="text-center books">
                 <Card.Header>
                   Click For Seller
                 </Card.Header>
