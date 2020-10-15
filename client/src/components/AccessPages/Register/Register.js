@@ -54,7 +54,7 @@ export default class Register extends React.Component {
       }).then((response) => {
 
         if(response['registered']){
-          this.props.history.push('/login')
+          this.props.history.push('/Login')
         }else{
           this.setState(({errors}) => ({
             errors: errors.concat(response['error'])
