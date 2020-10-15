@@ -52,11 +52,7 @@ export default class Login extends React.Component {
           cookies.set('username', response['username'], { path: '/' });
           window.location.href='/';
         }else{
-              
-          this.setState(({errors}) => ({
-            errors: errors.concat(response['error'])
-          }));
-          
+          newState.errors.push(response['error']);
         }
       })
     }
