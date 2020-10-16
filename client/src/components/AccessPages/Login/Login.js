@@ -50,8 +50,7 @@ export default class Login extends React.Component {
         if(response['authenticated']){
           const cookies = new Cookies();
           cookies.set('username', response['username'], { path: '/' });
-          this.props.history.push('/home')
-          window.location.reload(); 
+          window.location.href='/';
         }else{
               
           this.setState(({errors}) => ({
