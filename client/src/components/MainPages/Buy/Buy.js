@@ -69,6 +69,7 @@ export default class Buy extends React.Component {
               placeholder="Search by ISBN, Title or Author's Name"
               aria-label="Search by ISBN, Title or Author's Name"
               aria-describedby="TextbookSearch"
+              value={this.state.search}
               onChange={this.handleChange("search")}
             />
             <InputGroup.Append>
