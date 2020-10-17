@@ -19,3 +19,8 @@
   border-radius: 10px;
   background-color: #C4C4C4;
 }
+
+.searchbar{
+  width: 60%;
+  margin: auto;
+}
