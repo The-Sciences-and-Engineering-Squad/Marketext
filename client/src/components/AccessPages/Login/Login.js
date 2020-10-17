@@ -77,7 +77,7 @@ export default class Login extends React.Component {
           : 
           <div></div>
           } 
-          <Form>
+          <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="formEmail">
               <Form.Label className="text-light">Email Address:</Form.Label>
               <Form.Control type="email" placeholder="Enter Email" 
@@ -88,11 +88,11 @@ export default class Login extends React.Component {
               <Form.Control type="password" placeholder="Enter Password" 
                 onChange={this.handleChange("password")}/>
             </Form.Group>
+            <Button variant="danger" type="submit" size="lg" block
+              onClick={this.handleSubmit}>
+              Login
+            </Button>
           </Form>
-          <Button variant="danger" type="submit" size="lg" block
-            onClick={this.handleSubmit}>
-            Login
-          </Button>
           <br/>
           <p className="text-light">
             Don't have an account? <Link to="Register" className="text-danger">Sign Up</Link>
