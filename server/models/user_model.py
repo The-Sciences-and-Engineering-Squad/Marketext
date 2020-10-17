@@ -5,7 +5,7 @@ from hashlib import md5
 # User table from the database
 class UserModel:
     
-    def __init__(self,username = None):
+    def __init__(self,userId = None):
         self.database = db.connection
         self.dataCur = db.connection.cursor()
         self.userId = None
@@ -13,8 +13,8 @@ class UserModel:
         self.password = None
         self.email = None
 
-        if username is not None:
-            self.dataCur.execute('SELECT * FROM User WHERE userName = ' + "'" + username + "'" )
+        if userId is not None:
+            self.dataCur.execute('SELECT * FROM User WHERE userId = ' + "'" + userId + "'" )
             results = self.dataCur.fetchone()
             if results:
                 self.userId =  results['userId']
@@ -48,6 +48,25 @@ class UserModel:
         self.dataCur.execute('INSERT INTO User(userName,password,email,registrationDate) VALUES (' +  "'" + self.username + "'," +  "'" + self.password + "'," +  "'" + self.email + "'," + ' NOW() )')
         self.database.commit()
     
+    def setUser(self,username):
+        self.userId = None
+        self.username = None
+        self.password = None
+        self.email = None
+
+        if username is not None:
+            self.dataCur.execute('SELECT * FROM User WHERE userName = ' + "'" + username + "'" )
+            results = self.dataCur.fetchone()
+            if results:
+                self.userId =  results['userId']
+                self.username = results['userName']
+                self.password = results['password']
+                self.email = results['email']
+    
+    def updateField(self,field,attribute):
+        self.dataCur.execute('UPDATE User Set ' + field + ' = ' + "'" + attribute + "'" + "WHERE Id = " + "'" + self.userId + "'")
+        self.database.commit()
+
     def isExist(self,field,attribute):
         self.dataCur.execute('SELECT * FROM User WHERE ' + field + ' = ' + "'" + attribute + "'")
         results = self.dataCur.fetchone()

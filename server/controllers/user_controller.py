@@ -17,7 +17,8 @@ def login():
         req = request.json
         email = req['email']
         password = req['password']
-        user = user_model.UserModel(email)
+        user = user_model.UserModel()
+        user.setUser(email)
         error = None
 
         if user.getEmail() is None:
