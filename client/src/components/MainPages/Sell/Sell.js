@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
+import Search from '../../Search/Search';
 
 import sampletextbook from '../../../public/sampletextbook.jpg'
 import './Sell.css'
@@ -55,6 +56,7 @@ export default class Sell extends React.Component {
   render() {
     return (
       <Container fluid>
+        <Search></Search>
         <Row className="row-resize">
           { this.state.search === "" ? 
             this.state.textbooks.map((list, index) => (
