@@ -5,7 +5,9 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
-import Search from '../../Search/Search';
+import { Form, Button, FormControl, InputGroup } from "react-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import sampletextbook from '../../../public/sampletextbook.jpg'
 import './Trade.css'
@@ -47,6 +49,11 @@ export default class Trade extends React.Component {
     };
   }
 
+  // Handle field change
+  handleChange = (input) => (e) => {
+    this.setState({ [input]: e.target.value });
+  };
+
   selectedTextbook = index => (e) => {
     e.preventDefault(); 
     // Add Backend For When Textbook Is Clicked
@@ -56,7 +63,20 @@ export default class Trade extends React.Component {
   render() {
     return (
       <Container fluid>
-        <Search></Search>
+        <Form>
+          <InputGroup className="searchbar pt-4">
+            <FormControl
+              placeholder="Search by ISBN, Title or Author's Name"
+              aria-label="Search by ISBN, Title or Author's Name"
+              aria-describedby="TextbookSearch"
+              value={this.state.search}
+              onChange={this.handleChange("search")}
+            />
+            <InputGroup.Append>
+              <Button variant="outline-secondary"><FontAwesomeIcon icon={faSearch} /></Button>
+            </InputGroup.Append>
+          </InputGroup>
+        </Form>
         <Row className="row-resize">
           { this.state.search === "" ? 
             this.state.textbooks.map((list, index) => (
