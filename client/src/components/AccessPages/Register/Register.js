@@ -78,7 +78,7 @@ export default class Register extends React.Component {
           :
           <div></div>
           }
-          <Form>
+          <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="formUsername">
               <Form.Label className="text-light">Username:</Form.Label>
               <Form.Control type="text" placeholder="Enter Username"
@@ -99,11 +99,11 @@ export default class Register extends React.Component {
               <Form.Control type="password" placeholder="Reenter Password"
                 onChange={this.handleChange("password2")}/>
             </Form.Group>
+            <Button variant="danger" type="submit" size="lg" block
+              onClick={this.handleSubmit}>
+              Register
+            </Button>
           </Form>
-          <Button variant="danger" type="submit" size="lg" block
-            onClick={this.handleSubmit}>
-            Register
-          </Button>
         </Container>
       </div>
     );

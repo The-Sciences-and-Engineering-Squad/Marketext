@@ -46,17 +46,17 @@ export default class ForgotPassword extends React.Component {
           : 
           <div></div>
           } 
-          <Form>
+          <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="formEmail">
               <Form.Label className="text-light">Email Address:</Form.Label>
               <Form.Control type="email" placeholder="Enter Email" 
                 onChange={this.handleChange("email")}/>
             </Form.Group>
+            <Button variant="danger" type="submit" size="lg" block
+              onClick={this.handleSubmit}>
+              Send
+            </Button>
           </Form>
-          <Button variant="danger" type="submit" size="lg" block
-            onClick={this.handleSubmit}>
-            Send
-          </Button>
         </Container>
       </div>
     );
