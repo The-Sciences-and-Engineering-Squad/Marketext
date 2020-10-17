@@ -17,6 +17,7 @@ export default class Swap extends React.Component {
     // Insert Backend Call For Textbooks When Nothing is on Search
     this.setState({
       textbooks: [
+        // Clear this out once backend is added
         {title: "Insert Book Title 1", author: "Insert Author 1", image: sampletextbook},
         {title: "Insert Book Title 2", author: "Insert Author 2", image: sampletextbook},
         {title: "Insert Book Title 3", author: "Insert Author 3", image: sampletextbook},
@@ -35,6 +36,7 @@ export default class Swap extends React.Component {
     this.state = {
       search: "",
       searchTextbooks: [
+        // Clear this out once backend is added
         {title: "Search Book Title 1", author: "Search Author 1", image: sampletextbook},
         {title: "Search Book Title 2", author: "Search Author 2", image: sampletextbook},
         {title: "Search Book Title 3", author: "Search Author 3", image: sampletextbook},
@@ -54,6 +56,12 @@ export default class Swap extends React.Component {
     this.setState({ [input]: e.target.value });
   };
 
+  handleSubmit = (e) => {
+    e.preventDefault(); 
+    // Add Backend to set the state of searchTextbooks.
+
+  }
+
   selectedTextbook = index => (e) => {
     e.preventDefault(); 
     // Add Backend For When Textbook Is Clicked
@@ -63,7 +71,7 @@ export default class Swap extends React.Component {
   render() {
     return (
       <Container fluid>
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <InputGroup className="searchbar pt-4">
             <FormControl
               placeholder="Search by ISBN, Title or Author's Name"
@@ -73,7 +81,7 @@ export default class Swap extends React.Component {
               onChange={this.handleChange("search")}
             />
             <InputGroup.Append>
-              <Button variant="outline-secondary"><FontAwesomeIcon icon={faSearch} /></Button>
+            <Button variant="outline-secondary" type="submit" onClick={this.handleSubmit}><FontAwesomeIcon icon={faSearch} /></Button>
             </InputGroup.Append>
           </InputGroup>
         </Form>
