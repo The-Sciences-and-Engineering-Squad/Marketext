@@ -29,7 +29,7 @@ export default class RenderTextbooks extends React.Component {
                     Click For {this.props.target}
                   </strong>
                 </Card.Header>
-                <Card.Img src={list.image} />
+                <Card.Img className="cardImage" src={list.image} />
                 <ListGroup className="list-group-flush">
                   <ListGroupItem>
                     <Card.Title>
