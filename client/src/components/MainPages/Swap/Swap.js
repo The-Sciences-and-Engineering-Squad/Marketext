@@ -18,38 +18,34 @@ import './Swap.css'
 export default class Swap extends React.Component {
   componentDidMount() {
     // Insert Backend Call For Textbooks When Nothing is on Search
-    this.setState({
-      textbooks: [
-        // Clear this out once backend is added
-        {title: "Insert Book Title 1", author: "Insert Author 1", image: sampletextbook},
-        {title: "Insert Book Title 2", author: "Insert Author 2", image: sampletextbook},
-        {title: "Insert Book Title 3", author: "Insert Author 3", image: sampletextbook},
-        {title: "Insert Book Title 4", author: "Insert Author 4", image: sampletextbook},
-        {title: "Insert Book Title 5", author: "Insert Author 5", image: sampletextbook},
-        {title: "Insert Book Title 6", author: "Insert Author 6", image: sampletextbook},
-        {title: "Insert Book Title 7", author: "Insert Author 7", image: sampletextbook},
-        {title: "Insert Book Title 8", author: "Insert Author 8", image: sampletextbook},
-        {title: "Insert Book Title 9", author: "Insert Author 9", image: sampletextbook},
-      ]
-    });
+    fetch('https://www.googleapis.com/books/v1/volumes?q=math&projection=full&printType=books&orderBy=newest&maxResults=40')
+    .then(response => response.json())
+    .then(result => {
+        console.log(result.items.length)
+        if(result.items != null){
+          for(let i=0;i<result.items.length;i++){
+            if (result.items[i].volumeInfo.imageLinks == null ){
+              continue;
+            }
+            let hasISBN = result.items[i].volumeInfo.industryIdentifiers;
+            var books = this.state.textbooks.concat({
+              id: result.items[i].id,
+              title: result.items[i].volumeInfo.title,
+              author: result.items[i].volumeInfo.authors, 
+              image: result.items[i].volumeInfo.imageLinks.thumbnail,
+              description: result.items[i].volumeInfo.description,
+              ISBN: hasISBN !== undefined ? result.items[i].volumeInfo.industryIdentifiers:null, 
+            });
+            this.setState({ textbooks: books });
+          }
+      }
+    })
   }
 
   constructor(props) {
     super(props);
     this.state = {
       search: "",
-      searchTextbooks: [
-        // Clear this out once backend is added
-        {title: "Search Book Title 1", author: "Search Author 1", image: sampletextbook},
-        {title: "Search Book Title 2", author: "Search Author 2", image: sampletextbook},
-        {title: "Search Book Title 3", author: "Search Author 3", image: sampletextbook},
-        {title: "Search Book Title 4", author: "Search Author 4", image: sampletextbook},
-        {title: "Search Book Title 5", author: "Search Author 5", image: sampletextbook},
-        {title: "Search Book Title 6", author: "Search Author 6", image: sampletextbook},
-        {title: "Search Book Title 7", author: "Search Author 7", image: sampletextbook},
-        {title: "Search Book Title 8", author: "Search Author 8", image: sampletextbook},
-        {title: "Search Book Title 9", author: "Search Author 9", image: sampletextbook},
-      ],
       textbooks: [],
     };
   }
@@ -62,13 +58,40 @@ export default class Swap extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault(); 
     // Add Backend to set the state of searchTextbooks.
-
+    if (this.state.search != ''){
+      fetch('https://www.googleapis.com/books/v1/volumes?q=' + this.state.search + '&projection=full&printType=books&orderBy=newest&maxResults=40' )
+      .then(response => response.json())
+      .then(result => {
+        if(result.items != null){
+          this.setState({ textbooks: [] });
+          console.log(result.items.length)
+          for(let i=0;i<result.items.length;i++){
+            if (result.items[i].volumeInfo.imageLinks == null ){
+              continue;
+            }
+            let hasISBN = result.items[i].volumeInfo.industryIdentifiers;
+            var books = this.state.textbooks.concat({
+              id: result.items[i].id,
+              title: result.items[i].volumeInfo.title,
+              author: result.items[i].volumeInfo.authors, 
+              image: result.items[i].volumeInfo.imageLinks.thumbnail,
+              description: result.items[i].volumeInfo.description,
+              ISBN: hasISBN !== undefined ? result.items[i].volumeInfo.industryIdentifiers:null,              
+          });
+            this.setState({ textbooks: books });
+          }
+        }
+      })
+    }
   }
 
   selectedTextbook = index => (e) => {
     e.preventDefault(); 
     // Add Backend For When Textbook Is Clicked
-    console.log("clicked " + index);
+
+    // This is the whole book object you will need all of this 
+    console.log(this.state.textbooks[index])
+
   }
 
   render() {
@@ -89,7 +112,7 @@ export default class Swap extends React.Component {
           </InputGroup>
         </Form>
         <Row className="row-resize">
-          { this.state.search === "" ? 
+          { 
             this.state.textbooks.map((list, index) => (
               <Col key={index} sm="6" md="4" lg="3" className="book-selection" onClick={this.selectedTextbook(index)}>
                 <Card className="text-center books">
@@ -112,29 +135,7 @@ export default class Swap extends React.Component {
                 </Card>
               </Col>
             ))
-          :
-          this.state.searchTextbooks.map((list, index) => (
-            <Col key={index} sm="6" md="4" lg="3" className="book-selection" onClick={this.selectedTextbook(index)}>
-              <Card className="text-center books">
-                <Card.Header>
-                  <strong>
-                    Click For Swapers
-                  </strong>
-                </Card.Header>
-                <Card.Img src={list.image} />
-                <ListGroup className="list-group-flush">
-                  <ListGroupItem>
-                    <Card.Title>
-                      {list.title}
-                    </Card.Title>
-                    <Card.Text>
-                      {list.author}
-                    </Card.Text>
-                  </ListGroupItem>
-                </ListGroup>
-              </Card>
-            </Col>
-          ))
+          
           }
         </Row>
       </Container>
