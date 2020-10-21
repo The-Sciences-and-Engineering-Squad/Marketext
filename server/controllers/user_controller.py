@@ -63,12 +63,22 @@ def register():
 
 
 @bp.route('/forgot_password', methods=['GET', 'POST'])
-def forgot_password():
+def forgot_password(): 
+    req = request.json
     user = user_model.UserModel()
-    return None
+    user.setUser(req['username'])
+
+    if user.getUserName() is not None:
+        #forgot password procedure
+        print(user.getEmail())
+
+        return json.dumps({'userExist': True}) 
+
+    return json.dumps({'userExist': False, 'error': 'User does not exist'})
 
 
 @bp.route('/profile', methods=['GET', 'POST'])
 def profile():
     user = user_model.UserModel()
     return None
+

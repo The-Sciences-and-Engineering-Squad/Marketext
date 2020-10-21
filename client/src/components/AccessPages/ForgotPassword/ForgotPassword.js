@@ -9,7 +9,7 @@ export default class ForgotPassword extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
+      username: "",
       errors: [],
     };
   }
@@ -21,15 +21,35 @@ export default class ForgotPassword extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { email } = this.state;
+    const { username } = this.state;
     var newState = Object.assign({}, this.state);
     newState.errors = [];
-    if (email === "") {
-      newState.errors.push("Please Enter an Email");
+    if (username === "") {
+      newState.errors.push("Please Enter an Username");
     }
     if(newState.errors.length === 0) {
       // Insert Backend Here.
-      
+      const data = this.state
+      fetch( '/auth/forgot_password',  {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }).then((response) => {
+        return response.json();
+      }).then((response) => {
+        
+        if(response['userExist']){
+          window.location.href='/Login';
+        }else{
+              
+          this.setState(({errors}) => ({
+            errors: errors.concat(response['error'])
+          }));
+          
+        }
+      })
     }
     this.setState(newState);
   };
@@ -48,9 +68,9 @@ export default class ForgotPassword extends React.Component {
           } 
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="formEmail">
-              <Form.Label className="text-light">Email Address:</Form.Label>
-              <Form.Control type="email" placeholder="Enter Email" 
-                onChange={this.handleChange("email")}/>
+              <Form.Label className="text-light">Username:</Form.Label>
+              <Form.Control type="username" placeholder="Enter Username" 
+                onChange={this.handleChange("username")}/>
             </Form.Group>
             <Button variant="danger" type="submit" size="lg" block
               onClick={this.handleSubmit}>

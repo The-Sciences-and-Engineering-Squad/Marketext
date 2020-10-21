@@ -64,6 +64,8 @@ class UserModel:
                 self.email = results['email']
     
     def updateField(self,field,attribute):
+        if field == 'password':
+            attribute = md5(attribute.encode('utf-8')).hexdigest()
         self.dataCur.execute('UPDATE User Set ' + field + ' = ' + "'" + attribute + "'" + "WHERE Id = " + "'" + self.userId + "'")
         self.database.commit()
 
