@@ -95,7 +95,7 @@ export default class Sell extends React.Component {
             </InputGroup.Append>
           </InputGroup>
         </Form>
-        <RenderTextbooks textbooks={this.state.textbooks} target="Buyer" />
+        <RenderTextbooks textbooks={this.state.textbooks} target="Buyers" />
       </Container>
     );
   }

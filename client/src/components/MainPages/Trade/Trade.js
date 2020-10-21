@@ -95,7 +95,7 @@ export default class Trade extends React.Component {
             </InputGroup.Append>
           </InputGroup>
         </Form>
-        <RenderTextbooks textbooks={this.state.textbooks} target="Trader" />
+        <RenderTextbooks textbooks={this.state.textbooks} target="Traders" />
       </Container>
     );
   }
