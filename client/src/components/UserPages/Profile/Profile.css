@@ -1,0 +1,90 @@
+#Profile {
+  margin-top: 40px;
+  /* background-color: red; */
+  height: 100%;
+}
+
+#profileImg {
+  border-radius: 50%;
+  background: #0069B6;
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#ProfileImage {
+  width: 50%;
+  margin: 0 auto;
+  /* background-color: green; */
+  text-align:center
+}
+
+#userName {
+  margin-top: 20px;;
+}
+
+.mb-3 {
+  margin-top: 20px;;
+  min-width:100px;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#ProfileInfo {
+  margin-left: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  min-width: 150px;
+  max-width: 350px;
+}
+
+input[type=text] {
+  background-color: #DCDCDC;
+  color: black;
+  outline-color: grey;
+}
+
+#newPasswordBox {
+  width: 100%;
+  display: inline-flex;
+}
+
+#newPW1Box {
+  width: 100%;
+  min-width: 150px;
+  max-width: 350px;
+}
+
+#newPW2Box {
+  width: 100%;
+  margin-left: 20px;
+  min-width: 150px;
+  max-width: 350px;
+}
+
+#saveChangesBtn {
+  background-color: #F00000;
+  border-color: #F00000;
+}
+
+#saveChangesBtn:hover {
+  background-color: #C80000;
+  border-color: #C80000;
+}
+
+@media screen and (max-width: 900px) {
+    #newPasswordBox {
+        display: block;
+    }
+
+    #newPW2Box {
+      margin-left: 0px;
+    }
+}
