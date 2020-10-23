@@ -19,19 +19,12 @@ h3 {
 #ProfileImage {
   width: 50%;
   margin: 0 auto;
-  text-align:center
+  text-align:center;
+  margin-top: 10px;
 }
 
 #userName {
   margin-top: 20px;;
-}
-
-.mb-3 {
-  margin-top: 20px;;
-  min-width:100px;
-  max-width: 200px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 #UserCredentials, #ProfileInfo {
@@ -47,38 +40,37 @@ input {
   max-width: 350px;
 }
 
-input[type=text] {
+input[type=text], input[type=email], input[type=password] {
   background-color: #DCDCDC;
   color: black;
   outline-color: grey;
 }
 
-.two-box-container, .three-box-container {
+#newPasswordBox, #fullNameBox, #location{
   width: 100%;
   display: inline-flex;
-  margin-bottom: 20px;
 }
 
-.two-box-left {
+#newPW1Box, #firstNameBox {
   width: 100%;
   min-width: 150px;
   max-width: 350px;
 }
 
-.two-box-right {
+#newPW2Box, #lastNameBox {
   width: 100%;
   margin-left: 20px;
   min-width: 150px;
   max-width: 350px;
 }
 
-.three-box-left {
+#cityBox {
   width: 100%;
   min-width: 150px;
   max-width: 350px;
 }
 
-.three-box-middle {
+#stateBox {
   width: 100%;
   min-width: 150px;
   max-width: 350px;
@@ -86,7 +78,7 @@ input[type=text] {
   margin-right: 20px;
 }
 
-.three-box-right {
+#zipcodeBox {
   width: 100%;
   min-width: 150px;
   max-width: 350px;
@@ -102,16 +94,16 @@ input[type=text] {
   border-color: #C80000;
 }
 
-.custom-select {
+#stateInput {
   background-color: #DCDCDC;
 }
 
 @media screen and (max-width: 900px) {
-    .two-box-container, .three-box-container {
+    #newPasswordBox, #fullNameBox, #location {
         display: block;
     }
 
-    .two-box-right, .three-box-middle, .three-box-right {
+    #newPW2Box, #lastNameBox, #stateBox, #zipcodeBox{
       margin-left: 0px;
       margin-right: 0;
       margin-top: 10px;
