@@ -132,7 +132,7 @@ export default class Profile extends React.Component {
                     </select>
                   </div>
                   <div class="form-group" class="three-box-right" id="zipcodeBox">
-                    <label id="zipcodeLabel" for="zipcode">Zicode:</label>
+                    <label id="zipcodeLabel" for="zipcode">Zip Code:</label>
                     <input id="zipcodeInput" type="text" class="form-control" id="zipcode" placeholder=""/>
                   </div>
                 </div>
