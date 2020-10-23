@@ -1,9 +1,4 @@
-#Profile {
-  margin-top: 40px;
-  height: 100%;
-}
-
-h3 {
+#profileDescription {
   color: #0069B6;
 }
 
@@ -11,77 +6,14 @@ h3 {
   border-radius: 50%;
   background: #0069B6;
   width: 150px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-#ProfileImage {
-  width: 50%;
-  margin: 0 auto;
-  text-align:center;
-  margin-top: 10px;
-}
-
-#userName {
-  margin-top: 20px;;
-}
-
-#UserCredentials, #ProfileInfo {
-  margin-left: 10px;
-}
-
-label {
-  font-weight: bold;
-}
-
-input {
-  min-width: 150px;
-  max-width: 350px;
-}
-
-input[type=text], input[type=email], input[type=password] {
+#profile-forms {
   background-color: #DCDCDC;
-  color: black;
-  outline-color: grey;
 }
 
-#newPasswordBox, #fullNameBox, #location{
-  width: 100%;
-  display: inline-flex;
-}
-
-#newPW1Box, #firstNameBox {
-  width: 100%;
-  min-width: 150px;
-  max-width: 350px;
-}
-
-#newPW2Box, #lastNameBox {
-  width: 100%;
-  margin-left: 20px;
-  min-width: 150px;
-  max-width: 350px;
-}
-
-#cityBox {
-  width: 100%;
-  min-width: 150px;
-  max-width: 350px;
-}
-
-#stateBox {
-  width: 100%;
-  min-width: 150px;
-  max-width: 350px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-#zipcodeBox {
-  width: 100%;
-  min-width: 150px;
-  max-width: 350px;
+#profile-forms:focus {
+  background-color: white;
 }
 
 #saveChangesBtn {
@@ -92,20 +24,4 @@ input[type=text], input[type=email], input[type=password] {
 #saveChangesBtn:hover {
   background-color: #C80000;
   border-color: #C80000;
-}
-
-#stateInput {
-  background-color: #DCDCDC;
-}
-
-@media screen and (max-width: 900px) {
-    #newPasswordBox, #fullNameBox, #location {
-        display: block;
-    }
-
-    #newPW2Box, #lastNameBox, #stateBox, #zipcodeBox{
-      margin-left: 0px;
-      margin-right: 0;
-      margin-top: 10px;
-    }
 }
