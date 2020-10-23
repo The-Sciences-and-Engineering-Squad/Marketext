@@ -11,12 +11,25 @@ export default class Profile extends React.Component {
     return (
       <Container fluid>
         <Row>
-          <Col xs="4" sm="3" md="2">      
+          <Col xs="4" sm="3" md="2">
             <Sidebar />
           </Col>
           <Col xs="8" sm="9" md="10">
             This is the Profile Page
-          </Col> 
+            <div id="Profile">
+              <div id="ProfileImage">
+                <img
+                  alt=""
+                  src={require ('../../../public/BlankProfileImage.png')}
+                  width="30"
+                  height="30"
+                  className="d-inline-block align-top"
+                />
+              </div>
+              <div id="ProfileInfo">
+              </div>
+            </div>
+          </Col>
         </Row>
       </Container>
     );
