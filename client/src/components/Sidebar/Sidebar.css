@@ -8,7 +8,8 @@
 
 .sidebar {
   color: white;
-  min-height: 100vh;
+  min-height: 1050px;
+  max-height: 1250px;
   min-width: 100%;
 }
 
@@ -28,8 +29,13 @@
 @media screen and (max-width:345px){
   .sidebar {
     color: white;
-    min-height: 100vh;
     min-width: 100%;
     font-size: 10px;
+  }
+}
+
+@media screen and (max-width:900px){
+  .sidebar {
+    min-height: 1350px;
   }
 }

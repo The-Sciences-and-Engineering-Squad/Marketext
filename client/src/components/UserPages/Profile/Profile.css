@@ -1,7 +1,10 @@
 #Profile {
   margin-top: 40px;
-  /* background-color: red; */
   height: 100%;
+}
+
+h3 {
+  color: #0069B6;
 }
 
 #profileImg {
@@ -16,7 +19,6 @@
 #ProfileImage {
   width: 50%;
   margin: 0 auto;
-  /* background-color: green; */
   text-align:center
 }
 
@@ -32,7 +34,7 @@
   margin-right: auto;
 }
 
-#ProfileInfo {
+#UserCredentials, #ProfileInfo {
   margin-left: 10px;
 }
 
@@ -51,20 +53,41 @@ input[type=text] {
   outline-color: grey;
 }
 
-#newPasswordBox {
+.two-box-container, .three-box-container {
   width: 100%;
   display: inline-flex;
+  margin-bottom: 20px;
 }
 
-#newPW1Box {
+.two-box-left {
   width: 100%;
   min-width: 150px;
   max-width: 350px;
 }
 
-#newPW2Box {
+.two-box-right {
   width: 100%;
   margin-left: 20px;
+  min-width: 150px;
+  max-width: 350px;
+}
+
+.three-box-left {
+  width: 100%;
+  min-width: 150px;
+  max-width: 350px;
+}
+
+.three-box-middle {
+  width: 100%;
+  min-width: 150px;
+  max-width: 350px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.three-box-right {
+  width: 100%;
   min-width: 150px;
   max-width: 350px;
 }
@@ -79,12 +102,18 @@ input[type=text] {
   border-color: #C80000;
 }
 
+.custom-select {
+  background-color: #DCDCDC;
+}
+
 @media screen and (max-width: 900px) {
-    #newPasswordBox {
+    .two-box-container, .three-box-container {
         display: block;
     }
 
-    #newPW2Box {
+    .two-box-right, .three-box-middle, .three-box-right {
       margin-left: 0px;
+      margin-right: 0;
+      margin-top: 10px;
     }
 }
