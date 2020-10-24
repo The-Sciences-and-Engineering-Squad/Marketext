@@ -16,13 +16,14 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
+    error = None
     if request.method == 'POST':
         req = request.json
         username = req['username']
         password = req['password']
         user = user_model.UserModel()
         user.setUser(username)
-        error = None
+        
 
         if user.getUserName() is None or user.getPassword() != md5(password.encode('utf-8')).hexdigest():
             error = 'Invalid username or password.'
@@ -40,12 +41,13 @@ def login():
 
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
+    error = None
     if request.method == 'POST':
         req = request.json
         username = req['username']
         email = req['email']
         password = req['password']
-        error = None
+        
 
         user = user_model.UserModel()
 
