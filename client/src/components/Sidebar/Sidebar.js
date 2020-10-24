@@ -8,7 +8,7 @@ import './Sidebar.css';
 export default class Sidebar extends React.Component {
   render() {
     return (
-    <Navbar variant="dark" expand="lg" sticky="left" className="navbar-expand sidebar-container">
+      <Navbar variant="dark" expand="lg" sticky="left" className="navbar-expand sidebar-container">
         <Nav className="d-none d-block sidebar">
           <Nav.Link as={NavLink} to="/Profile">Profile</Nav.Link>
           <Nav.Link as={NavLink} to="/Message">Messages</Nav.Link>
