@@ -22,72 +22,72 @@ export default class Profile extends React.Component {
             <Container fluid>
               <Row className="justify-content-center mt-4">
                 <Col xs="auto">
-                  <Image id="profileImg" src={blankProfileImage} roundedCircle />                </Col>
+                  <Image className="profileImg" src={blankProfileImage} roundedCircle />                </Col>
               </Row>
               <Row className="justify-content-center mt-2">
                 <Col xs="auto">
-                  <h4 id="userName">Username</h4>
+                  <h4 className="userName">Username</h4>
                 </Col>
               </Row>
               <hr/>
               <Row>
                 <Col>
                   <Form>
-                    <h3 id="profileDescription"> User Credentials </h3>
+                    <h3 className="profileDescription"> User Credentials </h3>
                     <Form.Row>
                       <Form.Group as={Col} sm="12" md="6" controlId="formEmail">
                         <Form.Label>Email:</Form.Label>
-                        <Form.Control id="profile-forms" type="email" />
+                        <Form.Control className="profile-forms" type="email" />
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>
                       <Form.Group as={Col} sm="12" md="6" controlId="formOldPassword">
                         <Form.Label>Old Password:</Form.Label>
-                        <Form.Control id="profile-forms" type="password" />
+                        <Form.Control className="profile-forms" type="password" />
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>
                       <Form.Group as={Col} sm="12" md="6" controlId="formNewPassword">
                         <Form.Label>New Password:</Form.Label>
-                        <Form.Control id="profile-forms" type="password" />
+                        <Form.Control className="profile-forms" type="password" />
                       </Form.Group>
                       <Form.Group as={Col} sm="12" md="6" controlId="formConfirmPassword">
                         <Form.Label>Confirm New Password:</Form.Label>
-                        <Form.Control id="profile-forms" type="password" />
+                        <Form.Control className="profile-forms" type="password" />
                       </Form.Group>
                     </Form.Row>
                     <hr/>
-                    <h3 id="profileDescription"> Shipping Information </h3>
+                    <h3 className="profileDescription"> Shipping Information </h3>
                     <Form.Row>
                       <Form.Group as={Col} sm="12" md="6" controlId="formFirstName">
                         <Form.Label>First Name:</Form.Label>
-                        <Form.Control id="profile-forms" type="text" />
+                        <Form.Control className="profile-forms" type="text" />
                       </Form.Group>
                       <Form.Group as={Col} sm="12" md="6" controlId="formLastName">
                         <Form.Label>Last Name:</Form.Label>
-                        <Form.Control id="profile-forms" type="text" />
+                        <Form.Control className="profile-forms" type="text" />
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>
                       <Form.Group as={Col} sm="12" md="6" controlId="formPhoneNumber">
                         <Form.Label>Phone Number:</Form.Label>
-                        <Form.Control id="profile-forms" type="text" />
+                        <Form.Control className="profile-forms" type="text" />
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>
                       <Form.Group as={Col} sm="12" md="6" controlId="formAddress">
                         <Form.Label>Address:</Form.Label>
-                        <Form.Control id="profile-forms" type="text" />
+                        <Form.Control className="profile-forms" type="text" />
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>
                       <Form.Group as={Col} sm="12" md="4" controlId="formCity">
                         <Form.Label>City:</Form.Label>
-                        <Form.Control id="profile-forms" type="text" />
+                        <Form.Control className="profile-forms" type="text" />
                       </Form.Group>
                       <Form.Group as={Col} sm="12" md="4" controlId="formState">
                         <Form.Label>State:</Form.Label>
-                        <Form.Control id="profile-forms" as="select" defaultValue="">
+                        <Form.Control className="profile-forms" as="select" defaultValue="">
                           <option value="">Choose</option>
                           <option value="AL">Alabama</option>
                           <option value="AK">Alaska</option>
@@ -143,10 +143,10 @@ export default class Profile extends React.Component {
                       </Form.Group>
                       <Form.Group  as={Col} sm="12" md="4" controlId="formZip">
                         <Form.Label>Zip Code:</Form.Label>
-                        <Form.Control id="profile-forms" type="text" />
+                        <Form.Control className="profile-forms" type="text" />
                       </Form.Group>
                     </Form.Row>
-                    <Button id="saveChangesBtn">Save Changes</Button>
+                    <Button className="saveChangesBtn">Save Changes</Button>
                   </Form>
                 </Col>
               </Row>
