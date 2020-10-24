@@ -7,27 +7,18 @@ import {
   Nav,
   Navbar
 } from 'react-bootstrap';
-import './Navbar1.css'
+import Dropdown from 'react-bootstrap/Dropdown';
 import Cookies from 'universal-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import Dropdown from 'react-bootstrap/Dropdown'
-// This Navbar is for the Home/Buy/Sell/Trade/Swap Pages.
 
-const CustomToggle = React.forwardRef(({ onClick }, ref) => (
-  <a href="" ref={ref} onClick={(e) => {
-    e.preventDefault()
-    onClick(e)
-  }}>
-    <FontAwesomeIcon size="lg" icon={faUserCircle} />
-  </a>
-));
+import './Navbar1.css'
+// This Navbar is for the Home/Buy/Sell/Trade/Swap Pages.
 
 function Navbar1(props) {
   // This is what you need to use to get the cookies!
   const cookies = new Cookies();
   const username = cookies.get('username');
-  console.log(username)
   return (
     <Navbar expand="lg" sticky="top">
       <Navbar.Brand as={Link} to="/" className="nav-basic">
@@ -50,39 +41,42 @@ function Navbar1(props) {
           <Nav.Link as={NavLink} to="/Swap" className="nav-basic" style={{ marginRight: 30, marginLeft: 30 }}>Swap</Nav.Link>
         </Nav>
         {username ?
-          <Nav className="nav">
+          <Nav>
             <Dropdown>
-              <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+              <Dropdown.Toggle className="dropdown-background">
+                <FontAwesomeIcon size="lg" icon={faUserCircle} />
               </Dropdown.Toggle>
               <Dropdown.Menu alignRight="true">
-              <Dropdown.Item eventKey="1">Signed in as {username}<hr/></Dropdown.Item>
-                <Nav>
-                  <Nav.Link href="/Profile" className="nav-dropdownmenu">Your Profile</Nav.Link>
-                </Nav>
-                <Nav>
-                  <Nav.Link href="/Messages" className="nav-dropdownmenu">Your Messages</Nav.Link>
-                </Nav>
-                <Nav>
-                  <Nav.Link href="/Balance" className="nav-dropdownmenu">Your Balance</Nav.Link>
-                </Nav>
-                <Nav>
-                  <Nav.Link href="/CurrentlyListed" className="nav-dropdownmenu">Your Currently Listed</Nav.Link>
-                </Nav>
-                <Nav>
-                  <Nav.Link href="/TransactionHistory" className="nav-dropdownmenu">Your Transaction History</Nav.Link>
-                </Nav>
-                <hr/>
-                <Nav>
-                  <Nav.Link href="/Login" className="nav-dropdownmenu">Sign Out</Nav.Link>
-                </Nav>
+                <Dropdown.Item disabled>Signed in as {username}</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item as={Link} to="/Profile">
+                  Your Profile
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/Message">
+                  Your Messages
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/Balance">
+                  Your Balance
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/CurrentlyListed">
+                  Your Currently Listed
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/TransactionHistory">
+                  Your Transaction History
+                </Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item>
+                  Sign Out
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-          </Nav> :
+          </Nav>
+          :
           <Nav className="nav">
-            <Nav.Link href="/Login">Sign In</Nav.Link>
-          </Nav>}
+            <Nav.Link href="/Login" className="nav-basic">Sign In</Nav.Link>
+          </Nav>
+        }
       </Navbar.Collapse>
-
     </Navbar>
   );
 }

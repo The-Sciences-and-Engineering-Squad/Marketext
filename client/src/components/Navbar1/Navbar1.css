@@ -20,8 +20,13 @@
   border-bottom: 3px solid #F93C3C !important;
 }
 
-.nav-dropdownmenu{
-  color: black !important;
+.dropdown-background{
+  background-color: #0069B6;
+  border: #0069B6;
+}
+
+.dropdown-background:hover{
+  background-color: #0069B6;
 }
 
 .nav-basic{
