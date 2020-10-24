@@ -31,7 +31,7 @@ export default class Profile extends React.Component {
     this.state = {
       username: "",
       email: "",
-      oldPassword: "",
+      Password: "",
       newPassword: "",
       newPassword2: "",
       firstName: "",
@@ -53,23 +53,36 @@ export default class Profile extends React.Component {
   // eventually api call to call the backend
   handleSubmit = (e) => {
     e.preventDefault();
-    const { username, email, oldPassword, newPassword, newPassword2, firstName, lastName, phoneNumber, address, city, state, zipcode } = this.state;
+    const { email, Password, newPassword, newPassword2, firstName, lastName, phoneNumber, address, city, state, zipcode } = this.state;
     var newState = Object.assign({}, this.state);
     newState.errors = [];
-    if (oldPassword === "") {
-      newState.errors.push("Please enter old password");
+    // Users are allowed to change their information as long as they enter their current password.
+    // They are NOT forced to change their current password when updating their information.
+    if (Password === "") {
+      newState.errors.push("Please Enter Current Password to Make Any Changes");
     }
-    if (newPassword === "" || newPassword2 === "") {
-      newState.errors.push("Please enter new password");
-    }
-    if (newPassword !== newPassword2) {
-      newState.errors.push("New password fields do not match");
-    }
-    if (newState.errors.length === 0) {
-      // Insert Backend Here.
+    else{
+      if(newPassword === "" && newPassword2 === ""){
+        // Backend, check if the password is correct with user password in database. 
+        // If so, update email, firstName, lastName, phoneNumber, address, city, state, zipcode
+        // If not, return an error saying "Current Password is Incorrect"
+        console.log("email: " + email + "\nFirst Name: " + firstName + "\nLast Name: " + lastName);
+        console.log("Phone Number: " + phoneNumber + "\nAddress: " + address + "\nCity: " + city + "\nState: " + state + "\nZip Code: " + zipcode);
+      }
+      else{
+        if (newPassword !== newPassword2) {
+          newState.errors.push("The New Passwords Do Not Match");
+        }
+        else{
+          // Backend, check if the password is correct with user password in database. 
+          // If so, update password using the new password, email, firstName, lastName, phoneNumber, address, city, state, zipcode
+          // If not, return an error saying "Current Password is Incorrect"
+          console.log("email: " + email + "\nFirst Name: " + firstName + "\nLast Name: " + lastName + "\nNew Password: " + newPassword);
+          console.log("Phone Number: " + phoneNumber + "\nAddress: " + address + "\nCity: " + city + "\nState: " + state + "\nZip Code: " + zipcode);
+        }
+      }
     }
     this.setState(newState);
-    alert("Hello! I am an alert box!!");
   };
 
   render() {
@@ -94,14 +107,14 @@ export default class Profile extends React.Component {
               <hr/>
               <Row>
                 <Col>
+                  { this.state.errors.length > 0 ?
+                    this.state.errors.map((error,index) => {
+                      return <li key={index} className="text-warning"> {error} </li>
+                  })
+                  :
+                  <div></div>
+                  }
                   <Form onSubmit={this.handleSubmit}>
-                    { this.state.errors.length > 0 ?
-                      this.state.errors.map((error,index) => {
-                        return <li key={index} className="text-warning"> {error} </li>
-                    })
-                    :
-                    <div></div>
-                    }
                     <h3 className="profileDescription"> User Credentials </h3>
                     <Form.Row>
                       <Form.Group as={Col} sm="12" md="6" controlId="formEmail">
@@ -110,9 +123,9 @@ export default class Profile extends React.Component {
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>
-                      <Form.Group as={Col} sm="12" md="6" controlId="formOldPassword">
-                        <Form.Label>Old Password:</Form.Label>
-                        <Form.Control className="profile-forms" type="password" placeholder="Enter Old Password" onChange={this.handleChange("oldPassword")}/>
+                      <Form.Group as={Col} sm="12" md="6" controlId="formPassword">
+                        <Form.Label>Current Password:</Form.Label>
+                        <Form.Control className="profile-forms" type="password" placeholder="Enter Current Password" onChange={this.handleChange("Password")}/>
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>
@@ -156,7 +169,7 @@ export default class Profile extends React.Component {
                       </Form.Group>
                       <Form.Group as={Col} sm="12" md="4" controlId="formState">
                         <Form.Label>State:</Form.Label>
-                        <Form.Control className="profile-forms" as="select" defaultValue="" value={this.state.state} onChange={this.handleChange("state")}>
+                        <Form.Control className="profile-forms" as="select" value={this.state.state} onChange={this.handleChange("state")}>
                           <option value="">Choose</option>
                           <option value="AL">Alabama</option>
                           <option value="AK">Alaska</option>
@@ -215,7 +228,7 @@ export default class Profile extends React.Component {
                         <Form.Control className="profile-forms" type="text" placeholder="Enter Zip Code" value={this.state.zipcode} onChange={this.handleChange("zipcode")}/>
                       </Form.Group>
                     </Form.Row>
-                    <Button variant="danger" className="saveChangesBtn" onClick={this.handleSubmit}>Save Changes</Button>
+                    <Button variant="danger" type="submit" className="saveChangesBtn" onClick={this.handleSubmit}>Save Changes</Button>
                   </Form>
                 </Col>
               </Row>
