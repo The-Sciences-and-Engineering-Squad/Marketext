@@ -69,7 +69,7 @@ export default class ForgotPassword extends React.Component {
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="formUsername">
               <Form.Label className="text-light">Username:</Form.Label>
-              <Form.Control type="username" placeholder="Enter Username" 
+              <Form.Control type="text" placeholder="Enter Username" 
                 onChange={this.handleChange("username")}/>
             </Form.Group>
             <Button variant="danger" type="submit" size="lg" block
