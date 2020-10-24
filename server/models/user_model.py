@@ -1,6 +1,8 @@
 from server import db
 import hashlib
 from hashlib import md5
+import random
+import string
 
 # User table from the database
 class UserModel:
@@ -64,7 +66,9 @@ class UserModel:
                 self.email = results['email']
     
     def updateField(self,field,attribute):
-        self.dataCur.execute('UPDATE User Set ' + field + ' = ' + "'" + attribute + "'" + "WHERE Id = " + "'" + self.userId + "'")
+        if field == 'password':
+            attribute = md5(attribute.encode('utf-8')).hexdigest()
+        self.dataCur.execute('UPDATE User Set ' + field + ' = ' + "'" + attribute + "'" + "WHERE userId = " + "'" + str(self.userId) + "'")
         self.database.commit()
 
     def isExist(self,field,attribute):
@@ -73,3 +77,8 @@ class UserModel:
         if results:
             return True
         return False
+    
+    def get_random_password(self,length):
+        letters = string.ascii_lowercase
+        result_str = ''.join(random.sample(letters, length))
+        return str(result_str)

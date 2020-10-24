@@ -29,7 +29,27 @@ export default class ForgotPassword extends React.Component {
     }
     if(newState.errors.length === 0) {
       // Insert Backend Here.
-      
+      const data = this.state
+      fetch( '/auth/forgot_password',  {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }).then((response) => {
+        return response.json();
+      }).then((response) => {
+        
+        if(response['userExist']){
+          window.location.href='/Login';
+        }else{
+              
+          this.setState(({errors}) => ({
+            errors: errors.concat(response['error'])
+          }));
+          
+        }
+      })
     }
     this.setState(newState);
   };

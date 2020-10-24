@@ -4,6 +4,9 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
 from werkzeug.security import check_password_hash, generate_password_hash
+from flask import current_app
+from flask_mail import Message
+from flask_mail import Mail
 import json
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
@@ -61,12 +64,37 @@ def register():
 
 
 @bp.route('/forgot_password', methods=['GET', 'POST'])
-def forgot_password():
+def forgot_password(): 
+    req = request.json
     user = user_model.UserModel()
-    return None
+    user.setUser(req['username'])
+    app = current_app._get_current_object()
+
+    if user.getUserName() is not None:
+         #forgot password procedure
+        random_password = user.get_random_password(16)
+        user.updateField("password",random_password)
+        mail = Mail(app)
+        msg = Message("Password Change - Marketext",
+                  recipients=[user.getEmail()])
+        msg.html = "<b>\
+                        \
+            Hi Marketext user: " + user.getUserName() + "! <br><br> \
+            Seems like you have forgotten your account password. Do not worry, though - we got you!<br><br> \
+            The old password is no longer available, please use this new password you can use to log back into your account:  " + random_password + "<br><br> \
+            You may use this to gain access back to your account, then change it to a new password to your liking. <br><br>\
+            Hope our website continues to be of your service!<br><br> \
+            - The Marketext Team\
+              </b>"
+       
+        mail.send(msg)
+        return json.dumps({'userExist': True}) 
+
+    return json.dumps({'userExist': False, 'error': 'User does not exist'})
 
 
 @bp.route('/profile', methods=['GET', 'POST'])
 def profile():
     user = user_model.UserModel()
     return None
+
