@@ -29,7 +29,27 @@ export default class ForgotPassword extends React.Component {
     }
     if(newState.errors.length === 0) {
       // Insert Backend Here.
-      
+      const data = this.state
+      fetch( '/auth/forgot_password',  {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }).then((response) => {
+        return response.json();
+      }).then((response) => {
+        
+        if(response['userExist']){
+          window.location.href='/Login';
+        }else{
+              
+          this.setState(({errors}) => ({
+            errors: errors.concat(response['error'])
+          }));
+          
+        }
+      })
     }
     this.setState(newState);
   };
@@ -47,9 +67,15 @@ export default class ForgotPassword extends React.Component {
           <div></div>
           } 
           <Form onSubmit={this.handleSubmit}>
+<<<<<<< HEAD
             <Form.Group controlId="formUsername">
               <Form.Label className="text-light">Username:</Form.Label>
               <Form.Control type="text" placeholder="Enter Username" 
+=======
+            <Form.Group controlId="formEmail">
+              <Form.Label className="text-light">Username:</Form.Label>
+              <Form.Control type="username" placeholder="Enter Username" 
+>>>>>>> 3feedf2e406d85933ad327a70a1d1cfa9732209f
                 onChange={this.handleChange("username")}/>
             </Form.Group>
             <Button variant="danger" type="submit" size="lg" block
