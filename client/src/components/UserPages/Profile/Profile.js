@@ -7,10 +7,56 @@ import Button from 'react-bootstrap/Button'
 import Image from 'react-bootstrap/Image'
 import Form from 'react-bootstrap/Form';
 
-import blankProfileImage from '../../../public/blank-profile.png';
+import blankProfileImage from '../../../public/BlankProfileImage.png';
 import './Profile.css';
 
 export default class Profile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "userName",
+      email: "user@email.com",
+      oldPassword: "oldPassword",
+      newPassword: "newPassword",
+      newPassword2: "newPassword",
+      firstName: "FirstName",
+      lastName: "LastName",
+      phoneNumber: "(123) 456-7890",
+      address: "123 Main Street",
+      city: "City",
+      state: "NY",
+      zipcode: "12345",
+      errors: [],
+    };
+  }
+
+  // Handle field change
+  handleChange = (input) => (e) => {
+    this.setState({ [input]: e.target.value });
+  };
+
+  // eventually api call to call the backend
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { username, email, oldPassword, newPassword, newPassword2, firstName, lastName, phoneNumber, address, city, state, zipcode } = this.state;
+    var newState = Object.assign({}, this.state);
+    newState.errors = [];
+    if (oldPassword === "") {
+      newState.errors.push("Please enter old password");
+    }
+    if (newPassword === "" || newPassword2 === "") {
+      newState.errors.push("Please enter new password");
+    }
+    if (newPassword !== newPassword2) {
+      newState.errors.push("New password fields do not match");
+    }
+    if (newState.errors.length === 0) {
+      // Insert Backend Here.
+    }
+    this.setState(newState);
+    alert("Hello! I am an alert box!!");
+  };
+
   render() {
     return (
       <Container fluid>
@@ -26,34 +72,41 @@ export default class Profile extends React.Component {
               </Row>
               <Row className="justify-content-center mt-2">
                 <Col xs="auto">
-                  <h4 className="userName">Username</h4>
+                  <h4 className="userName">{this.state.username}</h4>
                 </Col>
               </Row>
               <hr/>
               <Row>
                 <Col>
-                  <Form>
+                  <Form onSubmit={this.handleSubmit}>
+                    { this.state.errors.length > 0 ?
+                      this.state.errors.map((error,index) => {
+                        return <li key={index} className="text-warning"> {error} </li>
+                    })
+                    :
+                    <div></div>
+                    }
                     <h3 className="profileDescription"> User Credentials </h3>
                     <Form.Row>
                       <Form.Group as={Col} sm="12" md="6" controlId="formEmail">
                         <Form.Label>Email:</Form.Label>
-                        <Form.Control className="profile-forms" type="email" />
+                        <Form.Control className="profile-forms" type="email" placeholder={this.state.email} onChange={this.handleChange("email")}/>
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>
                       <Form.Group as={Col} sm="12" md="6" controlId="formOldPassword">
                         <Form.Label>Old Password:</Form.Label>
-                        <Form.Control className="profile-forms" type="password" />
+                        <Form.Control className="profile-forms" type="password" onChange={this.handleChange("oldPassword")}/>
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>
                       <Form.Group as={Col} sm="12" md="6" controlId="formNewPassword">
                         <Form.Label>New Password:</Form.Label>
-                        <Form.Control className="profile-forms" type="password" />
+                        <Form.Control className="profile-forms" type="password" onChange={this.handleChange("newPassword")}/>
                       </Form.Group>
                       <Form.Group as={Col} sm="12" md="6" controlId="formConfirmPassword">
                         <Form.Label>Confirm New Password:</Form.Label>
-                        <Form.Control className="profile-forms" type="password" />
+                        <Form.Control className="profile-forms" type="password" onChange={this.handleChange("newPassword2")}/>
                       </Form.Group>
                     </Form.Row>
                     <hr/>
@@ -61,33 +114,33 @@ export default class Profile extends React.Component {
                     <Form.Row>
                       <Form.Group as={Col} sm="12" md="6" controlId="formFirstName">
                         <Form.Label>First Name:</Form.Label>
-                        <Form.Control className="profile-forms" type="text" />
+                        <Form.Control className="profile-forms" type="text" placeholder={this.state.firstName} onChange={this.handleChange("firstName")}/>
                       </Form.Group>
                       <Form.Group as={Col} sm="12" md="6" controlId="formLastName">
                         <Form.Label>Last Name:</Form.Label>
-                        <Form.Control className="profile-forms" type="text" />
+                        <Form.Control className="profile-forms" type="text" placeholder={this.state.lastName} onChange={this.handleChange("lastName")}/>
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>
                       <Form.Group as={Col} sm="12" md="6" controlId="formPhoneNumber">
                         <Form.Label>Phone Number:</Form.Label>
-                        <Form.Control className="profile-forms" type="text" />
+                        <Form.Control className="profile-forms" type="text" placeholder={this.state.phoneNumber} onChange={this.handleChange("phoneNumber")}/>
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>
                       <Form.Group as={Col} sm="12" md="6" controlId="formAddress">
                         <Form.Label>Address:</Form.Label>
-                        <Form.Control className="profile-forms" type="text" />
+                        <Form.Control className="profile-forms" type="text" placeholder={this.state.address} onChange={this.handleChange("address")}/>
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>
                       <Form.Group as={Col} sm="12" md="4" controlId="formCity">
                         <Form.Label>City:</Form.Label>
-                        <Form.Control className="profile-forms" type="text" />
+                        <Form.Control className="profile-forms" type="text" placeholder={this.state.city} onChange={this.handleChange("city")}/>
                       </Form.Group>
                       <Form.Group as={Col} sm="12" md="4" controlId="formState">
                         <Form.Label>State:</Form.Label>
-                        <Form.Control className="profile-forms" as="select" defaultValue="">
+                        <Form.Control className="profile-forms" as="select" defaultValue={this.state.state} onChange={this.handleChange("state")}>
                           <option value="">Choose</option>
                           <option value="AL">Alabama</option>
                           <option value="AK">Alaska</option>
@@ -143,10 +196,10 @@ export default class Profile extends React.Component {
                       </Form.Group>
                       <Form.Group  as={Col} sm="12" md="4" controlId="formZip">
                         <Form.Label>Zip Code:</Form.Label>
-                        <Form.Control className="profile-forms" type="text" />
+                        <Form.Control className="profile-forms" type="text" placeholder={this.state.zipcode} onChange={this.handleChange("zipcode")}/>
                       </Form.Group>
                     </Form.Row>
-                    <Button className="saveChangesBtn">Save Changes</Button>
+                    <Button variant="danger" className="saveChangesBtn" onClick={this.handleSubmit}>Save Changes</Button>
                   </Form>
                 </Col>
               </Row>
