@@ -9,18 +9,21 @@ import {
 } from 'react-bootstrap';
 import './Navbar1.css'
 import Cookies from 'universal-cookie';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 // This Navbar is for the Home/Buy/Sell/Trade/Swap Pages.
 
 function Navbar1(props) {
   // This is what you need to use to get the cookies!
   const cookies = new Cookies();
-  console.log(cookies.get('username'))
+  const username = cookies.get('username');
+  console.log(username)
   return (
     <Navbar variant="dark" expand="lg" sticky="top">
       <Navbar.Brand as={Link} to="/">
         <img
           alt=""
-          src={require ('../../public/logo192.png')}
+          src={require('../../public/logo192.png')}
           width="30"
           height="30"
           className="d-inline-block align-top"
@@ -36,11 +39,17 @@ function Navbar1(props) {
           <Nav.Link as={NavLink} to="/Trade" style={{ marginRight: 30, marginLeft: 30 }}>Trade</Nav.Link>
           <Nav.Link as={NavLink} to="/Swap" style={{ marginRight: 30, marginLeft: 30 }}>Swap</Nav.Link>
         </Nav>
-        <Nav className="nav">
-          <Nav.Link href="/Login">Sign In</Nav.Link>
-        </Nav>
+        {username ?
+          <Nav className="nav">
+            <Nav.Link href="/profile">
+              <FontAwesomeIcon size="lg" icon={faUserCircle} />
+            </Nav.Link>
+          </Nav> :
+          <Nav className="nav">
+            <Nav.Link href="/Login">Sign In</Nav.Link>
+          </Nav>}
       </Navbar.Collapse>
-        
+
     </Navbar>
   );
 }
