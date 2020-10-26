@@ -3,8 +3,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Sidebar from '../../Sidebar/Sidebar';
-import Button from 'react-bootstrap/Button'
-import Image from 'react-bootstrap/Image'
+import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
 import Form from 'react-bootstrap/Form';
 
 import blankProfileImage from '../../../public/BlankProfileImage.png';
