@@ -11,12 +11,25 @@ export default class Message extends React.Component {
     return (
       <Container fluid>
         <Row>
-          <Col xs="4" sm="3" md="2">      
+          <Col className="side" xs="4" sm="3" md="2">
             <Sidebar />
           </Col>
-          <Col xs="8" sm="9" md="10">
-            This is the Message Page
-          </Col> 
+            <Row className="messagePage">
+
+              <Col className="messagesTab">
+                <h4> Messages</h4>
+              </Col>
+
+              <Col className="messageScreen">
+                <Row className="personName">
+                  <h4> Kevin</h4>
+                </Row>
+                <Row className="messageHistory">
+                </Row>
+                <Row className="messageSend">
+                </Row>
+              </Col>
+            </Row>
         </Row>
       </Container>
     );
