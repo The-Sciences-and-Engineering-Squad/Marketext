@@ -1,13 +1,25 @@
-language: node_js
-node_js:
-  - 12
-cache:
-  directories:
-    - node_modules
-before_script:
-  - cd client
-  - npm install
-script:
-  - npm test
-  - npm run test:coverage
-  - npm run build
+jobs:
+  include:
+    - language: node_js
+      node_js: 12
+      cache:
+        directories:
+          - node_modules
+      before_install:
+        - cd client
+      install:
+        - npm install
+      script:
+        - npm test
+        - npm run test:coverage
+        - npm run build
+    - language: python
+      env:
+        - FLASK_APP=server
+        - FLASK_ENV=development
+      before_install:
+        - cd server
+      install:
+        - pip install -r requirements.txt
+      script:
+        - python3 __init__.py
