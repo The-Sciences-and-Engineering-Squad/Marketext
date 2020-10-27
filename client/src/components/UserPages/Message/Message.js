@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Sidebar from '../../Sidebar/Sidebar';
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
+import Button from 'react-bootstrap/Button'
 
 import './Message.css'
 
@@ -17,18 +18,18 @@ export default class Message extends React.Component {
             <Sidebar />
           </Col>
 
-          <Col className="messageHistory">
-            <Row>
+          <Col className="messageHistory" xs="4" sm="3" md="2">
+            <Row className="messageBox">
               <h3>Messages</h3>
             </Row>
-            <Row>
-              <div className="messageBox">
+            <Row className="messageBox">
+              <div>
                 <h5> User 1 </h5>
                 <p> Message 1 </p>
               </div>
             </Row>
-            <Row>
-              <div className="messageBox">
+            <Row className="messageBox">
+              <div>
                 <h5> User 2 </h5>
                 <p> Message 2 </p>
               </div>
@@ -36,16 +37,17 @@ export default class Message extends React.Component {
           </Col>
 
           <Col className="messageScreen">
-            <Row>
-              <h3> Kevin </h3>
+            <Row className="userMessagerContainer">
+              <h3 className="messageUsername"> Kevin </h3>
             </Row>
-            <Row>
+            <Row className="messageHistoryContainer">
               Here is where the message screen
               is supposed to go.
             </Row>
-            <Row>
-              <InputGroup className="messageInput">
-                <FormControl placeholder="Type your message"/>
+            <Row className="messageInputContainer">
+              <InputGroup className="messageInputGroup">
+                <FormControl className="messageInputControl" placeholder="Type your message..."/>
+                <Button variant="danger" className="sendMessageButton"/>
               </InputGroup>
             </Row>
           </Col>

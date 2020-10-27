@@ -7,42 +7,85 @@ import {
   Nav,
   Navbar
 } from 'react-bootstrap';
-import './Navbar1.css'
+import Dropdown from 'react-bootstrap/Dropdown';
 import Cookies from 'universal-cookie';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+
+import './Navbar1.css'
 // This Navbar is for the Home/Buy/Sell/Trade/Swap Pages.
 
-function Navbar1(props) {
-  // This is what you need to use to get the cookies!
-  const cookies = new Cookies();
-  console.log(cookies.get('username'))
-  return (
-    <Navbar variant="dark" expand="lg" sticky="top">
-      <Navbar.Brand as={Link} to="/">
-        <img
-          alt=""
-          src={require ('../../public/logo192.png')}
-          width="30"
-          height="30"
-          className="d-inline-block align-top"
-        />
-        Marketext
-      </Navbar.Brand>
-      <Navbar.Toggle />
-      <Navbar.Collapse>
-        <Nav className="nav m-auto">
-          <Nav.Link as={NavLink} exact to="/" style={{ marginRight: 30, marginLeft: 30 }}>Home</Nav.Link>
-          <Nav.Link as={NavLink} to="/Buy" style={{ marginRight: 30, marginLeft: 30 }}>Buy</Nav.Link>
-          <Nav.Link as={NavLink} to="/Sell" style={{ marginRight: 30, marginLeft: 30 }}>Sell</Nav.Link>
-          <Nav.Link as={NavLink} to="/Trade" style={{ marginRight: 30, marginLeft: 30 }}>Trade</Nav.Link>
-          <Nav.Link as={NavLink} to="/Swap" style={{ marginRight: 30, marginLeft: 30 }}>Swap</Nav.Link>
-        </Nav>
-        <Nav className="nav">
-          <Nav.Link href="/Login">Sign In</Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-        
-    </Navbar>
-  );
-}
+export default class Navbar1 extends React.Component {
 
-export default Navbar1;
+  signOut = (e) => {
+    e.preventDefault();
+    // Insert Backend to Log Out User.
+    console.log("Log Out");
+  }
+  
+  render(){
+    // This is what you need to use to get the cookies!
+    const cookies = new Cookies();
+    const username = cookies.get('username');
+    return (
+      <Navbar expand="lg" sticky="top">
+        <Navbar.Brand as={Link} to="/" className="nav-basic">
+          <img
+            alt=""
+            src={require('../../public/logo192.png')}
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+          />
+          Marketext
+        </Navbar.Brand>
+        <Navbar.Toggle />
+        <Navbar.Collapse>
+          <Nav className="nav m-auto">
+            <Nav.Link as={NavLink} exact to="/" className="nav-basic" style={{ marginRight: 30, marginLeft: 30 }}>Home</Nav.Link>
+            <Nav.Link as={NavLink} to="/Buy" className="nav-basic" style={{ marginRight: 30, marginLeft: 30 }}>Buy</Nav.Link>
+            <Nav.Link as={NavLink} to="/Sell" className="nav-basic" style={{ marginRight: 30, marginLeft: 30 }}>Sell</Nav.Link>
+            <Nav.Link as={NavLink} to="/Trade" className="nav-basic" style={{ marginRight: 30, marginLeft: 30 }}>Trade</Nav.Link>
+            <Nav.Link as={NavLink} to="/Swap" className="nav-basic" style={{ marginRight: 30, marginLeft: 30 }}>Swap</Nav.Link>
+          </Nav>
+          {username ?
+            <Nav>
+              <Dropdown>
+                <Dropdown.Toggle className="dropdown-background">
+                  <FontAwesomeIcon size="lg" icon={faUserCircle} />
+                </Dropdown.Toggle>
+                <Dropdown.Menu alignRight="true">
+                  <Dropdown.Item disabled>Signed in as {username}</Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item as={Link} to="/Profile">
+                    Your Profile
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/Message">
+                    Your Messages
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/Balance">
+                    Your Balance
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/CurrentlyListed">
+                    Your Currently Listed
+                  </Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/TransactionHistory">
+                    Your Transaction History
+                  </Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item onClick={this.signOut}>
+                    Sign Out
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Nav>
+            :
+            <Nav className="nav">
+              <Nav.Link href="/Login" className="nav-basic">Sign In</Nav.Link>
+            </Nav>
+          }
+        </Navbar.Collapse>
+      </Navbar>
+    );
+  }
+}

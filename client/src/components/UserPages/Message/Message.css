@@ -1,14 +1,45 @@
 .messageHistory {
-  background-color: yellow;
+  margin-left: -35px;
+}
+.messageUsername {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+.messageBox, .userMessagerContainer {
+  border-bottom: 1px solid black;
 }
 
 .messageScreen {
-  background-color: purple;
-  border-left-color: black;
   width: 100%;
-  border-left: 1px solid;
+  border-left: 1px solid black;
 }
 
-.messageInput {
-  width: 80%;
+.messageInputGroup {
+  width: 95%;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.messageInputControl {
+  height: 60%;
+  background-color: #DCDCDC;
+}
+
+.userMessagerContainer {
+  height: 7%;
+}
+
+.messageHistoryContainer {
+  height: 73%;
+}
+
+.messageInputContainer {
+  height: 20%;
+  border-top: 1px solid black;
+}
+
+.sendMessageButton {
+  margin-left: 15px;
+  height: 30%;
+  width: 10%;
 }
