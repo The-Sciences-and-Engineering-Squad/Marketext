@@ -20,16 +20,16 @@ export default class Message extends React.Component {
 
           <Col className="messageHistory" xs="4" sm="3" md="2">
             <Row className="messageBox">
-              <h3>Messages</h3>
+              <h3 className="MessageHeader">Messages</h3>
             </Row>
             <Row className="messageBox">
-              <div>
+              <div className="message">
                 <h5> User 1 </h5>
                 <p> Message 1 </p>
               </div>
             </Row>
             <Row className="messageBox">
-              <div>
+              <div className="message">
                 <h5> User 2 </h5>
                 <p> Message 2 </p>
               </div>

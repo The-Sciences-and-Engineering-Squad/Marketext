@@ -1,9 +1,14 @@
+.message {
+  padding-top: 10px;
+  padding-left: 20px;
+}
+
 .messageHistory {
   margin-left: -35px;
 }
-.messageUsername {
+.messageUsername, .MessageHeader {
   margin-left: 20px;
-  margin-top: 10px;
+  margin-top: 14px;
 }
 .messageBox, .userMessagerContainer {
   border-bottom: 1px solid black;
