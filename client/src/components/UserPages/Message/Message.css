@@ -1,3 +1,7 @@
+.message-container{
+  margin-left: -50px;
+}
+
 .message {
   padding-top: 10px;
   padding-left: 20px;
