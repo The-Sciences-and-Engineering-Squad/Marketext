@@ -15,33 +15,53 @@ export default class Message extends React.Component {
   render() {
     return (
       <Container fluid className="hello">
-        <Row>
+        <Row className="sample5">
           <Col xs="4" sm="3" md="2">
             <Sidebar />
           </Col>
           <Col xs="8" sm="9" md="10" className="message-container">
-            <Tab.Container defaultActiveKey="link1">
-              <Row>
-                <Col xs={2}>
+            <Tab.Container className="sample7" defaultActiveKey="link1">
+              <Row className="sample6">
+                <Col xs="4" sm="3" md="2">
                   <ListGroup>
                     <ListGroup.Item>
-                      Messages
+                      <h4> Messages </h4>
                     </ListGroup.Item>
-                    <ListGroup.Item action eventKey="link1">
-                      Link 1
+                    <ListGroup.Item className="messageTab" action eventKey="link1">
+                      <h5> User 1 </h5>
+                      <p className="previewText"> Preview Message</p>
                     </ListGroup.Item>
-                    <ListGroup.Item action eventKey="link2">
-                      Link 2
+                    <ListGroup.Item className="messageTab" action eventKey="link2">
+                      <h5> User 1 </h5>
+                      <p className="previewText"> Preview Message</p>
                     </ListGroup.Item>
                   </ListGroup>
                 </Col>
-                <Col xs={8}>
+                <Col className="sample" xs={8}>
                   <Tab.Content>
                     <Tab.Pane eventKey="link1">
-                      <Container>
-                        <Row>
-                          <Col>
-                            Test
+                      <Container className="sample2">
+                        <Row className="sample3">
+                          <Col className="sample4">
+                            <Row className="message-header">
+                              <h3>Kevin</h3>
+                            </Row>
+                            <Row className="message-history">
+                            </Row>
+                            <Row className="message-input">
+                              <InputGroup className="message-input-group">
+                                <FormControl className="message-text-field" placeholder="Type your message..."/>
+                                <svg width="120" height="70">
+                                  <Button className="send-message-btn" href="#">
+                                    <path className="send-message-btn" d="M   0  10
+                                             L   0  60
+                                             L   70  40
+                                             Z"
+                                          />
+                                  </Button>
+                                </svg>
+                              </InputGroup>
+                            </Row>
                           </Col>
                         </Row>
                       </Container>

@@ -11,12 +11,12 @@ export default class Balance extends React.Component {
     return (
       <Container fluid>
         <Row>
-          <Col xs="4" sm="3" md="2">      
+          <Col xs="4" sm="3" md="2">
             <Sidebar />
           </Col>
           <Col xs="8" sm="9" md="10">
             This is the Balance Page
-          </Col> 
+          </Col>
         </Row>
       </Container>
     );
