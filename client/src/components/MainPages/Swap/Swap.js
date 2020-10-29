@@ -46,7 +46,7 @@ export default class Swap extends React.Component {
     return (
       <Container fluid>
         <Searchbar textbookUpdate={this.textbookUpdate} />
-        <RenderTextbooks textbooks={this.state.textbooks} target="Swapers" />
+        <RenderTextbooks textbooks={this.state.textbooks} page="Swap" target="Swapers" />
       </Container>
     );
   }

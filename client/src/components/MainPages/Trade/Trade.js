@@ -47,7 +47,7 @@ export default class Trade extends React.Component {
     return (
       <Container fluid>
         <Searchbar textbookUpdate={this.textbookUpdate} />
-        <RenderTextbooks textbooks={this.state.textbooks} target="Traders" />
+        <RenderTextbooks textbooks={this.state.textbooks} page="Trade" target="Traders" />
       </Container>
     );
   }

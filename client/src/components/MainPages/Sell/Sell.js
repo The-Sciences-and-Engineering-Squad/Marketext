@@ -47,7 +47,7 @@ export default class Sell extends React.Component {
     return (
       <Container fluid>
         <Searchbar textbookUpdate={this.textbookUpdate} />
-        <RenderTextbooks textbooks={this.state.textbooks} target="Buyers" />
+        <RenderTextbooks textbooks={this.state.textbooks} page="Sell" target="Buyers" />
       </Container>
     );
   }
