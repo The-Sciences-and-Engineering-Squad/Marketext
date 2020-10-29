@@ -8,17 +8,37 @@ import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import './Textbooks.css'
 
 export default class Textbooks extends React.Component {
-  componentDidMount(){
+  componentDidMount() {
     const { id } = this.props.match.params;
-    console.log(id)
+    fetch(`https://www.googleapis.com/books/v1/volumes/${id}`)
+    .then(response => response.json())
+    .then(result => {
+      if(result.items !== null){
+        let hasISBN = result.volumeInfo.industryIdentifiers;
+        this.setState({ textbook: {
+          title: result.volumeInfo.title,
+          author: result.volumeInfo.authors, 
+          image: result.volumeInfo.imageLinks.thumbnail,
+          description: result.volumeInfo.description,
+          ISBN: hasISBN !== undefined ? result.volumeInfo.industryIdentifiers:null, 
+        }
+        })
+      }
+    })
   }
-  render() {
-    const state = this.props.location.state;
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      textbook: {},
+    };
+  }
+
+  render() {
     return (
       <Row className="row-resize">
         <Col>
-          Textbooks
+          {this.state.textbook.title}
         </Col>
       </Row>
     );
