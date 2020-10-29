@@ -25,12 +25,23 @@ export default class Textbooks extends React.Component {
         })
       }
     })
+    // Insert Backend of list of buyers/sellers/traders/swappers based on page.
+    const path = window.location.pathname.split('/')
+    const page = path[1];
+    console.log(page);
+    this.setState({ 
+      users: [
+        {username: "Kevin", condition: "worn", additional: "Used Only Once", price: "$100"},
+        {username: "Andy", condition: "worn", additional: "Used Only Once", price: "$100"},
+      ]
+    })
   }
 
   constructor(props) {
     super(props);
     this.state = {
       textbook: {},
+      users: [],
     };
   }
 
