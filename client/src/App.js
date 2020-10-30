@@ -16,6 +16,7 @@ import Buy from './components/MainPages/Buy/Buy';
 import Sell from './components/MainPages/Sell/Sell';
 import Trade from './components/MainPages/Trade/Trade';
 import Swap from './components/MainPages/Swap/Swap';
+import Textbooks from './components/MainPages/Textbooks/Textbooks';
 import Login from './components/AccessPages/Login/Login';
 import Register from './components/AccessPages/Register/Register';
 import ForgotPassword from './components/AccessPages/ForgotPassword/ForgotPassword';
@@ -53,10 +54,14 @@ class App extends React.Component {
         <Container fluid>
           <Row className="justify-content-center">
             <Switch>
-              <Route path="/Buy" component={Buy} />
-              <Route path="/Sell" component={Sell} />
-              <Route path="/Trade" component={Trade} />
-              <Route path="/Swap" component={Swap} />
+              <Route exact path="/Buy" component={Buy} />
+              <Route exact path="/Buy/:id" component={Textbooks} />
+              <Route exact path="/Sell" component={Sell} />
+              <Route exact path="/Sell/:id" component={Textbooks} />
+              <Route exact path="/Trade" component={Trade} />
+              <Route exact path="/Trade/:id" component={Textbooks} />
+              <Route exact path="/Swap" component={Swap} />
+              <Route exact path="/Swap/:id" component={Textbooks} />
               <Route path="/Login" component={Login} />
               <Route path="/Register" component={Register} />
               <Route path="/ForgotPassword" component={ForgotPassword} />

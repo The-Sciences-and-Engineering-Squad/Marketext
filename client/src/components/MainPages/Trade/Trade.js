@@ -16,14 +16,11 @@ export default class Trade extends React.Component {
             if (result.items[i].volumeInfo.imageLinks === null ){
               continue;
             }
-            let hasISBN = result.items[i].volumeInfo.industryIdentifiers;
             var books = this.state.textbooks.concat({
               id: result.items[i].id,
               title: result.items[i].volumeInfo.title,
               author: result.items[i].volumeInfo.authors, 
               image: result.items[i].volumeInfo.imageLinks.thumbnail,
-              description: result.items[i].volumeInfo.description,
-              ISBN: hasISBN !== undefined ? result.items[i].volumeInfo.industryIdentifiers:null, 
             });
             this.setState({ textbooks: books });
           }
@@ -47,7 +44,7 @@ export default class Trade extends React.Component {
     return (
       <Container fluid>
         <Searchbar textbookUpdate={this.textbookUpdate} />
-        <RenderTextbooks textbooks={this.state.textbooks} target="Traders" />
+        <RenderTextbooks textbooks={this.state.textbooks} page="Trade" target="Traders" />
       </Container>
     );
   }
