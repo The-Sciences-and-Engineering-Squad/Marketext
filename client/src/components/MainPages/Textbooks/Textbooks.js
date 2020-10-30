@@ -38,7 +38,8 @@ export default class Textbooks extends React.Component {
     this.setState({ 
       users: [
         {username: "Kevin", condition: "worn", additional: "Used Only Once", payment: "$100"},
-        {username: "Andy", condition: "worn", additional: "Used Only Once", payment: "$100"},
+        {username: "Andy", condition: "new", additional: "New opened", payment: "$200"},
+        {username: "Jill", condition: "old", additional: "", payment: "$50"},
       ]
     })
   }
@@ -51,6 +52,14 @@ export default class Textbooks extends React.Component {
       users: [],
     };
   }
+
+  handleContact = (input) => (e) => {
+    e.preventDefault(); 
+    // Insert Backend to link logged in user with user clicked. 
+    // Make a call to create a message board with the logged in user with the user clicked.
+    // User information is below.
+    console.log(this.state.users[input]);
+  };
 
   target(){
     if(this.state.page.toLowerCase() === "buy"){
@@ -143,7 +152,7 @@ export default class Textbooks extends React.Component {
                       {list.payment}
                     </td>
                     <td className="text-center">
-                      <Button variant="danger">
+                      <Button variant="danger" onClick={this.handleContact(index)}>
                         Contact
                       </Button>
                     </td>
