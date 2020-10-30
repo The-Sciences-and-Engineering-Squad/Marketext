@@ -1,28 +1,31 @@
+ /* the four margin settigns below are for aligning the borders properly */
 .message-container{
   margin-left: -50px;
 }
 
-.sample {
-  height: 780px;
+.message-screen {
   margin-left: -30px;
+}
+
+.screen {
+  margin-bottom: -5px;
+}
+
+.tab-contents {
+  margin-right: -15px;
 }
 
 .message-header {
   padding-top: 10px;
-  padding-left: 25px;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;;
-  border-right: 1px solid black;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #DCDCDC;
+  border-right: 1px solid #DCDCDC;
 }
 
 .message-history {
-  height: 550px;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-}
-
-.message-input {
-  height: 150px;
+  height: 100vh;
+  border-left: 1px solid #DCDCDC;
+  border-right: 1px solid #DCDCDC;
 }
 
 .send-message-btn {
@@ -33,28 +36,53 @@
 }
 
 .message-input-group {
-  padding-left: 25px;
-  border: 1px solid black;
+  border: 1px solid #DCDCDC;
   align-items: center;
+  height: 200px;
 }
 
-.message-text-field {
+.message-text-field, .message-text-field:focus {
   height: 60%;
   background-color: #DCDCDC;
-  margin-right: 15px;
+}
+
+.btn-large {
+  display: none;
+}
+
+.button-box {
+  width: 80px;
+  height: 70px;
+}
+
+.messageTab:active, .messageTab:focus, .messageTab:hover {
+  background-color: #0069B6;
+  color: white;
 }
 
 @media screen and (max-width:700px){
-  .send-message-btn:hover {
-    fill: orange;
+  .btn-small {
+    display: none;
+  }
+
+  .btn-large {
+    display: block;
+  }
+
+  .button-box {
+    width: 50px;
+    height: 50px;
   }
 
   .previewText {
     display: none;
   }
-}
 
-/* .messageTab:active, .messageTab:focus, .messageTab:hover {
-  background-color: #0069B6;
-  color: white;
-} */
+  .header {
+    font-size: 22px;
+  }
+
+  .past-users-messaged {
+    font-size: 18px;
+  }
+}
