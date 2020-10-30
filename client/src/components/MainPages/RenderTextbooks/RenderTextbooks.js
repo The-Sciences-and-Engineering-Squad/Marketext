@@ -27,8 +27,8 @@ class RenderTextbooks extends React.Component {
                     Click For {this.props.target}
                   </strong>
                 </Card.Header>
-                <Card.Img className="cardImage" src={list.image} />
-                <ListGroup className="list-group-flush">
+                <Card.Img className="renderbook-img" src={list.image} />
+                <ListGroup variant="flush">
                   <ListGroupItem>
                     <Card.Title>
                       {list.title}
