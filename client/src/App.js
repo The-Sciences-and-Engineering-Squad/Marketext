@@ -39,8 +39,6 @@ class App extends React.Component {
       case '/register':
       case '/forgotpassword':
         return <Navbar2 />
-      case '/':
-        return <Navbar1 />
       default:
         return <Navbar1 />
     }
