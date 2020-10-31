@@ -23,6 +23,7 @@ import ForgotPassword from './components/AccessPages/ForgotPassword/ForgotPasswo
 import Profile from './components/UserPages/Profile/Profile';
 import Balance from './components/UserPages/Balance/Balance';
 import Message from './components/UserPages/Message/Message';
+import Manage from './components/UserPages/Manage/Manage';
 import CurrentlyListed from './components/UserPages/CurrentlyListed/CurrentlyListed';
 import AddNew from './components/UserPages/AddNew/AddNew';
 import TransactionHistory from './components/UserPages/TransactionHistory/TransactionHistory';
@@ -65,9 +66,10 @@ class App extends React.Component {
               <Route path="/ForgotPassword" component={ForgotPassword} />
               <Route path="/Profile" component={Profile} />
               <Route path="/Balance" component={Balance} />
-              <Route path="/Message" component={Message} />
-              <Route path="/CurrentlyListed" component={CurrentlyListed} />
-              <Route path="/AddNew" component={AddNew} />
+              <Route exact path="/Message" component={Message} />
+              <Route exact path="/Message/Manage" component={Manage} />
+              <Route exact path="/CurrentlyListed" component={CurrentlyListed} />
+              <Route exact path="/CurrentlyListed/AddNew" component={AddNew} />
               <Route path="/TransactionHistory" component={TransactionHistory} />
               <Route exact path="/" component={Home} />
             </Switch>
