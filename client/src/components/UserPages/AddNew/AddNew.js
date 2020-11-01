@@ -11,6 +11,26 @@ import Button from 'react-bootstrap/Button';
 import './AddNew.css'
 
 export default class AddNew extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "",
+      author: "",
+      edition: "",
+      ISBN: "",
+      condition: "",
+      category: "",
+      price: "",
+      additionalInformation: "",
+      errors: [],
+    };
+  }
+
+  // Handle field change
+  handleChange = (input) => (e) => {
+    this.setState({ [input]: e.target.value });
+  };
+  
   render() {
     return (
       <Container fluid>
@@ -32,35 +52,42 @@ export default class AddNew extends React.Component {
               <Row className="py-2">
                 <Col>
                   <span className="text-red">* Required Fields</span>
+                  { this.state.errors.length > 0 ?
+                    this.state.errors.map((error,index) => {
+                      return <li key={index} className="text-warning"> {error} </li>
+                  })
+                  :
+                  <div></div>
+                  }
                   <Form>
                     <Form.Row>
                       <Form.Group as={Col} xs="12" md="5" controlId="formTextbook">
                         <Form.Label>Textbook Title:</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Textbook Title" />
+                        <Form.Control type="text" placeholder="Enter Textbook Title" value={this.state.title} onChange={this.handleChange("title")}/>
                       </Form.Group>
                       <Form.Group as={Col} xs="12" md="5" controlId="formAuthor">
                         <Form.Label>Author:</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Author" />
+                        <Form.Control type="text" placeholder="Enter Author" value={this.state.author} onChange={this.handleChange("author")}/>
                       </Form.Group>
                       <Form.Group as={Col} xs="12" md="2" controlId="formEdition">
                         <Form.Label>Edition:</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Edition" />
+                        <Form.Control type="text" placeholder="Enter Edition" value={this.state.edition} onChange={this.handleChange("edition")}/>
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>
                       <Form.Group as={Col} xs="12" md="6" controlId="formISBN">
                         <Form.Label>ISBN:</Form.Label>
-                        <Form.Control type="text" placeholder="Enter ISBN" />
+                        <Form.Control type="text" placeholder="Enter ISBN" value={this.state.ISBN} onChange={this.handleChange("ISBN")}/>
                       </Form.Group>
                       <Form.Group as={Col} xs="12" md="6" controlId="formCondition">
                         <Form.Label>Condition: <span className="text-red">*</span></Form.Label>
-                        <Form.Control type="text" maxLength="10" placeholder="Enter Condition" />
+                        <Form.Control type="text" maxLength="10" placeholder="Enter Condition" value={this.state.condition} onChange={this.handleChange("condition")}/>
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>
                       <Form.Group as={Col} xs="12" md="6" controlId="formCategory">
                         <Form.Label>Category: <span className="text-red">*</span></Form.Label>
-                        <Form.Control as="select">
+                        <Form.Control as="select" value={this.state.category} onChange={this.handleChange("category")}>
                           <option value="">Choose</option>
                           <option value="Buy">Buy</option>
                           <option value="Sell">Sell</option>
@@ -70,13 +97,13 @@ export default class AddNew extends React.Component {
                       </Form.Group>
                       <Form.Group as={Col} xs="12" md="6" controlId="formPrice">
                         <Form.Label>Price: <span className="text-red">*</span></Form.Label>
-                        <Form.Control type="text" placeholder="Enter Price" />
+                        <Form.Control type="text" placeholder="Enter Price" value={this.state.price} onChange={this.handleChange("price")}/>
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>
                       <Form.Group as={Col} xs="12" controlId="formInformation">
                         <Form.Label>Additional Information:</Form.Label>
-                        <Form.Control as="textarea" rows={3} />
+                        <Form.Control as="textarea" rows={3} value={this.state.additionalInformation} onChange={this.handleChange("additionalInformation")}/>
                       </Form.Group>
                     </Form.Row>
                     <Button className="float-right" variant="danger" type="submit">Add To Listings</Button>
