@@ -4,6 +4,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Sidebar from '../../Sidebar/Sidebar';
 import Form from 'react-bootstrap/Form';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 import './AddNew.css'
@@ -27,8 +29,9 @@ export default class AddNew extends React.Component {
                 </Col>
               </Row>
               <hr />
-              <Row className="py-4">
+              <Row className="py-2">
                 <Col>
+                  <span className="text-red">* Required Fields</span>
                   <Form>
                     <Form.Row>
                       <Form.Group as={Col} xs="12" md="5" controlId="formTextbook">
@@ -50,13 +53,13 @@ export default class AddNew extends React.Component {
                         <Form.Control type="text" placeholder="Enter ISBN" />
                       </Form.Group>
                       <Form.Group as={Col} xs="12" md="6" controlId="formCondition">
-                        <Form.Label>Condition:</Form.Label>
+                        <Form.Label>Condition: <span className="text-red">*</span></Form.Label>
                         <Form.Control type="text" maxLength="10" placeholder="Enter Condition" />
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>
-                      <Form.Group as={Col} xs="12" md="6" controlId="formList">
-                        <Form.Label>Category:</Form.Label>
+                      <Form.Group as={Col} xs="12" md="6" controlId="formCategory">
+                        <Form.Label>Category: <span className="text-red">*</span></Form.Label>
                         <Form.Control as="select">
                           <option value="">Choose</option>
                           <option value="Buy">Buy</option>
@@ -66,7 +69,7 @@ export default class AddNew extends React.Component {
                         </Form.Control>
                       </Form.Group>
                       <Form.Group as={Col} xs="12" md="6" controlId="formPrice">
-                        <Form.Label>Price:</Form.Label>
+                        <Form.Label>Price: <span className="text-red">*</span></Form.Label>
                         <Form.Control type="text" placeholder="Enter Price" />
                       </Form.Group>
                     </Form.Row>
@@ -78,6 +81,52 @@ export default class AddNew extends React.Component {
                     </Form.Row>
                     <Button className="float-right" variant="danger" type="submit">Add To Listings</Button>
                   </Form>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Accordion>
+                    <Card>
+                      <Card.Header>
+                        <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                          FAQ
+                        </Accordion.Toggle>
+                      </Card.Header>
+                      <Accordion.Collapse eventKey="0">
+                        <Card.Body>
+                          <h5>
+                            What does each category stand for?
+                          </h5>
+                          <p>
+                            Each category is where the posting will be found at. <br/>
+                            If you would like to sell your textbook, set the category to buy, since you are targeting buyers. <br/>
+                            If you would like to buy a textbook, set the category to sell, since you are targeting sellers. <br/>
+                            If you would like to trade your textbook, set the category to trade. <br/>
+                            If you would like to swap your textbook, set the category to swap.
+                          </p>
+                          <hr/>
+                          <h5>
+                            What is price?
+                          </h5>
+                          <p>
+                            Price is the desired transaction for the textbook. <br/>
+                            For sellers, it's how much you want for your textbook. <br/>
+                            For buyers, it's how much you're willing to pay for that textbook. <br/>
+                            For trade, it's what you're willing to trade for your textbook. Something more specific and equal of value. <br/>
+                            For swap, it's what you're willing to swap for your textbook. Could be less specific and less or more of value. 
+                          </p>
+                          <hr/>
+                          <h5>
+                            Do I have to fill in everything in the forms?
+                          </h5>
+                          <p>
+                            No, you do not. You just have to fill in the required fields as well as adding in a textbook either by title and author or ISBN. <br/>
+                            For better accuracy for finding your textbook, it would help if you fill in everything.
+                          </p>
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
+                  </Accordion>
                 </Col>
               </Row>
             </Container>
