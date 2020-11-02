@@ -30,6 +30,43 @@ export default class AddNew extends React.Component {
   handleChange = (input) => (e) => {
     this.setState({ [input]: e.target.value });
   };
+
+  handleBack = (e) => {
+    e.preventDefault();
+    this.props.history.push('/CurrentlyListed');
+  }
+
+  // eventually api call to call the backend
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { title, author, edition, ISBN, condition, category, price, additionalInformation } = this.state;
+    var newState = Object.assign({}, this.state);
+    newState.errors = [];
+    if ((title === "" || author === "") && ISBN === "") {
+      newState.errors.push("Please Input a Textbook by title and author or ISBN");
+    }
+    if (condition === ""){
+      newState.errors.push("Please Input the Textbook Condition");
+    }
+    if (category === ""){
+      newState.errors.push("Please Select a Category ");
+    }
+    if (price === ""){
+      newState.errors.push("Please Enter the Textbook Condition");
+    }
+    if (newState.errors.length === 0){
+      // Add textbook to database for listing, also make it show up on currently listed for the user.
+      console.log("title: " + title);
+      console.log("author: " + author);
+      console.log("edition: " + edition);
+      console.log("ISBN: " + ISBN);
+      console.log("condition: " + condition);
+      console.log("category: " + category);
+      console.log("price: " + price);
+      console.log("additionalInformation: " + additionalInformation);
+    }
+    this.setState(newState);
+  };
   
   render() {
     return (
@@ -42,7 +79,7 @@ export default class AddNew extends React.Component {
             <Container fluid>
               <Row className="mt-4">
                 <Col xs="12" sm="4">
-                  <Button variant="danger">Back</Button>
+                  <Button variant="danger" onClick={this.handleBack}>Back</Button>
                 </Col>
                 <Col xs="12" sm="8">
                   <h3>Add a Textbook To Your Listing</h3>
@@ -59,7 +96,7 @@ export default class AddNew extends React.Component {
                   :
                   <div></div>
                   }
-                  <Form>
+                  <Form onSubmit={this.handleSubmit}>
                     <Form.Row>
                       <Form.Group as={Col} xs="12" md="5" controlId="formTextbook">
                         <Form.Label>Textbook Title:</Form.Label>
@@ -106,7 +143,7 @@ export default class AddNew extends React.Component {
                         <Form.Control as="textarea" rows={3} value={this.state.additionalInformation} onChange={this.handleChange("additionalInformation")}/>
                       </Form.Group>
                     </Form.Row>
-                    <Button className="float-right" variant="danger" type="submit">Add To Listings</Button>
+                    <Button className="float-right" variant="danger" type="submit" onClick={this.handleSubmit}>Add To Listings</Button>
                   </Form>
                 </Col>
               </Row>
