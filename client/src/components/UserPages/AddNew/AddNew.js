@@ -1,4 +1,5 @@
 import React from 'react';
+import Cookies from 'universal-cookie';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -11,9 +12,15 @@ import Button from 'react-bootstrap/Button';
 import './AddNew.css'
 
 export default class AddNew extends React.Component {
+  componentDidMount() {
+    const cookies = new Cookies();
+    this.setState({ username: cookies.get('username') });
+  }
+
   constructor(props) {
     super(props);
     this.state = {
+      username: "",
       title: "",
       author: "",
       edition: "",
