@@ -8,7 +8,9 @@ jobs:
       addons:
         sonarcloud:
           organization: "the-sciences-and-engineering-squad" # the key of the org you chose at step #3
-          token: "1240cnTmnYmmDscEwAORM7uG885eyIZYNFTr7BNHq7HR/UZUbJJ4JTE13s94sgugiBlOXrl4falICALet2x/DYfaS3XHxnXPjUyXf+ktRUY/twOU0+zulhahIWUZitynonMsTMIGLm3bTQEeJHOhumE4UhQZTWcdM1XdODsBtuetuGcYjlTtea4Ak71dixkcYShM/4/E9rf4fj3Yney6sLHhEIATjFuBCITUWu9/1ttG7Q/Y+qxmZ+HOG6N/EusOZXHISN6ymPWYEssIG5wOXBr/TozdNMOHPlusJr740gn7X1OFUosd2jinupIu3I1Y/z3Oldkp4xUIzrURsEuUCwFuSqyjCuB8/ghMUJ+Nb3Oradok1J74HsxSAw4INUeSdU'zDRODDLBcOL062Zs2hf7WiDR7ApiiEi9lusuzHbEljr0d1TihuSsSuzLIeYxCYqpQ7B9ULe+XINRoIs-FRDfAxXN6UXU8XcwoBx41,17xnTdRI7u0Fx2AkAAryQHzIuggluniCUFHugSx8A0M5BQXo6uiwb+ZpEillIqFZWI+BGM3P5cHilMo08j9XPbMqJjCNsiAzIoWhigulPpucqq5XrfSrJ2gFrGsueDial308.00-GHnMoN0UhLrpPEsDpAtiodQ0NOOxIiidkkjqZ1CzsPL7R9ZOYHWu2FRXDYQ3s="
+          token:
+            secure: "E03doSSvQcZEbLh01vU5BMDtxdavwhKo8OnwueZgsQNfgX9tZOcaEBB9F7fZre7SoSqwx0C8XmEX2Rlf2ERD97gBQSjWT6Nh4f3dKVCIjqlR/AD8i1OoiIpbs6ihtmwxIN2PRzKcUc3JSnt2uT54YeCWAYaQWWRmggRXYVQ3HDWj+fhNNMDvLp0ty36f6C+gX1D5qUvq3yJ0uzDZsMo/heTOU2vi0x8Fmwgup6B75lnhhDD0mHmf4KUiPvnhdmcOaWH0jriTAC69fHYYcn4y1u/UPXbBqSUDRJnzFSjlxEvmiM9dO2KcbYokFxTQtktsTJmH4x/kmYbUC8C+YJ7rDhssO82ax2OqoJZ92fbg3NbvqH1xmLDJ1SxfJ9cu/mg07daO2bE8peETPTiIx7BastVvw/oq8rr+7+SqIyKyRBlz7kzBcw3FZsjoTeN22bd7tSdSxnS2qbxuKIwsMxaCg+lC27y39IKeCoeYwWDyRIa7EbUBSEJAOWg/RqCkqM0cwHFTChzuO9XgU3X8VbgryCtBjN33r0MfoxXbNUm5NpExL/VikUEj/zJ0KukhI4ELmcpKLadJGDyCL5y69MPxFuRDz3i0K6TjoFojyi/Lt2Pipwly9OI19Xu0s2wBEOSM9UqQlOpyWy5sPYQY2CYlhmNCV7zSJfKd9fmN5P18QNE="      before_install:
+
       before_install:
         - cd client
       install:
@@ -26,8 +28,8 @@ jobs:
       addons:
         sonarcloud:
           organization: "the-sciences-and-engineering-squad" # the key of the org you chose at step #3
-          token: "1240cnTmnYmmDscEwAORM7uG885eyIZYNFTr7BNHq7HR/UZUbJJ4JTE13s94sgugiBlOXrl4falICALet2x/DYfaS3XHxnXPjUyXf+ktRUY/twOU0+zulhahIWUZitynonMsTMIGLm3bTQEeJHOhumE4UhQZTWcdM1XdODsBtuetuGcYjlTtea4Ak71dixkcYShM/4/E9rf4fj3Yney6sLHhEIATjFuBCITUWu9/1ttG7Q/Y+qxmZ+HOG6N/EusOZXHISN6ymPWYEssIG5wOXBr/TozdNMOHPlusJr740gn7X1OFUosd2jinupIu3I1Y/z3Oldkp4xUIzrURsEuUCwFuSqyjCuB8/ghMUJ+Nb3Oradok1J74HsxSAw4INUeSdU'zDRODDLBcOL062Zs2hf7WiDR7ApiiEi9lusuzHbEljr0d1TihuSsSuzLIeYxCYqpQ7B9ULe+XINRoIs-FRDfAxXN6UXU8XcwoBx41,17xnTdRI7u0Fx2AkAAryQHzIuggluniCUFHugSx8A0M5BQXo6uiwb+ZpEillIqFZWI+BGM3P5cHilMo08j9XPbMqJjCNsiAzIoWhigulPpucqq5XrfSrJ2gFrGsueDial308.00-GHnMoN0UhLrpPEsDpAtiodQ0NOOxIiidkkjqZ1CzsPL7R9ZOYHWu2FRXDYQ3s="
-      before_install:
+          token:
+            secure: "E03doSSvQcZEbLh01vU5BMDtxdavwhKo8OnwueZgsQNfgX9tZOcaEBB9F7fZre7SoSqwx0C8XmEX2Rlf2ERD97gBQSjWT6Nh4f3dKVCIjqlR/AD8i1OoiIpbs6ihtmwxIN2PRzKcUc3JSnt2uT54YeCWAYaQWWRmggRXYVQ3HDWj+fhNNMDvLp0ty36f6C+gX1D5qUvq3yJ0uzDZsMo/heTOU2vi0x8Fmwgup6B75lnhhDD0mHmf4KUiPvnhdmcOaWH0jriTAC69fHYYcn4y1u/UPXbBqSUDRJnzFSjlxEvmiM9dO2KcbYokFxTQtktsTJmH4x/kmYbUC8C+YJ7rDhssO82ax2OqoJZ92fbg3NbvqH1xmLDJ1SxfJ9cu/mg07daO2bE8peETPTiIx7BastVvw/oq8rr+7+SqIyKyRBlz7kzBcw3FZsjoTeN22bd7tSdSxnS2qbxuKIwsMxaCg+lC27y39IKeCoeYwWDyRIa7EbUBSEJAOWg/RqCkqM0cwHFTChzuO9XgU3X8VbgryCtBjN33r0MfoxXbNUm5NpExL/VikUEj/zJ0KukhI4ELmcpKLadJGDyCL5y69MPxFuRDz3i0K6TjoFojyi/Lt2Pipwly9OI19Xu0s2wBEOSM9UqQlOpyWy5sPYQY2CYlhmNCV7zSJfKd9fmN5P18QNE="      before_install:
         - cd server
       install:
         - pip install -r requirements.txt
