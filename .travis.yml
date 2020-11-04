@@ -5,6 +5,11 @@ jobs:
       cache:
         directories:
           - node_modules
+      addons:
+        sonarcloud:
+          organization: "the-sciences-and-engineering-squad" # the key of the org you chose at step #3
+          token:
+            secure: $SONAR_TOKEN # encrypted value of your token
       before_install:
         - cd client
       install:
@@ -13,13 +18,21 @@ jobs:
         - npm test
         - npm run test:coverage
         - npm run build
+        # other script steps might be done before running the actual analysis
+        - sonar-scanner
     - language: python
       env:
         - FLASK_APP=server
         - FLASK_ENV=development
+      addons:
+        sonarcloud:
+          organization: "the-sciences-and-engineering-squad" # the key of the org you chose at step #3
+          token:
+            secure: $SONAR_TOKEN # encrypted value of your token
       before_install:
         - cd server
       install:
         - pip install -r requirements.txt
       script:
         - python3 __init__.py
+        - sonar-scanner
