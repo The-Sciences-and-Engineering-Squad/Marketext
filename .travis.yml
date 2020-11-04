@@ -9,7 +9,7 @@ jobs:
         sonarcloud:
           organization: "the-sciences-and-engineering-squad" # the key of the org you chose at step #3
           token:
-            secure: $SONAR_TOKEN # encrypted value of your token
+            secure: "1240cnTmnYmmDscEwAORM7uG885eyIZYNFTr7BNHq7HR/UZUbJJ4JTE13s94sgugiBlOX rl4falICALet2x/DYfaS3XHxnXPjUyXf+ktRUY/twOU0+zulhahIWUZitynonMsTMIGLm3bTQEeJHOh umE4UhQZTWcdM1XdODsBtuetuGcYjlTtea4Ak71dixkcYShM/4/E9rf4fj3Yney6sLHhEIATjFuBCITU Wu9/1ttG7Q/Y+qxmZ+HOG6N/EusOZXHISN6ymPWYEssIG5wOXBr/TozdNMOHPlusJr740gn7X1OFUo sd2jinupIu3I1Y/z3Oldkp4xUIzrURsEuUCwFuSqyjCuB8/ghMUJ+Nb3Oradok1J74HsxSAw4INUeSdU 'zDRODDLBcOL062Zs2hf7WiDR7ApiiEi9lusuzHbEljr0d1TihuSsSuzLIeYxCYqpQ7B9ULe+XINRoIs -FRDfAxXN6UXU8XcwoBx41,17xnTdRI7u0Fx2AkAAryQHzIuggluniCUFHugSx8A0M5BQXo6uiwb+ZpEi llIqFZWI+BGM3P5cHilMo08j9XPbMqJjCNsiAzIoWhigulPpucqq5XrfSrJ2gFrGsueDial308.00-GHnMoN0 UhLrpPEsDpAtiodQ0NOOxIiidkkjqZ1CzsPL7R9ZOYHWu2FRXDYQ3s=" 
       before_install:
         - cd client
       install:
@@ -28,7 +28,7 @@ jobs:
         sonarcloud:
           organization: "the-sciences-and-engineering-squad" # the key of the org you chose at step #3
           token:
-            secure: $SONAR_TOKEN # encrypted value of your token
+            secure: "1240cnTmnYmmDscEwAORM7uG885eyIZYNFTr7BNHq7HR/UZUbJJ4JTE13s94sgugiBlOX rl4falICALet2x/DYfaS3XHxnXPjUyXf+ktRUY/twOU0+zulhahIWUZitynonMsTMIGLm3bTQEeJHOh umE4UhQZTWcdM1XdODsBtuetuGcYjlTtea4Ak71dixkcYShM/4/E9rf4fj3Yney6sLHhEIATjFuBCITU Wu9/1ttG7Q/Y+qxmZ+HOG6N/EusOZXHISN6ymPWYEssIG5wOXBr/TozdNMOHPlusJr740gn7X1OFUo sd2jinupIu3I1Y/z3Oldkp4xUIzrURsEuUCwFuSqyjCuB8/ghMUJ+Nb3Oradok1J74HsxSAw4INUeSdU 'zDRODDLBcOL062Zs2hf7WiDR7ApiiEi9lusuzHbEljr0d1TihuSsSuzLIeYxCYqpQ7B9ULe+XINRoIs -FRDfAxXN6UXU8XcwoBx41,17xnTdRI7u0Fx2AkAAryQHzIuggluniCUFHugSx8A0M5BQXo6uiwb+ZpEi llIqFZWI+BGM3P5cHilMo08j9XPbMqJjCNsiAzIoWhigulPpucqq5XrfSrJ2gFrGsueDial308.00-GHnMoN0 UhLrpPEsDpAtiodQ0NOOxIiidkkjqZ1CzsPL7R9ZOYHWu2FRXDYQ3s=" 
       before_install:
         - cd server
       install:
