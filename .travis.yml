@@ -23,11 +23,12 @@ jobs:
         - pip install -r requirements.txt
       script:
         - python3 __init__.py
-    addons:
-      sonarcloud:
-        organization: "the-sciences-and-engineering-squad" # the key of the org you chose at step #3
-        token:
-          secure: "A47tVzraQtyhUHwfm4uIABsGM3ZBykeYIL9pr/8JWrpmHaFO4NqxbQTkaQS7yIo5N5UbM0Pr9k2iDCJXtabytxdM00GJX+tpNXHNbOsXzzvHEsWgIT2CzTl8JCJXBkPJjK7p8Zg0hOzH4v7AwGWodBLL7F9DuQXrHOG/b48Rh/QeGchYFBp2Fx4F5NS+7wpIU5hELfQ0oSQEXGzCvPLw2PyR57rh/yc9Qv3dbETAougYR9aq0pBVvZnN6TPjJioRzRGouqfk7sCITw8dsDWtQfi8blWyWFFsnJ1elk7QjWClD3vLEHkf8ys5z0XKNNrqiFCmGdlZgQErP+NAXbSzFnBSVw92s8Ey9N7hfj1hjyOWlhcDIfCfhaiMfpiEkYeawbkAjGK+MblZsu98dCmBVCVyWNWC41qlEtrMsVrnDDeTUNVu99NDM2bZ/S39u3M/ByeA/5B7rSVqTrNc2hHSRVIPznoK7ub9GSHIc0yDSrDqiBDulkITNqTIlcCQghLj2DtbEbnbq2AOt0hUclH/tJiF9mj9nbm+4bYu48y+0IR0/4lecIjtsv4xO/e9Jwu4/6gd0xjaLu20JUcRPLphMtYZeXL95OaOUGwLOiG1n7w6/42/6ux5+6i1DrKCK19zkVqNkTMkv/zCR8ng71xodVNqgvNcfo6gr8ZEo0LQPdE="
-    script:
-      # other script steps might be done before running the actual analysis
-      - sonar-scanner
+    - stage: sonarcloud
+      addons:
+        sonarcloud:
+          organization: "the-sciences-and-engineering-squad" # the key of the org you chose at step #3
+          token:
+            secure: "A47tVzraQtyhUHwfm4uIABsGM3ZBykeYIL9pr/8JWrpmHaFO4NqxbQTkaQS7yIo5N5UbM0Pr9k2iDCJXtabytxdM00GJX+tpNXHNbOsXzzvHEsWgIT2CzTl8JCJXBkPJjK7p8Zg0hOzH4v7AwGWodBLL7F9DuQXrHOG/b48Rh/QeGchYFBp2Fx4F5NS+7wpIU5hELfQ0oSQEXGzCvPLw2PyR57rh/yc9Qv3dbETAougYR9aq0pBVvZnN6TPjJioRzRGouqfk7sCITw8dsDWtQfi8blWyWFFsnJ1elk7QjWClD3vLEHkf8ys5z0XKNNrqiFCmGdlZgQErP+NAXbSzFnBSVw92s8Ey9N7hfj1hjyOWlhcDIfCfhaiMfpiEkYeawbkAjGK+MblZsu98dCmBVCVyWNWC41qlEtrMsVrnDDeTUNVu99NDM2bZ/S39u3M/ByeA/5B7rSVqTrNc2hHSRVIPznoK7ub9GSHIc0yDSrDqiBDulkITNqTIlcCQghLj2DtbEbnbq2AOt0hUclH/tJiF9mj9nbm+4bYu48y+0IR0/4lecIjtsv4xO/e9Jwu4/6gd0xjaLu20JUcRPLphMtYZeXL95OaOUGwLOiG1n7w6/42/6ux5+6i1DrKCK19zkVqNkTMkv/zCR8ng71xodVNqgvNcfo6gr8ZEo0LQPdE="
+      script:
+        # other script steps might be done before running the actual analysis
+        - sonar-scanner
