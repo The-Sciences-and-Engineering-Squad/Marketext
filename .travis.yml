@@ -1,7 +1,10 @@
 jobs:
   include:
-    - language: node_js
-      node_js: stable
+    - stage: test
+      name: "Frontend using React"
+      language: node_js
+      node_js: 
+        - 'stable'
       cache:
         directories:
           - node_modules
@@ -13,7 +16,9 @@ jobs:
         - npm run build
         - npm test
         - npm run test:coverage
-    - language: python
+    - stage: test
+      name: "Backend using Python"
+      language: python
       env:
         - FLASK_APP=server
         - FLASK_ENV=development
@@ -24,6 +29,7 @@ jobs:
       script:
         - python3 __init__.py
     - stage: sonarcloud
+      name: "SolarCloud Scan"
       addons:
         sonarcloud:
           organization: "the-sciences-and-engineering-squad" # the key of the org you chose at step #3
