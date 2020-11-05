@@ -32,7 +32,7 @@ jobs:
         - coverage run __init__.py
       after_success:
         - coverage report -m
-        - coverage xml -i
+        - coverage xml
     - stage: sonarcloud
       name: "SolarCloud Scan"
       addons:
