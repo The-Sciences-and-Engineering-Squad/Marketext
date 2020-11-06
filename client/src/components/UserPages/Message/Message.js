@@ -16,6 +16,7 @@ export default class Message extends React.Component {
   componentDidMount() {
     const cookies = new Cookies();
     this.setState({ username: cookies.get('username') });
+    // Insert Backend to retrieve users messages.
     this.setState({ messages: [
       { username: "Kevin", message: "Hello!"},
       { username: "Bob", message: "Yo!"},
@@ -50,7 +51,7 @@ export default class Message extends React.Component {
                     </ListGroup.Item>
                     {
                       this.state.messages.map((list, index) => (
-                        <ListGroup.Item className="messageTab" action eventKey={index}>
+                        <ListGroup.Item className="messageTab" action eventKey={index} key={index}>
                           <h5 className="past-users-messaged">{list.username}</h5>
                           <p className="previewText">{list.message}</p>
                         </ListGroup.Item>
@@ -62,7 +63,7 @@ export default class Message extends React.Component {
                   <Tab.Content>
                   {
                     this.state.messages.map((list, index) => (
-                      <Tab.Pane eventKey={index}>
+                      <Tab.Pane eventKey={index} key={index}>
                         <Container>
                           <Row className="message-header px-4">
                             <h3>{list.username}</h3>
