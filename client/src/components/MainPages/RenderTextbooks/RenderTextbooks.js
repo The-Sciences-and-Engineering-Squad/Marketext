@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
@@ -7,14 +8,11 @@ import ListGroupItem from 'react-bootstrap/ListGroupItem';
 
 import './RenderTextbooks.css'
 
-export default class RenderTextbooks extends React.Component {
+class RenderTextbooks extends React.Component {
   selectedTextbook = index => (e) => {
     e.preventDefault(); 
     // Add Backend For When Textbook Is Clicked
-
-    // This is the whole book object you will need all of this 
-    console.log(this.props.textbooks[index])
-
+    this.props.history.push(`/${this.props.page}/${this.props.textbooks[index].id}`);
   }
 
   render() {
@@ -29,8 +27,8 @@ export default class RenderTextbooks extends React.Component {
                     Click For {this.props.target}
                   </strong>
                 </Card.Header>
-                <Card.Img className="cardImage" src={list.image} />
-                <ListGroup className="list-group-flush">
+                <Card.Img className="renderbook-img" src={list.image} />
+                <ListGroup variant="flush">
                   <ListGroupItem>
                     <Card.Title>
                       {list.title}
@@ -48,3 +46,5 @@ export default class RenderTextbooks extends React.Component {
     );
   }
 }
+
+export default withRouter(RenderTextbooks);

@@ -1,0 +1,12 @@
+.books{
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.textbook-img{
+  width: 50%;
+  height: 50%;
+  margin-left: 25%;
+}

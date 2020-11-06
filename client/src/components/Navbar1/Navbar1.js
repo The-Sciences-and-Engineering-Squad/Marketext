@@ -16,17 +16,27 @@ import './Navbar1.css'
 // This Navbar is for the Home/Buy/Sell/Trade/Swap Pages.
 
 export default class Navbar1 extends React.Component {
+  componentDidMount() {
+    const cookies = new Cookies();
+    this.setState({ username: cookies.get('username') });
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: undefined,
+    };
+  }
 
   signOut = (e) => {
     e.preventDefault();
-    // Insert Backend to Log Out User.
-    console.log("Log Out");
+    const cookies = new Cookies();
+    cookies.remove('username');
+    window.location.href='/';
   }
   
   render(){
     // This is what you need to use to get the cookies!
-    const cookies = new Cookies();
-    const username = cookies.get('username');
     return (
       <Navbar expand="lg" sticky="top">
         <Navbar.Brand as={Link} to="/" className="nav-basic">
@@ -48,14 +58,14 @@ export default class Navbar1 extends React.Component {
             <Nav.Link as={NavLink} to="/Trade" className="nav-basic" style={{ marginRight: 30, marginLeft: 30 }}>Trade</Nav.Link>
             <Nav.Link as={NavLink} to="/Swap" className="nav-basic" style={{ marginRight: 30, marginLeft: 30 }}>Swap</Nav.Link>
           </Nav>
-          {username ?
+          {this.state.username ?
             <Nav>
               <Dropdown>
                 <Dropdown.Toggle className="dropdown-background">
                   <FontAwesomeIcon size="lg" icon={faUserCircle} />
                 </Dropdown.Toggle>
                 <Dropdown.Menu alignRight="true">
-                  <Dropdown.Item disabled>Signed in as {username}</Dropdown.Item>
+                  <Dropdown.Item disabled>Signed in as {this.state.username}</Dropdown.Item>
                   <Dropdown.Divider />
                   <Dropdown.Item as={Link} to="/Profile">
                     Your Profile

@@ -34,14 +34,11 @@ export default class Searchbar extends React.Component {
             if (result.items[i].volumeInfo.imageLinks == null ){
               continue;
             }
-            let hasISBN = result.items[i].volumeInfo.industryIdentifiers;
             textbooks = textbooks.concat({
               id: result.items[i].id,
               title: result.items[i].volumeInfo.title,
               author: result.items[i].volumeInfo.authors, 
               image: result.items[i].volumeInfo.imageLinks.thumbnail,
-              description: result.items[i].volumeInfo.description,
-              ISBN: hasISBN !== undefined ? result.items[i].volumeInfo.industryIdentifiers:null,              
           });
           }
           this.props.textbookUpdate(textbooks);
