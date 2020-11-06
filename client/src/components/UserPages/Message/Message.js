@@ -15,95 +15,45 @@ export default class Message extends React.Component {
   render() {
     return (
       <Container fluid>
-        <Row className="screen">
+        <Row>
           <Col xs="4" sm="3" md="2">
             <Sidebar />
           </Col>
-          <Col className="message-container">
+          <Col xs="8" sm="9" md="10" className="message-container pb-4">
             <Tab.Container defaultActiveKey="link1">
               <Row>
                 <Col xs="5" sm="4" md="3">
                   <ListGroup>
                     <ListGroup.Item>
-                      <h4 className="header"> Messages </h4>
+                      <h4 className="header">Messages</h4>
                     </ListGroup.Item>
                     <ListGroup.Item className="messageTab" action eventKey="link1">
-                      <h5 className="past-users-messaged"> User 1 </h5>
-                      <p className="previewText"> Preview Message</p>
-                    </ListGroup.Item>
-                    <ListGroup.Item className="messageTab" action eventKey="link2">
-                      <h5 className="past-users-messaged"> User 2 </h5>
-                      <p className="previewText"> Preview Message</p>
+                      <h5 className="past-users-messaged">User 1</h5>
+                      <p className="previewText">Preview Message</p>
                     </ListGroup.Item>
                   </ListGroup>
                 </Col>
-                <Col className="message-screen">
-                  <Tab.Content className="tab-contents">
+                <Col xs="7" sm="8" md="9" className="message-screen">
+                  <Tab.Content>
                     <Tab.Pane eventKey="link1">
                       <Container>
+                        <Row className="message-header px-4">
+                          <h3>Kevin</h3>
+                        </Row>
+                        <Row className="message-history">
+                          Hi!
+                        </Row>
                         <Row>
-                          <Col>
-                            <Row className="message-header px-4">
-                              <h3>Kevin</h3>
-                            </Row>
-                            <Row className="message-history">
-                            </Row>
-                            <Row className="message-input">
-                              <InputGroup className="message-input-group px-3">
-                                <FormControl className="message-text-field m-1 px-3" placeholder="Type your message..."/>
-                                <svg className="button-box m-3">
-                                  <Button className="send-message-btn" href="#">
-                                    <path className="btn-small" d="M   0  10
-                                             L   0  60
-                                             L   70  40
-                                             Z"
-                                          />
-                                    <path className="btn-large"
-                                          d="M   0  10
-                                             L   0  40
-                                             L   50  25
-                                             Z"
-                                    />
-                                  </Button>
-                                </svg>
-                              </InputGroup>
-                            </Row>
-                          </Col>
+                          <InputGroup>
+                            <FormControl as="textarea" rows={5} placeholder="Type your message..."/>
+                            <InputGroup.Append>
+                              <Button variant="danger" block>
+                                Send
+                              </Button>
+                            </InputGroup.Append>
+                          </InputGroup>
                         </Row>
                       </Container>
-                    </Tab.Pane>
-                    <Tab.Pane eventKey="link2">
-                    <Container>
-                      <Row>
-                        <Col>
-                          <Row className="message-header px-4">
-                            <h3>Kevin</h3>
-                          </Row>
-                          <Row className="message-history">
-                          </Row>
-                          <Row className="message-input">
-                            <InputGroup className="message-input-group px-3">
-                              <FormControl className="message-text-field m-1 px-3" placeholder="Type your message..."/>
-                              <svg className="button-box m-3">
-                                <Button className="send-message-btn" href="#">
-                                  <path className="btn-small" d="M   0  10
-                                           L   0  60
-                                           L   70  40
-                                           Z"
-                                        />
-                                  <path className="btn-large"
-                                        d="M   0  10
-                                           L   0  40
-                                           L   50  25
-                                           Z"
-                                  />
-                                </Button>
-                              </svg>
-                            </InputGroup>
-                          </Row>
-                        </Col>
-                      </Row>
-                    </Container>
                     </Tab.Pane>
                   </Tab.Content>
                 </Col>
