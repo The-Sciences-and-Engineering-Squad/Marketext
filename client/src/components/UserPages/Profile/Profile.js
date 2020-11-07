@@ -1,4 +1,5 @@
 import React from 'react';
+import Cookies from 'universal-cookie';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -13,8 +14,9 @@ import './Profile.css';
 export default class Profile extends React.Component {
   componentDidMount(){
     // Replace this information with information retrieved from the backend about the user.
+    const cookies = new Cookies();
     this.setState({
-      username: "username",
+      username: cookies.get('username'),
       email: "user@email.com",
       firstName: "FirstName",
       lastName: "LastName",
