@@ -32,6 +32,12 @@ export default class CurrentlyListed extends React.Component {
     };
   }
 
+  handleRemove = (input) => (e) => {
+    e.preventDefault();
+    // Insert Backend to remove the listing from the user.
+    console.log(this.state.textbooks[input]);
+  }
+
   render() {
     return (
       <Container fluid>
@@ -79,7 +85,7 @@ export default class CurrentlyListed extends React.Component {
                             {list.price}
                           </td>
                           <td className="text-center">
-                            <Button variant="danger">
+                            <Button variant="danger" onClick={this.handleRemove(index)}>
                               X
                             </Button>
                           </td>
