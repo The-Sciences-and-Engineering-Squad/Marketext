@@ -32,6 +32,7 @@ export default class Navbar1 extends React.Component {
     e.preventDefault();
     const cookies = new Cookies();
     cookies.remove('username');
+    cookies.remove('Balance')
     window.location.href='/';
   }
   

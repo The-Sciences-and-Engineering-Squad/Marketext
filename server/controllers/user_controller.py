@@ -1,5 +1,6 @@
 from hashlib import md5
 from server.models import user_model
+from server.models import balance_model
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
@@ -30,9 +31,9 @@ def login():
 
         if error is None:
             session.clear()
-            session['user_id'] = user.getUserId()
-
-            return json.dumps({'authenticated': True, 'username': user.getUserName()})
+            session['userId'] = user.getUserId()
+            userBalance = balance_model.BalanceModel(user.getUserId())
+            return json.dumps({'authenticated': True, 'username': user.getUserName(),'Balance': userBalance.getBalance()})
 
         flash(error)
 
@@ -50,6 +51,8 @@ def register():
         
 
         user = user_model.UserModel()
+        userBalance = balance_model.BalanceModel()
+
 
         if user.isExist("userName", username):
             error = 'Username already taken'
@@ -60,6 +63,8 @@ def register():
             user.setEmail(email)
             user.setPassword(password)
             user.insertUser()
+            user.setUser(username)
+            userBalance.initBalance(user.getUserId(),'USD')
             return json.dumps({'registered': True})
 
     return json.dumps({'registered': False, 'error': error})

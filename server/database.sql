@@ -29,7 +29,7 @@ CREATE TABLE Profile(
 
 CREATE TABLE Balance(
     balanceId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    amount INT NOT NULL,
+    amount FLOAT NOT NULL,
     currencyType VARCHAR(255) NOT NULL,
     userId INT NOT NULL,
     FOREIGN KEY (userId) REFERENCES User(userId)
