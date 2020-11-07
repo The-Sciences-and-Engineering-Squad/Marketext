@@ -19,11 +19,20 @@ export default class Message extends React.Component {
     // Insert Backend to retrieve users messages.
     this.setState({ messages: [
       { username: "Kevin",
-        messagesList: [{sender: "Albert", messageBody: "Hi, how much is this book?"},
-                        {sender: "Kevin", messageBody: "It is $25 dollars."}]},
+        messagesList: [
+          {sender: "Albert", messageBody: "Hi, how much is this book?"},
+          {sender: "Kevin", messageBody: "It is $25 dollars."}
+        ],
+        textbook: "Art 100"
+      },
       { username: "Bob",
-        messagesList: [{sender: "Dor", messageBody: "Hey, can you sell this book for $10 off?"},
-                       {sender: "Eddie", messageBody: "No, sorry."}]}]
+        messagesList: [
+          {sender: "Dor", messageBody: "Hey, can you sell this book for $10 off?"},
+          {sender: "Eddie", messageBody: "No, sorry."}
+        ],
+        textbook: "Math 200"
+      }
+    ]
     });
   }
 
@@ -54,7 +63,7 @@ export default class Message extends React.Component {
                       this.state.messages.map((list, index) => (
                         <ListGroup.Item className="messageTab" action eventKey={index} key={index}>
                           <h5 className="past-users-messaged">{list.username}</h5>
-                          <p className="previewText">{list.messagesList[1]["messageBody"]}</p>
+                          <p className="previewText">{list.messagesList[list.messagesList.length-1].messageBody}</p>
                         </ListGroup.Item>
                       ))
                     }
@@ -70,30 +79,32 @@ export default class Message extends React.Component {
                             <h3>{list.username}</h3>
                           </Row>
                           <Row className="message-history p-4">
-                            <Col className="message-board p-4">
-                              <Row>
-                                <h6 className="message-board-heading">  This is the message board regarding Art 1000 Textbook</h6>
-                              </Row>
-                              <Row className="message-board-btns">
-                                <Button variant="danger m-2">
-                                  Manage
-                                </Button>
-                                <Button variant="danger m-2">
-                                  Mark As Completed
-                                </Button>
-                              </Row>
+                            <Col>
+                              <Container className="message-board p-4">
+                                <Row className="justify-content-center">
+                                  <Col xs="auto">
+                                    <h6> This is the message board regarding {list.textbook} Textbook</h6>
+                                  </Col>
+                                </Row>
+                                <Row className="justify-content-center">
+                                  <Button variant="danger" className="m-2">
+                                    Manage
+                                  </Button>
+                                  <Button variant="danger" className="m-2">
+                                    Mark As Completed
+                                  </Button>
+                                </Row>
+                              </Container>
                             </Col>
-                          {
-                            Array.from(list.messagesList).map((list2, i) => (
-                            <Row className="message-sent p-1">
-                              <p className="sender">
-                                {list.messagesList[i]["sender"]}:
-                              </p>
-                              <p className="message-body">
-                                {list.messagesList[i]["messageBody"]}
-                              </p>
-                            </Row>
-                          ))}
+                            {
+                              list.messagesList.map((list2, index2) => (
+                                <Col xs="12" key={index2}>
+                                  <p>
+                                    <b>{list2.sender}:</b> {list2.messageBody}
+                                  </p>
+                                </Col>
+                              ))
+                            }
                           </Row>
                           <Row>
                             <InputGroup>
@@ -108,7 +119,7 @@ export default class Message extends React.Component {
                         </Container>
                       </Tab.Pane>
                     ))
-                    }
+                  }
                   </Tab.Content>
                 </Col>
               </Row>

@@ -20,28 +20,10 @@
   overflow-y:auto;
 }
 
-.sender {
-  font-weight: bold;
-  margin-right: 5px;
-}
-
-.message-received, .message-sent {
-  width: 100%;
-}
-
 .message-board {
   background-color: #DCDCDC;
   width: 80%;
   margin: auto;
-}
-
-.message-board-heading {
-  margin: auto;
-  text-align: center;
-}
-
-.message-board-btns {
-  justify-content: center;
 }
 
 .messageTab:active, .messageTab:focus, .messageTab:hover {
