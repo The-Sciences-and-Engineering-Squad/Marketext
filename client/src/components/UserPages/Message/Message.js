@@ -44,6 +44,23 @@ export default class Message extends React.Component {
     };
   }
 
+  handleManage = (index) => (e) => {
+    e.preventDefault();
+    // Head over to manage page using current messages information
+    this.props.history.push({
+      pathname: 'Message/Manage',
+      state: this.state.messages[index]
+    })
+  }
+
+  handleComplete = (index) => (e) => {
+    e.preventDefault();
+    // Insert Backend to mark this textbook as completed transaction.
+    // Performing a trade, subtracting balance from user and adding it to the other user.
+    // Both have to agree that the transaction has been completed.
+    console.log(this.state.messages[index]);
+  }
+
   render() {
     return (
       <Container fluid>
@@ -87,10 +104,10 @@ export default class Message extends React.Component {
                                   </Col>
                                 </Row>
                                 <Row className="justify-content-center">
-                                  <Button variant="danger" className="m-2">
+                                  <Button variant="danger" className="m-2" onClick={this.handleManage(index)}>
                                     Manage
                                   </Button>
-                                  <Button variant="danger" className="m-2">
+                                  <Button variant="danger" className="m-2" onClick={this.handleComplete(index)}>
                                     Mark As Completed
                                   </Button>
                                 </Row>
