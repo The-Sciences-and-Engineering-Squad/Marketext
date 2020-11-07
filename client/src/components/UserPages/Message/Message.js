@@ -23,14 +23,16 @@ export default class Message extends React.Component {
           {sender: "Albert", messageBody: "Hi, how much is this book?"},
           {sender: "Kevin", messageBody: "It is $25 dollars."}
         ],
-        textbook: "Art 100"
+        textbook: "Art 100",
+        type: "",
       },
       { username: "Bob",
         messagesList: [
           {sender: "Dor", messageBody: "Hey, can you sell this book for $10 off?"},
           {sender: "Eddie", messageBody: "No, sorry."}
         ],
-        textbook: "Math 200"
+        textbook: "Math 200",
+        type: "",
       }
     ]
     });
@@ -59,6 +61,19 @@ export default class Message extends React.Component {
     // Performing a trade, subtracting balance from user and adding it to the other user.
     // Both have to agree that the transaction has been completed.
     console.log(this.state.messages[index]);
+  }
+
+  // Handle field change
+  handleType = (index) => (e) => {
+    var newState = Object.assign({}, this.state);
+    newState.messages[index].type = e.target.value;
+    this.setState(newState);
+  };
+
+  handleSubmit = (index) => (e) => {
+    e.preventDefault();
+    // Insert Backend to Submit this message
+    console.log(this.state.messages[index].type);
   }
 
   render() {
@@ -125,9 +140,9 @@ export default class Message extends React.Component {
                           </Row>
                           <Row>
                             <InputGroup>
-                              <FormControl as="textarea" rows={5} placeholder="Type your message..."/>
+                              <FormControl as="textarea" rows={5} placeholder="Type your message..." value={list.type} onChange={this.handleType(index)}/>
                               <InputGroup.Append>
-                                <Button variant="danger">
+                                <Button variant="danger" type="submit" onClick={this.handleSubmit(index)}>
                                   Send
                                 </Button>
                               </InputGroup.Append>
