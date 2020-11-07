@@ -70,14 +70,18 @@ export default class Message extends React.Component {
                             <h3>{list.username}</h3>
                           </Row>
                           <Row className="message-history p-4">
+
+                          {
+                            Array.from(list.messagesList).map((lst, i) => (
                             <Row className="message-sent p-1">
                               <p className="sender">
-                                {list.messagesList[index]["sender"]}:
+                                {list.messagesList[i]["sender"]}:
                               </p>
                               <p className="message-body">
-                                {list.messagesList[index]["messageBody"]}
+                                {list.messagesList[i]["messageBody"]}
                               </p>
                             </Row>
+                          ))}
                           </Row>
                           <Row>
                             <InputGroup>
