@@ -8,7 +8,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
-import Cookies from 'universal-cookie';
+
 import './Balance.css'
 
 export default class Balance extends React.Component {
