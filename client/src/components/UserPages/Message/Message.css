@@ -16,6 +16,17 @@
 .message-history {
   height: 80vh;
   border: 1px solid #DCDCDC;
+  display: block;
+  overflow-y:auto;
+}
+
+.sender {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.message-received, .message-sent {
+  width: 100%;
 }
 
 .messageTab:active, .messageTab:focus, .messageTab:hover {

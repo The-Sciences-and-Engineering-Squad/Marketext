@@ -18,11 +18,12 @@ export default class Message extends React.Component {
     this.setState({ username: cookies.get('username') });
     // Insert Backend to retrieve users messages.
     this.setState({ messages: [
-      { username: "Kevin", message: "Hello!"},
-      { username: "Bob", message: "Yo!"},
-      { username: "John", message: "Hi!"},
-      { username: "Joe", message: "Hey!"},
-    ] 
+      { username: "Kevin",
+        messagesList: [{sender: "Albert", messageBody: "Hi, how much is this book?"},
+                        {sender: "Kevin", messageBody: "It is $25 dollars."}]},
+      { username: "Bob",
+        messagesList: [{sender: "Dor", messageBody: "Hey, can you sell this book for $10 off?"},
+                       {sender: "Eddie", messageBody: "No, sorry."}]}]
     });
   }
 
@@ -53,7 +54,7 @@ export default class Message extends React.Component {
                       this.state.messages.map((list, index) => (
                         <ListGroup.Item className="messageTab" action eventKey={index} key={index}>
                           <h5 className="past-users-messaged">{list.username}</h5>
-                          <p className="previewText">{list.message}</p>
+                          <p className="previewText">{list.messagesList[1]["messageBody"]}</p>
                         </ListGroup.Item>
                       ))
                     }
@@ -68,10 +69,15 @@ export default class Message extends React.Component {
                           <Row className="message-header px-4">
                             <h3>{list.username}</h3>
                           </Row>
-                          <Row className="message-history">
-                            <p>
-                              {list.message}
-                            </p>
+                          <Row className="message-history p-4">
+                            <Row className="message-sent p-1">
+                              <p className="sender">
+                                {list.messagesList[index]["sender"]}:
+                              </p>
+                              <p className="message-body">
+                                {list.messagesList[index]["messageBody"]}
+                              </p>
+                            </Row>
                           </Row>
                           <Row>
                             <InputGroup>
@@ -85,7 +91,7 @@ export default class Message extends React.Component {
                           </Row>
                         </Container>
                       </Tab.Pane>
-                      ))
+                    ))
                     }
                   </Tab.Content>
                 </Col>
