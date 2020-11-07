@@ -29,6 +29,21 @@
   width: 100%;
 }
 
+.message-board {
+  background-color: #DCDCDC;
+  width: 80%;
+  margin: auto;
+}
+
+.message-board-heading {
+  margin: auto;
+  text-align: center;
+}
+
+.message-board-btns {
+  justify-content: center;
+}
+
 .messageTab:active, .messageTab:focus, .messageTab:hover {
   background-color: #0069B6;
   color: white;

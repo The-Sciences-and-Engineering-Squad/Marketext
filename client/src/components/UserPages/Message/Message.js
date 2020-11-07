@@ -70,9 +70,21 @@ export default class Message extends React.Component {
                             <h3>{list.username}</h3>
                           </Row>
                           <Row className="message-history p-4">
-
+                            <Col className="message-board p-4">
+                              <Row>
+                                <h6 className="message-board-heading">  This is the message board regarding Art 1000 Textbook</h6>
+                              </Row>
+                              <Row className="message-board-btns">
+                                <Button variant="danger m-2">
+                                  Manage
+                                </Button>
+                                <Button variant="danger m-2">
+                                  Mark As Completed
+                                </Button>
+                              </Row>
+                            </Col>
                           {
-                            Array.from(list.messagesList).map((lst, i) => (
+                            Array.from(list.messagesList).map((list2, i) => (
                             <Row className="message-sent p-1">
                               <p className="sender">
                                 {list.messagesList[i]["sender"]}:
