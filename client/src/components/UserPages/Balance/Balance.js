@@ -1,4 +1,5 @@
 import React from 'react';
+import Cookies from 'universal-cookie';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -7,15 +8,14 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
-
+import Cookies from 'universal-cookie';
 import './Balance.css'
 
 export default class Balance extends React.Component {
   componentDidMount(){
     // Replace this information with information retrieved from the backend about the user balance.
-    this.setState({
-      currentBalance: 100,
-    })
+    const cookies = new Cookies();
+    this.setState({ currentBalance: cookies.get('Balance') });
   }
 
   constructor(props) {
@@ -43,6 +43,21 @@ export default class Balance extends React.Component {
     }
     else{
       // Insert backend to add value to user's balance.
+      const data = this.state
+      fetch( '/balance/add',  {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }).then((response) => {
+        return response.json();
+      }).then((response) => {
+        const cookies = new Cookies();
+        cookies.set('Balance', response['newBalance'], { path: '/' });
+        this.setState({ currentBalance: response['newBalance'] });
+        
+      })
       console.log(this.state.addBalance);
     }
     this.setState(newState);
