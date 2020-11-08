@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -53,7 +54,7 @@ export default class CurrentlyListed extends React.Component {
                 </Col>
               </Row>
               <hr />
-              <Row className="py-3">
+              <Row className="py-3 currentlisted-table">
                 <Col xs="12">
                   <Table bordered hover responsive>
                     <thead>
@@ -93,6 +94,11 @@ export default class CurrentlyListed extends React.Component {
                       ))}
                     </tbody>
                   </Table>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Button as={Link} to="/CurrentlyListed/AddNew" block variant="danger">Add New</Button>
                 </Col>
               </Row>
             </Container>
