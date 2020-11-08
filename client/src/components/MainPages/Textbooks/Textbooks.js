@@ -116,7 +116,7 @@ export default class Textbooks extends React.Component {
             </Card>      
           </Col>
         </Row>
-        <Row className="px-4 py-3">
+        <Row className="px-4 py-3 textbooks-table">
           <Col xs="12">
             <Table bordered hover responsive>
               <thead>
