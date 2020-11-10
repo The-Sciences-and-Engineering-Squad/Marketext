@@ -1,13 +1,8 @@
-.center {
-    height: 80%;  /* Fallback for browsers do NOT support vh unit */
-    height: 80vh; /* These two lines are counted as one :-)       */
-    width: 60%;  /* Fallback for browsers do NOT support vh unit */
-    width: 60vh; /* These two lines are counted as one :-)       */
-  
-    display: flex;
-    align-items: center;
-  }
-  
-.container-bg{
-background-color: #0069B6;
+.login-container{
+  min-width: 350px;
+  width: 50%;
+  max-width: 500px;
+  background-color: #0069B6;
+  margin-top: 8vh;
+  margin-bottom: 6vh;
 }
