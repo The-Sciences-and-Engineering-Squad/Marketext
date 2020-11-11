@@ -1,4 +1,6 @@
 from hashlib import md5
+from io import SEEK_CUR
+
 from server.models import user_model
 from server.models import balance_model
 from flask import (
@@ -9,6 +11,10 @@ from flask import current_app
 from flask_mail import Message
 from flask_mail import Mail
 import json
+import jwt
+import datetime
+from server.controllers.token import token_required
+
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -24,7 +30,7 @@ def login():
         password = req['password']
         user = user_model.UserModel()
         user.setUser(username)
-        
+        app = current_app._get_current_object()    
 
         if user.getUserName() is None or user.getPassword() != md5(password.encode('utf-8')).hexdigest():
             error = 'Invalid username or password.'
@@ -32,8 +38,9 @@ def login():
         if error is None:
             session.clear()
             session['userId'] = user.getUserId()
-            userBalance = balance_model.BalanceModel(user.getUserId())
-            return json.dumps({'authenticated': True, 'username': user.getUserName(),'Balance': userBalance.getBalance()})
+            session['username'] = user.getUserName()
+            token = jwt.encode({'userId': user.getUserId(), 'username': user.getUserName(), 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
+            return json.dumps({'authenticated': True, 'token': token.decode('UTF-8')})
 
         flash(error)
 
@@ -101,6 +108,7 @@ def forgot_password():
 
 
 @bp.route('/profile', methods=['GET', 'POST'])
+@token_required
 def profile():
     user = user_model.UserModel()
     return None

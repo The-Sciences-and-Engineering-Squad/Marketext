@@ -2,7 +2,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
+import api from '../../API/api'
 import './Register.css'
 
 export default class Register extends React.Component {
@@ -43,24 +43,11 @@ export default class Register extends React.Component {
     if (newState.errors.length === 0) {
       // Insert Backend Here.
       const data = this.state
-      fetch( '/auth/register',  {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      }).then((response) => {
-        return response.json();
-      }).then((response) => {
-
-        if(response['registered']){
-          this.props.history.push('/Login')
-        }else{
-          this.setState(({errors}) => ({
-            errors: errors.concat(response['error'])
-          }));
-
-        }
+      const API = new api();
+      API.register(data).then(error => {
+        this.setState(({errors}) => ({
+          errors: errors.concat(error)
+        }));
       })
     }
     this.setState(newState);
@@ -68,8 +55,7 @@ export default class Register extends React.Component {
 
   render() {
     return (
-      <div className="center">
-        <Container className="container-bg rounded px-5 py-4 mx-4">
+        <Container className="container-bg register-container rounded px-5 py-4 mx-4">
           <h2 className="text-light text-center">Create Your Account</h2>
           { this.state.errors.length > 0 ?
             this.state.errors.map((error,index) => {
@@ -105,7 +91,6 @@ export default class Register extends React.Component {
             </Button>
           </Form>
         </Container>
-      </div>
     );
   }
 }

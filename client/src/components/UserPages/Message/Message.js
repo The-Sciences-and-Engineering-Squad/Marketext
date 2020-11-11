@@ -15,7 +15,8 @@ import './Message.css'
 export default class Message extends React.Component {
   componentDidMount() {
     const cookies = new Cookies();
-    this.setState({ username: cookies.get('username') });
+    var token = cookies.get('token');
+    console.log(token);
     // Insert Backend to retrieve users messages.
     this.setState({ messages: [
       { username: "Kevin",
@@ -41,8 +42,7 @@ export default class Message extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      messages: [],
+      messages: []
     };
   }
 

@@ -12,15 +12,9 @@ import Button from 'react-bootstrap/Button';
 import './AddNew.css'
 
 export default class AddNew extends React.Component {
-  componentDidMount() {
-    const cookies = new Cookies();
-    this.setState({ username: cookies.get('username') });
-  }
-
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
       title: "",
       author: "",
       edition: "",
@@ -63,6 +57,10 @@ export default class AddNew extends React.Component {
     }
     if (newState.errors.length === 0){
       // Add textbook to database for listing, also make it show up on currently listed for the user.
+      const cookies = new Cookies();
+      var token = cookies.get('token');
+      // Use this user's token to make the post.
+      console.log("token " + token);
       console.log("title: " + title);
       console.log("author: " + author);
       console.log("edition: " + edition);
