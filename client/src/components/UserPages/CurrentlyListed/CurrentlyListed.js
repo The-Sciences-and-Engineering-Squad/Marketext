@@ -13,7 +13,8 @@ import './CurrentlyListed.css'
 export default class CurrentlyListed extends React.Component {
   componentDidMount() {
     const cookies = new Cookies();
-    this.setState({ username: cookies.get('username') });
+    var token = cookies.get('token');
+    console.log(token);
     // Insert Backend to get currently listed for user.
     this.setState({ 
       textbooks: [
@@ -28,7 +29,6 @@ export default class CurrentlyListed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
       textbooks: []
     };
   }

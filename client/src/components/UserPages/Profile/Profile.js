@@ -9,6 +9,7 @@ import Image from 'react-bootstrap/Image';
 import Form from 'react-bootstrap/Form';
 
 import blankProfileImage from '../../../public/BlankProfileImage.png';
+import jwt_decode from "jwt-decode";
 import './Profile.css';
 
 export default class Profile extends React.Component {
@@ -16,7 +17,7 @@ export default class Profile extends React.Component {
     // Replace this information with information retrieved from the backend about the user.
     const cookies = new Cookies();
     this.setState({
-      username: cookies.get('username'),
+      username: jwt_decode(cookies.get('token')).username,
       email: "user@email.com",
       firstName: "FirstName",
       lastName: "LastName",

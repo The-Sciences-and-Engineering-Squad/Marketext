@@ -11,14 +11,16 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Cookies from 'universal-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
-
+import jwt_decode from "jwt-decode";
 import './Navbar1.css'
 // This Navbar is for the Home/Buy/Sell/Trade/Swap Pages.
 
 export default class Navbar1 extends React.Component {
   componentDidMount() {
     const cookies = new Cookies();
-    this.setState({ username: cookies.get('username') });
+    if(cookies.get('token')){
+      this.setState({ username: jwt_decode(cookies.get('token')).username});
+    }
   }
 
   constructor(props) {
@@ -31,8 +33,7 @@ export default class Navbar1 extends React.Component {
   signOut = (e) => {
     e.preventDefault();
     const cookies = new Cookies();
-    cookies.remove('username');
-    cookies.remove('Balance')
+    cookies.remove('token');
     window.location.href='/';
   }
   

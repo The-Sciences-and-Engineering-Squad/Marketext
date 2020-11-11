@@ -2,7 +2,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
+import api from '../../API/api'
 import './ForgotPassword.css'
 
 export default class ForgotPassword extends React.Component {
@@ -30,25 +30,11 @@ export default class ForgotPassword extends React.Component {
     if(newState.errors.length === 0) {
       // Insert Backend Here.
       const data = this.state
-      fetch( '/auth/forgot_password',  {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      }).then((response) => {
-        return response.json();
-      }).then((response) => {
-
-        if(response['userExist']){
-          window.location.href='/Login';
-        }else{
-
-          this.setState(({errors}) => ({
-            errors: errors.concat(response['error'])
-          }));
-
-        }
+      const API = new api();
+      API.forgotPassword(data).then(error => {
+        this.setState(({errors}) => ({
+          errors: errors.concat(error)
+        }));
       })
     }
     this.setState(newState);
