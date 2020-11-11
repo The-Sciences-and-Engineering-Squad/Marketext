@@ -39,8 +39,7 @@ def login():
             session.clear()
             session['userId'] = user.getUserId()
             session['username'] = user.getUserName()
-            userBalance = balance_model.BalanceModel(user.getUserId())
-            token = jwt.encode({'userId': user.getUserId(), 'username': user.getUserName(), 'balance': userBalance.getBalance(), 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
+            token = jwt.encode({'userId': user.getUserId(), 'username': user.getUserName(), 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
             return json.dumps({'authenticated': True, 'token': token.decode('UTF-8')})
 
         flash(error)
