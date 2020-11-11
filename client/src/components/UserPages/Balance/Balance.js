@@ -24,7 +24,6 @@ export default class Balance extends React.Component {
       const API = new api();
       API.getBalance({token: cookies.get('token')}).then( balance => {
         this.setState({ currentBalance: balance });
-        console.log(balance)
       })   
     }
   }
@@ -60,7 +59,6 @@ export default class Balance extends React.Component {
       API.addBalance(data).then( newBalance => {
         this.setState({ currentBalance:  newBalance });
       })
-      console.log(this.state.addBalance);
     }
     this.setState(newState);
   }
