@@ -8,30 +8,22 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
-import jwt_decode from "jwt-decode";
-import './Balance.css'
 import api from '../../API/api'
+import './Balance.css'
+
 export default class Balance extends React.Component {
-
-
-
-
   componentDidMount(){
     // Replace this information with information retrieved from the backend about the user balance.
     const cookies = new Cookies();
-    if(cookies.get('token')){
-      this.setState({token: cookies.get('token')})
-      const API = new api();
-      API.getBalance({token: cookies.get('token')}).then( balance => {
-        this.setState({ currentBalance: balance });
-      })   
-    }
+    const API = new api();
+    API.getBalance({token: cookies.get('token')}).then( balance => {
+      this.setState({ currentBalance: balance });
+    })
   }
 
   constructor(props) {
     super(props);
     this.state = {
-      token: "",
       currentBalance: "",
       addBalance: "",
       subtractBalance: "",
