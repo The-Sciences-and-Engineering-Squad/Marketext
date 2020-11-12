@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cookies from 'universal-cookie';
+import jwt_decode from "jwt-decode";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
@@ -37,8 +38,12 @@ class App extends React.Component {
   componentDidMount() {
     const cookies = new Cookies();
     // Change this to authenticate the user
-    if (cookies.get('username')){
-      this.setState({ authorization: true });
+    // It currently gets the token and check if a username exist.
+    // If it exists then it is an authorized user.
+    if (cookies.get('token')){
+      if(jwt_decode(cookies.get('token')).username){
+        this.setState({ authorization: true });
+      }
     }
   }
 
