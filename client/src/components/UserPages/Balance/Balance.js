@@ -27,6 +27,7 @@ export default class Balance extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      token: "",
       currentBalance: "",
       addBalance: "",
       subtractBalance: "",
