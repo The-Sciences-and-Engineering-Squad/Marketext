@@ -1,0 +1,19 @@
+.manageMessages-forms {
+    background-color: #DCDCDC;
+}
+
+.manageMessages-forms:focus {
+    background-color: white;
+}
+
+.manage-form-container {
+    margin: 48px;
+}
+
+.manage-form {
+    margin-top: 48px;
+}
+
+.confirm-button {
+    margin-top: 24px;
+}
