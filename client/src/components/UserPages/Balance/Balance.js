@@ -69,7 +69,11 @@ export default class Balance extends React.Component {
     }
     else{
       // Insert backend to subtract value from user's balance.
-      console.log(this.state.subtractBalance);
+      const data = this.state
+      const API = new api();
+      API.subBalance(data).then( newBalance => {
+        this.setState({ currentBalance:  newBalance });
+      })
     }
     this.setState(newState);
   }

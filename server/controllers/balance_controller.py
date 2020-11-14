@@ -22,8 +22,10 @@ def balance_add():
 @bp.route('/sub',methods=['GET', 'POST'])
 @token_required
 def balance_sub():
-    balance = balance_model.BalanceModel()
-    return None
+    req = request.json
+    balance = balance_model.BalanceModel(session['userId'])
+    balance.subBalance(req['subtractBalance'])
+    return json.dumps({'newBalance': balance.getBalance()})
 
 @bp.route('/getBalance',methods=['GET', 'POST'])
 @token_required

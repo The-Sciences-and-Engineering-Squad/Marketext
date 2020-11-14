@@ -43,6 +43,7 @@ CREATE TABLE CurrentlyListed (
     `condition` VARCHAR(255) NOT NULL,
     userId INT NOT NULL,
     ISBN INT NOT NULL,
+    additional VARCHAR(255) NOT NULL,
     FOREIGN KEY (userId) REFERENCES User(userId)
 );
 

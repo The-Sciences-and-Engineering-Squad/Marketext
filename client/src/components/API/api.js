@@ -31,6 +31,18 @@ export default class API {
     return response_1['newBalance'];
   }
 
+  async subBalance(data){
+    const response = await fetch('/balance/sub', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    const response_1 = await response.json();
+    return response_1['newBalance'];
+  }
+
   async getBalance(data){
     const response = await fetch('/balance/getBalance', {
       method: 'POST',
@@ -74,4 +86,23 @@ export default class API {
       return response_1['error'];
     }
   }
+
+
+  async addTextBooks(data){
+    const response = await fetch('/auth/forgot_password', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+        body: JSON.stringify(data),
+      });
+    const response_1 = await response.json();
+    if (response_1['userExist']) {
+      window.location.href = '/Login';
+    } else {
+      return response_1['error'];
+    }
+  }
+
 }
+
