@@ -20,19 +20,25 @@ export default class Message extends React.Component {
     // Insert Backend to retrieve users messages.
     this.setState({ messages: [
       { username: "Kevin",
+        id: 3,
         messagesList: [
           {sender: "Albert", messageBody: "Hi, how much is this book?"},
           {sender: "Kevin", messageBody: "It is $25 dollars."}
         ],
         textbook: "Art 100",
+        category: "Sell",
+        price: "$100",
         type: "",
       },
       { username: "Bob",
+        id: 20,
         messagesList: [
           {sender: "Dor", messageBody: "Hey, can you sell this book for $10 off?"},
           {sender: "Eddie", messageBody: "No, sorry."}
         ],
         textbook: "Math 200",
+        category: "Buy",
+        price: "$200",
         type: "",
       }
     ]
