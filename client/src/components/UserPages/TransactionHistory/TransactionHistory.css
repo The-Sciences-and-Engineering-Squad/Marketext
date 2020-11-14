@@ -1,0 +1,5 @@
+.transaction-table {
+  max-height: 75vh;
+  display: block;
+  overflow-y: auto;
+}
