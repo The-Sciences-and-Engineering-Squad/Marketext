@@ -4,7 +4,6 @@ import {
   Switch,
   Route,
   withRouter,
-  Redirect
 } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cookies from 'universal-cookie';
@@ -30,6 +29,7 @@ import Manage from './components/UserPages/Manage/Manage';
 import CurrentlyListed from './components/UserPages/CurrentlyListed/CurrentlyListed';
 import AddNew from './components/UserPages/AddNew/AddNew';
 import TransactionHistory from './components/UserPages/TransactionHistory/TransactionHistory';
+import NoAccess from './components/Others/NoAccess';
 import Footer from './components/Footer/Footer';
 import './App.css';
 
@@ -84,17 +84,17 @@ class App extends React.Component {
               <Route exact path="/Swap" component={Swap} />
               <Route exact path="/Swap/:id" component={Textbooks} />
               {/* AccessPages */}
-              <Route path="/Login" render={ this.state.authorization ? () => <meta http-equiv="refresh" content="0; url=/" /> : () => <Login /> } />
-              <Route path="/Register" render={ this.state.authorization ? () => <meta http-equiv="refresh" content="0; url=/" /> : () => <Register /> } />
-              <Route path="/ForgotPassword" render={ this.state.authorization ? () => <meta http-equiv="refresh" content="0; url=/" /> : () => <ForgotPassword /> } />
+              <Route path="/Login" render={ this.state.authorization ? () => <NoAccess /> : () => <Login /> } />
+              <Route path="/Register" render={ this.state.authorization ? () => <NoAccess /> : () => <Register /> } />
+              <Route path="/ForgotPassword" render={ this.state.authorization ? () => <NoAccess /> : () => <ForgotPassword /> } />
               {/* UserPages */}
-              <Route path="/Profile" render={ this.state.authorization ? () => <Profile /> : () => <Redirect to="/" /> } />
-              <Route path="/Balance" render={ this.state.authorization ? () => <Balance /> : () => <Redirect to="/" /> } />
-              <Route exact path="/Message" render={ this.state.authorization ? () => <Message /> : () => <Redirect to="/" /> } />
-              <Route exact path="/Message/Manage" render={ this.state.authorization ? () => <Manage /> : () => <Redirect to="/" /> } />
-              <Route exact path="/CurrentlyListed" render={ this.state.authorization ? () => <CurrentlyListed /> : () => <Redirect to="/" /> } />
-              <Route exact path="/CurrentlyListed/AddNew" render={ this.state.authorization ? () => <AddNew /> : () => <Redirect to="/" /> } />
-              <Route path="/TransactionHistory" render={ this.state.authorization ? () => <TransactionHistory /> : () => <Redirect to="/" /> } />
+              <Route path="/Profile" render={ this.state.authorization ? () => <Profile /> : () => <NoAccess /> } />
+              <Route path="/Balance" render={ this.state.authorization ? () => <Balance /> : () => <NoAccess /> } />
+              <Route exact path="/Message" render={ this.state.authorization ? (props) => <Message {...props} /> : () => <NoAccess /> } />
+              <Route exact path="/Message/Manage" render={ this.state.authorization ? (props) => <Manage {...props} /> : () => <NoAccess /> } />
+              <Route exact path="/CurrentlyListed" render={ this.state.authorization ? () => <CurrentlyListed /> : () => <NoAccess /> } />
+              <Route exact path="/CurrentlyListed/AddNew" render={ this.state.authorization ? () => <AddNew /> : () => <NoAccess /> } />
+              <Route path="/TransactionHistory" render={ this.state.authorization ? () => <TransactionHistory /> : () => <NoAccess /> } />
               {/* HomePage */}
               <Route exact path="/" component={Home} />
             </Switch>
