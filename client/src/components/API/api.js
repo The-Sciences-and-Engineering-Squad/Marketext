@@ -19,6 +19,8 @@ export default class API {
     }
   }
 
+
+
   async addBalance(data){
     const response = await fetch('/balance/add', {
       method: 'POST',
@@ -132,6 +134,30 @@ export default class API {
        let bookInfo = { 'title': title, 'subtitle': subtitle, ' authors': authors };
        return bookInfo;
      }
+  }
+
+  async showList(data){
+    const response = await fetch('/currently/showList', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+        body: JSON.stringify(data),
+      });
+    const response_1 = await response.json();
+    return response_1['booksListed']
+  }
+
+  async getUserName(id){
+    const response = await fetch('/auth/getUserName', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(id),
+    });
+    const response_1 = await response.json();
+    return response_1['username'];
   }
 
 }

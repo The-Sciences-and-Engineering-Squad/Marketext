@@ -113,3 +113,8 @@ def profile():
     user = user_model.UserModel()
     return None
 
+@bp.route('/getUserName', methods=['GET', 'POST'])
+def getUserName():
+    req = request.json
+    user = user_model.UserModel(req['userId'])
+    return json.dumps({'username': user.getUserName()})

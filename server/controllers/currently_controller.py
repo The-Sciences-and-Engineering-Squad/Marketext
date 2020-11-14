@@ -42,3 +42,11 @@ def userList():
     currently = currently_model.CurrentlyModel(session['userId'])
 
     return json.dumps({'books': currently.userList()})
+
+@bp.route('/showList',methods=['GET', 'POST'])
+def showListing():
+    currently = currently_model.CurrentlyModel()
+    req = request.json
+    print(currently.showListing(req['ISBN'],req['page']))
+    return json.dumps({'booksListed': currently.showListing(req['ISBN'],req['page'])})
+

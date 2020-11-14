@@ -52,11 +52,11 @@ class CurrentlyModel:
         return self.books
         
     def addListing(self):
-        self.dataCur.execute('INSERT INTO CurrentlyListed(category,price,`condition`,userId,ISBN,additional) VALUES (' +  "'" + self.category + "'," +  "'" + self.price + "'," +  "'" + self.condition + "'," + "'" + str(self.userId) +  "'," + "'" + str(self.isbn) + "',"  +  "'" + self.additional + "'" + ')')
+        self.dataCur.execute('INSERT INTO CurrentlyListed(category,price,`condition`,userId,ISBN,additional) VALUES (' +  "'" + self.category.lower() + "'," +  "'" + self.price + "'," +  "'" + self.condition + "'," + "'" + str(self.userId) +  "'," + "'" + str(self.isbn) + "',"  +  "'" + self.additional + "'" + ')')
         self.database.commit()
 
     def showListing(self,ISBN,category):
-        self.dataCur.execute('SELECT * FROM CurrentlyListed WHERE ISBN = ' + "'" + str(ISBN) + "'" + ' AND category = ' + "'" + str(category))
+        self.dataCur.execute('SELECT * FROM CurrentlyListed WHERE ISBN = ' + "'" + str(ISBN) + "'" + ' AND category = ' + "'" + str(category) + "'")
         results = self.dataCur.fetchall()
         return results
 
