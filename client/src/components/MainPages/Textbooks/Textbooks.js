@@ -7,17 +7,23 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-
+import api from '../../API/api'
 import './Textbooks.css'
 
 export default class Textbooks extends React.Component {
   componentDidMount() {
     const { id } = this.props.match.params;
+    const path = window.location.pathname.split('/')
+    const page = path[1];
+    this.setState({ page: page })
+    let data = null
+    const API = new api();
     fetch(`https://www.googleapis.com/books/v1/volumes/${id}`)
     .then(response => response.json())
     .then(result => {
       if(result.items !== null){
         let hasISBN = result.volumeInfo.industryIdentifiers;
+        data = {page: page, ISBN: result.volumeInfo.industryIdentifiers[1]['identifier']}
         this.setState({ textbook: {
           title: result.volumeInfo.title,
           author: result.volumeInfo.authors, 
@@ -27,26 +33,22 @@ export default class Textbooks extends React.Component {
         }
         })
       }
-    })
-    const path = window.location.pathname.split('/')
-    const page = path[1];
-    this.setState({ page: page });
-
-    // Insert Backend of list of buyers/sellers/traders/swappers based on page.
-    // Use the const page to know what page you're on.
-
-    this.setState({ 
-      users: [
-        {username: "Kevin", condition: "worn", additional: "Used Only Once", payment: "$100"},
-        {username: "Andy", condition: "new", additional: "New opened", payment: "$200"},
-        {username: "Jill", condition: "old", additional: "", payment: "$50"},
-      ]
+      API.showList(data).then(list => {
+        let listBooks = []
+        for(let i = 0;i < list.length;i++){
+            API.getUserName({userId: list[i]['userId']}).then(username => {
+              listBooks.push({username: username, condition: list[i]['condition'], additional: list[i]['additional'], payment: list[i]['price']})
+              this.setState({ users: listBooks})
+            })
+        }  
+      })
     })
   }
 
   constructor(props) {
     super(props);
     this.state = {
+      token: "",
       page: "",
       textbook: {},
       users: [],

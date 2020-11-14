@@ -19,6 +19,8 @@ export default class API {
     }
   }
 
+
+
   async addBalance(data){
     const response = await fetch('/balance/add', {
       method: 'POST',
@@ -89,7 +91,7 @@ export default class API {
 
 
   async addTextBooks(data){
-    const response = await fetch('/auth/forgot_password', {
+    const response = await fetch('/currently/add', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -97,11 +99,65 @@ export default class API {
         body: JSON.stringify(data),
       });
     const response_1 = await response.json();
-    if (response_1['userExist']) {
-      window.location.href = '/Login';
+    if (response_1['Added']) {
+      window.location.href = '/CurrentlyListed';
     } else {
       return response_1['error'];
     }
+  }
+
+  async getUserList(data){
+    const response = await fetch('/currently/userList', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+        body: JSON.stringify(data),
+      });
+    const response_1 = await response.json();
+    return response_1['books']
+  }
+
+   async getBookDetails(isbn) {
+
+
+    const response = await fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn);
+     const result = await response.json();
+     if (result.items !== null) {
+       let book = result.items[0];
+
+       let title = (book["volumeInfo"]["title"]);
+       let subtitle = (book["volumeInfo"]["subtitle"]);
+       let authors = (book["volumeInfo"]["authors"]);
+
+
+       let bookInfo = { 'title': title, 'subtitle': subtitle, ' authors': authors };
+       return bookInfo;
+     }
+  }
+
+  async showList(data){
+    const response = await fetch('/currently/showList', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+        body: JSON.stringify(data),
+      });
+    const response_1 = await response.json();
+    return response_1['booksListed']
+  }
+
+  async getUserName(id){
+    const response = await fetch('/auth/getUserName', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(id),
+    });
+    const response_1 = await response.json();
+    return response_1['username'];
   }
 
 }

@@ -6,24 +6,28 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-
+import api from '../../API/api'
 import Sidebar from '../../Sidebar/Sidebar';
 import './CurrentlyListed.css'
 
 export default class CurrentlyListed extends React.Component {
   componentDidMount() {
     const cookies = new Cookies();
-    var token = cookies.get('token');
-    console.log(token);
+    let tokens = {token: cookies.get('token')};
     // Insert Backend to get currently listed for user.
-    this.setState({ 
-      textbooks: [
-        {title: "Java", category: "Sell", price: "$100"},
-        {title: "Math", category: "Buy", price: "$120"},
-        {title: "English", category: "Trade", price: "$10 + Math"},
-        {title: "Engineering", category: "Swap", price: "$10 + English"},
-      ]
+    const API = new api();
+    let listBooks = []
+    API.getUserList(tokens).then( books => {
+      for(let i = 0; i < books.length; i++){
+          API.getBookDetails(books[i]['ISBN']).then(booksInfo => {
+            listBooks.push({title: booksInfo['title'], category: books[i]['category'],price: books[i]['price']})
+            this.setState({ 
+              textbooks: listBooks
+            })
+          }) 
+      }
     })
+    
   }
 
   constructor(props) {

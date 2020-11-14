@@ -39,7 +39,7 @@ def login():
             session.clear()
             session['userId'] = user.getUserId()
             session['username'] = user.getUserName()
-            token = jwt.encode({'userId': user.getUserId(), 'username': user.getUserName(), 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
+            token = jwt.encode({'userId': user.getUserId(), 'username': user.getUserName(), 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=50)}, app.config['SECRET_KEY'])
             return json.dumps({'authenticated': True, 'token': token.decode('UTF-8')})
 
         flash(error)
@@ -113,3 +113,8 @@ def profile():
     user = user_model.UserModel()
     return None
 
+@bp.route('/getUserName', methods=['GET', 'POST'])
+def getUserName():
+    req = request.json
+    user = user_model.UserModel(req['userId'])
+    return json.dumps({'username': user.getUserName()})

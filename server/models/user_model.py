@@ -16,7 +16,7 @@ class UserModel:
         self.email = None
 
         if userId is not None:
-            self.dataCur.execute('SELECT * FROM User WHERE userId = ' + "'" + userId + "'" )
+            self.dataCur.execute('SELECT * FROM User WHERE userId = ' + "'" + str(userId) + "'" )
             results = self.dataCur.fetchone()
             if results:
                 self.userId =  results['userId']
