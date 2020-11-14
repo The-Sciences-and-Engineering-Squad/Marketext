@@ -67,12 +67,15 @@ export default class Balance extends React.Component {
     if (this.state.subtractBalance < 0){
       newState.errors.push("$" + this.state.subtractBalance + " Is A Negative Deposit. Please Enter A Correct Amount To Deposit!");
     }
+    else if(this.state.currentBalance - this.state.subtractBalance < 0){
+      newState.errors.push("You Will have $" + this.state.currentBalance - this.state.subtractBalance + " After This Deposit, Which Is Not Possible. Please Enter An Appropriate Amount To Deposit!");
+    }
     else{
       // Insert backend to subtract value from user's balance.
-      const data = this.state
+      const data = this.state;
       const API = new api();
       API.subBalance(data).then( newBalance => {
-        this.setState({ currentBalance:  newBalance });
+        this.setState({ currentBalance: newBalance });
       })
     }
     this.setState(newState);
