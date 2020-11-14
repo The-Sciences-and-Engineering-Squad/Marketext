@@ -15,9 +15,6 @@ export default class AddNew extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "",
-      author: "",
-      edition: "",
       ISBN: "",
       condition: "",
       category: "",
@@ -40,20 +37,20 @@ export default class AddNew extends React.Component {
   // eventually api call to call the backend
   handleSubmit = (e) => {
     e.preventDefault();
-    const { title, author, edition, ISBN, condition, category, price, additionalInformation } = this.state;
+    const { ISBN, condition, category, price, additionalInformation } = this.state;
     var newState = Object.assign({}, this.state);
     newState.errors = [];
-    if ((title === "" || author === "") && ISBN === "") {
-      newState.errors.push("Please Input a Textbook by title and author or ISBN");
+    if (ISBN.length < 13){
+      newState.errors.push("Please Input the ISBN-13. 13 Characters for the ISBN.");
     }
     if (condition === ""){
-      newState.errors.push("Please Input the Textbook Condition");
+      newState.errors.push("Please Input the Textbook Condition.");
     }
     if (category === ""){
-      newState.errors.push("Please Select a Category ");
+      newState.errors.push("Please Select a Category. See FAQ for Help.");
     }
     if (price === ""){
-      newState.errors.push("Please Enter the Textbook Condition");
+      newState.errors.push("Please Enter the Price for the Textbook. See FAQ for Help.");
     }
     if (newState.errors.length === 0){
       // Add textbook to database for listing, also make it show up on currently listed for the user.
@@ -61,9 +58,6 @@ export default class AddNew extends React.Component {
       var token = cookies.get('token');
       // Use this user's token to make the post.
       console.log("token " + token);
-      console.log("title: " + title);
-      console.log("author: " + author);
-      console.log("edition: " + edition);
       console.log("ISBN: " + ISBN);
       console.log("condition: " + condition);
       console.log("category: " + category);
@@ -103,23 +97,9 @@ export default class AddNew extends React.Component {
                   }
                   <Form onSubmit={this.handleSubmit}>
                     <Form.Row>
-                      <Form.Group as={Col} xs="12" md="5" controlId="formTextbook">
-                        <Form.Label>Textbook Title:</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Textbook Title" value={this.state.title} onChange={this.handleChange("title")}/>
-                      </Form.Group>
-                      <Form.Group as={Col} xs="12" md="5" controlId="formAuthor">
-                        <Form.Label>Author:</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Author" value={this.state.author} onChange={this.handleChange("author")}/>
-                      </Form.Group>
-                      <Form.Group as={Col} xs="12" md="2" controlId="formEdition">
-                        <Form.Label>Edition:</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Edition" value={this.state.edition} onChange={this.handleChange("edition")}/>
-                      </Form.Group>
-                    </Form.Row>
-                    <Form.Row>
                       <Form.Group as={Col} xs="12" md="6" controlId="formISBN">
-                        <Form.Label>ISBN:</Form.Label>
-                        <Form.Control type="text" placeholder="Enter ISBN" value={this.state.ISBN} onChange={this.handleChange("ISBN")}/>
+                        <Form.Label>ISBN-13: <span className="text-red">*</span></Form.Label>
+                        <Form.Control type="text" placeholder="Enter ISBN" maxLength="13" value={this.state.ISBN} onChange={this.handleChange("ISBN")}/>
                       </Form.Group>
                       <Form.Group as={Col} xs="12" md="6" controlId="formCondition">
                         <Form.Label>Condition: <span className="text-red">*</span></Form.Label>
@@ -189,8 +169,8 @@ export default class AddNew extends React.Component {
                             Do I have to fill in everything in the forms?
                           </h5>
                           <p>
-                            No, you do not. You just have to fill in the required fields as well as adding in a textbook either by title and author or ISBN. <br/>
-                            For better accuracy for finding your textbook, it would help if you fill in everything.
+                            No, you do not. You just have to fill in the required fields.<br/>
+                            Make sure you input the correct ISBN-13. The ISBN should have 13 characters.
                           </p>
                         </Card.Body>
                       </Accordion.Collapse>
