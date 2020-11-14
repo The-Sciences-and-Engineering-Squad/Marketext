@@ -8,13 +8,20 @@ import Form from 'react-bootstrap/Form';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-
+import api from '../../API/api'
 import './AddNew.css'
 
 export default class AddNew extends React.Component {
+
+  componentDidMount(){
+    const cookies = new Cookies();
+    this.setState({ token:  cookies.get('token') });
+  }
+
   constructor(props) {
     super(props);
     this.state = {
+      token: "",
       ISBN: "",
       condition: "",
       category: "",
@@ -54,15 +61,13 @@ export default class AddNew extends React.Component {
     }
     if (newState.errors.length === 0){
       // Add textbook to database for listing, also make it show up on currently listed for the user.
-      const cookies = new Cookies();
-      var token = cookies.get('token');
-      // Use this user's token to make the post.
-      console.log("token " + token);
-      console.log("ISBN: " + ISBN);
-      console.log("condition: " + condition);
-      console.log("category: " + category);
-      console.log("price: " + price);
-      console.log("additionalInformation: " + additionalInformation);
+      const data = this.state
+      const API = new api();
+      API.addTextBooks(data).then( error => {
+        this.setState(({errors}) => ({
+          errors: errors.concat(error)
+        }));
+      })
     }
     this.setState(newState);
   };
