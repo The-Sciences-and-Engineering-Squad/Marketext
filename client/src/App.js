@@ -11,6 +11,7 @@ import jwt_decode from "jwt-decode";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
+import ScrollToTop from './components/Others/ScrollToTop';
 import Navbar1 from './components/Navbar1/Navbar1';
 import Navbar2 from './components/Navbar2/Navbar2';
 import Home from './components/MainPages/Home/Home';
@@ -70,6 +71,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
+        <ScrollToTop />
         {this.changeNav(this.props.location.pathname.toLowerCase())}
         <Container fluid>
           <Row className="justify-content-center">
