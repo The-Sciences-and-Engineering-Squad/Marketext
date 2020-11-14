@@ -1,5 +1,4 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -10,17 +9,21 @@ export default class NoAccess extends React.Component {
   }
 
   componentDidMount() {
-    this.id = setTimeout(() => this.setState({ redirect: true }), 5000)
+    this.id = setTimeout(() => this.setState({ redirect: true }), 3000)
   }
 
   componentWillUnmount() {
     clearTimeout(this.id)
   }
 
+  change() {
+    window.location.href = "/";
+  }
+
   render(){
     return (
       this.state.redirect ?
-      <Redirect to="/" />
+      this.change()
       :
       <Container fluid>
         <Row className="m-4 justify-content-center">
