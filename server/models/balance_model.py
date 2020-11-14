@@ -24,6 +24,11 @@ class BalanceModel:
         self.dataCur.execute('UPDATE Balance Set amount = ' + "'" + self.amount + "'" + "WHERE userId = " + "'" + str(self.userId) + "'")
         self.database.commit()
 
+    def subBalance(self,balance):
+        self.amount = str(float(self.amount) - float(balance))
+        self.dataCur.execute('UPDATE Balance Set amount = ' + "'" + self.amount + "'" + "WHERE userId = " + "'" + str(self.userId) + "'")
+        self.database.commit()
+
     def getBalance(self):
         return self.amount
 
