@@ -9,7 +9,6 @@ import Table from 'react-bootstrap/Table';
 import './TransactionHistory.css'
 
 export default class TransactionHistory extends React.Component {
-
   componentDidMount() {
     const cookies = new Cookies();
     var token = cookies.get('token');
@@ -41,10 +40,10 @@ export default class TransactionHistory extends React.Component {
             <Sidebar/>
           </Col>
           <Col xs="8" sm="9" md="10">
-          <Container fluid>
+            <Container fluid>
               <Row className="mt-4 justify-content-center">
                 <Col xs="auto">
-                  <h3>Your Transaction History:</h3>
+                  <h3>Your Transaction History</h3>
                 </Col>
               </Row>
               <hr />
