@@ -3,9 +3,12 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  withRouter
+  withRouter,
+  Redirect
 } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Cookies from 'universal-cookie';
+import jwt_decode from "jwt-decode";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
@@ -32,6 +35,24 @@ import './App.css';
 
 
 class App extends React.Component {
+  componentDidMount() {
+    const cookies = new Cookies();
+    // Change this to authenticate the user
+    // It currently gets the token and check if a username exist.
+    // If it exists then it is an authorized user.
+    if (cookies.get('token')){
+      if(jwt_decode(cookies.get('token')).username){
+        this.setState({ authorization: true });
+      }
+    }
+  }
+
+  constructor() {
+    super();
+    this.state = {
+      authorization: false,
+    };
+  }
 
   // Add navbar here correspoding to there pages. if need a new case add it with the correct path 
   changeNav = (path) => {
@@ -53,6 +74,7 @@ class App extends React.Component {
         <Container fluid>
           <Row className="justify-content-center">
             <Switch>
+              {/* MainPages */}
               <Route exact path="/Buy" component={Buy} />
               <Route exact path="/Buy/:id" component={Textbooks} />
               <Route exact path="/Sell" component={Sell} />
@@ -61,16 +83,19 @@ class App extends React.Component {
               <Route exact path="/Trade/:id" component={Textbooks} />
               <Route exact path="/Swap" component={Swap} />
               <Route exact path="/Swap/:id" component={Textbooks} />
-              <Route path="/Login" component={Login} />
-              <Route path="/Register" component={Register} />
-              <Route path="/ForgotPassword" component={ForgotPassword} />
-              <Route path="/Profile" component={Profile} />
-              <Route path="/Balance" component={Balance} />
-              <Route exact path="/Message" component={Message} />
-              <Route exact path="/Message/Manage" component={Manage} />
-              <Route exact path="/CurrentlyListed" component={CurrentlyListed} />
-              <Route exact path="/CurrentlyListed/AddNew" component={AddNew} />
-              <Route path="/TransactionHistory" component={TransactionHistory} />
+              {/* AccessPages */}
+              <Route path="/Login" render={ this.state.authorization ? () => <meta http-equiv="refresh" content="0; url=/" /> : () => <Login /> } />
+              <Route path="/Register" render={ this.state.authorization ? () => <meta http-equiv="refresh" content="0; url=/" /> : () => <Register /> } />
+              <Route path="/ForgotPassword" render={ this.state.authorization ? () => <meta http-equiv="refresh" content="0; url=/" /> : () => <ForgotPassword /> } />
+              {/* UserPages */}
+              <Route path="/Profile" render={ this.state.authorization ? () => <Profile /> : () => <Redirect to="/" /> } />
+              <Route path="/Balance" render={ this.state.authorization ? () => <Balance /> : () => <Redirect to="/" /> } />
+              <Route exact path="/Message" render={ this.state.authorization ? () => <Message /> : () => <Redirect to="/" /> } />
+              <Route exact path="/Message/Manage" render={ this.state.authorization ? () => <Manage /> : () => <Redirect to="/" /> } />
+              <Route exact path="/CurrentlyListed" render={ this.state.authorization ? () => <CurrentlyListed /> : () => <Redirect to="/" /> } />
+              <Route exact path="/CurrentlyListed/AddNew" render={ this.state.authorization ? () => <AddNew /> : () => <Redirect to="/" /> } />
+              <Route path="/TransactionHistory" render={ this.state.authorization ? () => <TransactionHistory /> : () => <Redirect to="/" /> } />
+              {/* HomePage */}
               <Route exact path="/" component={Home} />
             </Switch>
           </Row>
