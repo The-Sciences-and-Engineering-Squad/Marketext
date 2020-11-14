@@ -1,0 +1,7 @@
+.manageMessages-forms {
+    background-color: #DCDCDC;
+}
+
+.manageMessages-forms:focus {
+    background-color: white;
+}
