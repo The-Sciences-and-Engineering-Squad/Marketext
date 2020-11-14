@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -12,16 +13,11 @@ import api from '../../API/api'
 import './AddNew.css'
 
 export default class AddNew extends React.Component {
-
-  componentDidMount(){
-    const cookies = new Cookies();
-    this.setState({ token:  cookies.get('token') });
-  }
-
   constructor(props) {
     super(props);
+    const cookies = new Cookies();
     this.state = {
-      token: "",
+      token: cookies.get('token'),
       ISBN: "",
       condition: "",
       category: "",
@@ -36,15 +32,10 @@ export default class AddNew extends React.Component {
     this.setState({ [input]: e.target.value });
   };
 
-  handleBack = (e) => {
-    e.preventDefault();
-    this.props.history.push('/CurrentlyListed');
-  }
-
   // eventually api call to call the backend
   handleSubmit = (e) => {
     e.preventDefault();
-    const { ISBN, condition, category, price, additionalInformation } = this.state;
+    const { ISBN, condition, category, price } = this.state;
     var newState = Object.assign({}, this.state);
     newState.errors = [];
     if (ISBN.length < 13){
@@ -61,7 +52,7 @@ export default class AddNew extends React.Component {
     }
     if (newState.errors.length === 0){
       // Add textbook to database for listing, also make it show up on currently listed for the user.
-      const data = this.state
+      const data = this.state;
       const API = new api();
       API.addTextBooks(data).then( error => {
         this.setState(({errors}) => ({
@@ -83,7 +74,7 @@ export default class AddNew extends React.Component {
             <Container fluid>
               <Row className="mt-4">
                 <Col xs="12" sm="4">
-                  <Button variant="danger" onClick={this.handleBack}>Back</Button>
+                  <Button as={Link} to="/CurrentlyListed" variant="danger">Back</Button>
                 </Col>
                 <Col xs="12" sm="8">
                   <h3>Add a Textbook To Your Listing</h3>

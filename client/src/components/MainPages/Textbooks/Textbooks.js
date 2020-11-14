@@ -9,18 +9,15 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import api from '../../API/api'
 import './Textbooks.css'
-import Cookies from 'universal-cookie';
 
 export default class Textbooks extends React.Component {
   componentDidMount() {
     const { id } = this.props.match.params;
-    const cookies = new Cookies();
     const path = window.location.pathname.split('/')
     const page = path[1];
+    this.setState({ page: page })
     let data = null
     const API = new api();
-    console.log(this.state)
-
     fetch(`https://www.googleapis.com/books/v1/volumes/${id}`)
     .then(response => response.json())
     .then(result => {
@@ -34,10 +31,7 @@ export default class Textbooks extends React.Component {
           description: result.volumeInfo.description,
           ISBN: hasISBN !== undefined ? result.volumeInfo.industryIdentifiers:null, 
         }
-
-        
         })
-
       }
       API.showList(data).then(list => {
         let listBooks = []
@@ -46,7 +40,6 @@ export default class Textbooks extends React.Component {
               listBooks.push({username: username, condition: list[i]['condition'], additional: list[i]['additional'], payment: list[i]['price']})
               this.setState({ users: listBooks})
             })
-            
         }  
       })
     })
