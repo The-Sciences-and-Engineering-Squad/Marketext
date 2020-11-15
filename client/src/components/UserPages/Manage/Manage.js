@@ -22,6 +22,7 @@ export default class Manage extends React.Component {
       textbook: props.location.state.textbook,
       category: props.location.state.category,
       price: props.location.state.price,
+      errors: [],
     };
   }
   

@@ -26,8 +26,19 @@ export default class Navbar1 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      navExpanded: false,
       username: undefined,
     };
+    this.setNavExpanded = this.setNavExpanded.bind(this)
+  }
+
+  setNavExpanded(expanded) {
+    this.setState({ navExpanded: expanded });
+  }
+
+  closeNav = (e) => {
+    e.preventDefault();
+    this.setState({ navExpanded: false });
   }
 
   signOut = (e) => {
@@ -40,7 +51,7 @@ export default class Navbar1 extends React.Component {
   render(){
     // This is what you need to use to get the cookies!
     return (
-      <Navbar expand="lg" sticky="top">
+      <Navbar expand="lg" sticky="top" onToggle={this.setNavExpanded} expanded={this.state.navExpanded}>
         <Navbar.Brand as={Link} to="/" className="nav-basic">
           <img
             alt=""
@@ -53,7 +64,7 @@ export default class Navbar1 extends React.Component {
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
-          <Nav className="nav m-auto">
+          <Nav className="nav m-auto" onClick={this.closeNav}>
             <Nav.Link as={NavLink} exact to="/" className="nav-basic" style={{ marginRight: 30, marginLeft: 30 }}>Home</Nav.Link>
             <Nav.Link as={NavLink} to="/Buy" className="nav-basic" style={{ marginRight: 30, marginLeft: 30 }}>Buy</Nav.Link>
             <Nav.Link as={NavLink} to="/Sell" className="nav-basic" style={{ marginRight: 30, marginLeft: 30 }}>Sell</Nav.Link>
@@ -61,7 +72,7 @@ export default class Navbar1 extends React.Component {
             <Nav.Link as={NavLink} to="/Swap" className="nav-basic" style={{ marginRight: 30, marginLeft: 30 }}>Swap</Nav.Link>
           </Nav>
           {this.state.username ?
-            <Nav>
+            <Nav onClick={this.closeNav}>
               <Dropdown>
                 <Dropdown.Toggle className="dropdown-background">
                   <FontAwesomeIcon size="lg" icon={faUserCircle} />
