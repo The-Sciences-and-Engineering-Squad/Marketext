@@ -28,10 +28,10 @@ export default class Searchbar extends React.Component {
       fetch('https://www.googleapis.com/books/v1/volumes?q=' + this.state.search + '&projection=full&printType=books&orderBy=newest&maxResults=40' )
       .then(response => response.json())
       .then(result => {
-        if(result.items != null){
+        if(result.items !== null){
           var textbooks = [];
           for(let i=0;i<result.items.length;i++){
-            if (result.items[i].volumeInfo.imageLinks == null ){
+            if (result.items[i].volumeInfo.imageLinks === null ){
               continue;
             }
             textbooks = textbooks.concat({
@@ -50,19 +50,20 @@ export default class Searchbar extends React.Component {
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
-      <InputGroup className="searchbar pt-4">
-        <FormControl
-          placeholder="Search by ISBN, Title or Author's Name"
-          aria-label="Search by ISBN, Title or Author's Name"
-          aria-describedby="TextbookSearch"
-          value={this.state.search}
-          onChange={this.handleChange("search")}
-        />
-        <InputGroup.Append>
-          <Button variant="outline-secondary" type="submit" onClick={this.handleSubmit}><FontAwesomeIcon icon={faSearch} /></Button>
-        </InputGroup.Append>
-      </InputGroup>
-    </Form>
+        <InputGroup className="searchbar pt-4">
+          <FormControl
+            data-testid="input"
+            placeholder="Search by ISBN, Title or Author's Name"
+            aria-label="Search by ISBN, Title or Author's Name"
+            aria-describedby="TextbookSearch"
+            value={this.state.search}
+            onChange={this.handleChange("search")}
+          />
+          <InputGroup.Append>
+            <Button data-testid="search" variant="outline-secondary" type="submit" onClick={this.handleSubmit}><FontAwesomeIcon icon={faSearch} /></Button>
+          </InputGroup.Append>
+        </InputGroup>
+      </Form>
     );
   }
 }
