@@ -13,8 +13,8 @@ import api from '../../API/api'
 import './AddNew.css'
 
 export default class AddNew extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     const cookies = new Cookies();
     this.state = {
       token: cookies.get('token'),
