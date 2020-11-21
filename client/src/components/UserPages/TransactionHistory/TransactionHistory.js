@@ -43,7 +43,7 @@ export default class TransactionHistory extends React.Component {
             <Container fluid>
               <Row className="mt-4 justify-content-center">
                 <Col xs="auto">
-                  <h3>Your Transaction History</h3>
+                  <h3 data-testid="text">Your Transaction History</h3>
                 </Col>
               </Row>
               <hr />
