@@ -72,12 +72,12 @@ export default class Navbar1 extends React.Component {
             <Nav.Link as={NavLink} to="/Swap" className="nav-basic" style={{ marginRight: 30, marginLeft: 30 }}>Swap</Nav.Link>
           </Nav>
           {this.state.username ?
-            <Nav data-testid="close" onClick={this.closeNav}>
+            <Nav>
               <Dropdown>
                 <Dropdown.Toggle className="dropdown-background">
                   <FontAwesomeIcon size="lg" icon={faUserCircle} />
                 </Dropdown.Toggle>
-                <Dropdown.Menu alignRight="true">
+                <Dropdown.Menu data-testid="close" onClick={this.closeNav} alignRight="true">
                   <Dropdown.Item disabled>Signed in as {this.state.username}</Dropdown.Item>
                   <Dropdown.Divider />
                   <Dropdown.Item as={Link} to="/Profile">
