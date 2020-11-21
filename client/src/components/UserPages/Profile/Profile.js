@@ -31,8 +31,8 @@ export default class Profile extends React.Component {
     }
   }
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       username: "",
       email: "",
