@@ -23,8 +23,8 @@ export default class Navbar1 extends React.Component {
     }
   }
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       navExpanded: false,
       username: undefined,
@@ -62,9 +62,9 @@ export default class Navbar1 extends React.Component {
           />
           Marketext
         </Navbar.Brand>
-        <Navbar.Toggle />
+        <Navbar.Toggle data-testid="toggle"/>
         <Navbar.Collapse>
-          <Nav className="nav m-auto" onClick={this.closeNav}>
+          <Nav data-testid="close" className="nav m-auto" onClick={this.closeNav}>
             <Nav.Link as={NavLink} exact to="/" className="nav-basic" style={{ marginRight: 30, marginLeft: 30 }}>Home</Nav.Link>
             <Nav.Link as={NavLink} to="/Buy" className="nav-basic" style={{ marginRight: 30, marginLeft: 30 }}>Buy</Nav.Link>
             <Nav.Link as={NavLink} to="/Sell" className="nav-basic" style={{ marginRight: 30, marginLeft: 30 }}>Sell</Nav.Link>
@@ -72,7 +72,7 @@ export default class Navbar1 extends React.Component {
             <Nav.Link as={NavLink} to="/Swap" className="nav-basic" style={{ marginRight: 30, marginLeft: 30 }}>Swap</Nav.Link>
           </Nav>
           {this.state.username ?
-            <Nav onClick={this.closeNav}>
+            <Nav data-testid="close" onClick={this.closeNav}>
               <Dropdown>
                 <Dropdown.Toggle className="dropdown-background">
                   <FontAwesomeIcon size="lg" icon={faUserCircle} />
@@ -96,7 +96,7 @@ export default class Navbar1 extends React.Component {
                     Your Transaction History
                   </Dropdown.Item>
                   <Dropdown.Divider />
-                  <Dropdown.Item onClick={this.signOut}>
+                  <Dropdown.Item data-testid="signOut" onClick={this.signOut}>
                     Sign Out
                   </Dropdown.Item>
                 </Dropdown.Menu>

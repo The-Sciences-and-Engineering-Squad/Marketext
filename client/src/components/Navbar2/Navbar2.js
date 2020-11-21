@@ -31,7 +31,7 @@ export default class Navbar2 extends React.Component {
 
   render(){
     return (
-      <Navbar data-testid="navbar" variant="dark" expand="lg" sticky="top" onToggle={this.setNavExpanded} expanded={this.state.navExpanded}>
+      <Navbar variant="dark" expand="lg" sticky="top" onToggle={this.setNavExpanded} expanded={this.state.navExpanded}>
         <Navbar.Brand href="/">
           <img
             alt=""
