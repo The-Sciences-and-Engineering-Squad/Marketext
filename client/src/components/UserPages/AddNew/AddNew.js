@@ -84,28 +84,28 @@ export default class AddNew extends React.Component {
               <Row className="py-2">
                 <Col>
                   <span className="text-red">* Required Fields</span>
-                  { this.state.errors.length > 0 ?
-                    this.state.errors.map((error,index) => {
-                      return <li key={index} className="text-warning"> {error} </li>
-                  })
-                  :
-                  <div></div>
-                  }
+                  <ul data-testid="errors">
+                    { this.state.errors.length > 0 &&
+                      this.state.errors.map((error,index) => {
+                        return <li key={index} className="text-warning"> {error} </li>
+                    })
+                    }
+                  </ul>
                   <Form onSubmit={this.handleSubmit}>
                     <Form.Row>
                       <Form.Group as={Col} xs="12" md="6" controlId="formISBN">
                         <Form.Label>ISBN-13: <span className="text-red">*</span></Form.Label>
-                        <Form.Control type="text" placeholder="Enter ISBN" maxLength="13" value={this.state.ISBN} onChange={this.handleChange("ISBN")}/>
+                        <Form.Control data-testid="ISBN" type="text" placeholder="Enter ISBN" maxLength="13" value={this.state.ISBN} onChange={this.handleChange("ISBN")}/>
                       </Form.Group>
                       <Form.Group as={Col} xs="12" md="6" controlId="formCondition">
                         <Form.Label>Condition: <span className="text-red">*</span></Form.Label>
-                        <Form.Control type="text" maxLength="10" placeholder="Enter Condition" value={this.state.condition} onChange={this.handleChange("condition")}/>
+                        <Form.Control data-testid="condition" type="text" maxLength="10" placeholder="Enter Condition" value={this.state.condition} onChange={this.handleChange("condition")}/>
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>
                       <Form.Group as={Col} xs="12" md="6" controlId="formCategory">
                         <Form.Label>Category: <span className="text-red">*</span></Form.Label>
-                        <Form.Control as="select" value={this.state.category} onChange={this.handleChange("category")}>
+                        <Form.Control data-testid="category" as="select" value={this.state.category} onChange={this.handleChange("category")}>
                           <option value="">Choose</option>
                           <option value="Buy">Buy</option>
                           <option value="Sell">Sell</option>
@@ -115,16 +115,16 @@ export default class AddNew extends React.Component {
                       </Form.Group>
                       <Form.Group as={Col} xs="12" md="6" controlId="formPrice">
                         <Form.Label>Price: <span className="text-red">*</span></Form.Label>
-                        <Form.Control type="text" placeholder="Enter Price" value={this.state.price} onChange={this.handleChange("price")}/>
+                        <Form.Control data-testid="price" type="text" placeholder="Enter Price" value={this.state.price} onChange={this.handleChange("price")}/>
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>
                       <Form.Group as={Col} xs="12" controlId="formInformation">
                         <Form.Label>Additional Information:</Form.Label>
-                        <Form.Control as="textarea" rows={3} value={this.state.additionalInformation} onChange={this.handleChange("additionalInformation")}/>
+                        <Form.Control data-testid="additional" as="textarea" rows={3} value={this.state.additionalInformation} onChange={this.handleChange("additionalInformation")}/>
                       </Form.Group>
                     </Form.Row>
-                    <Button className="float-right" variant="danger" type="submit" onClick={this.handleSubmit}>Add To Listings</Button>
+                    <Button data-testid="add" className="float-right" variant="danger" type="submit" onClick={this.handleSubmit}>Add To Listings</Button>
                   </Form>
                 </Col>
               </Row>
