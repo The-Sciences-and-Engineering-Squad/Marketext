@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { render, cleanup, screen, fireEvent } from '@testing-library/react';
-import Cookies from "universal-cookie";
+// import Cookies from "universal-cookie";
 import Navbar1 from './Navbar1';
 
 // Note: running cleanup afterEach is done automatically for you in @testing-library/react@9.0.0 or higher

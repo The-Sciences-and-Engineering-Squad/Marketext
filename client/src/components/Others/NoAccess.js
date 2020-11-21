@@ -28,7 +28,7 @@ export default class NoAccess extends React.Component {
       <Container fluid>
         <Row className="m-4 justify-content-center">
           <Col xs="auto">
-            <h1>
+            <h1 data-testid="text">
               You Do Not Have Access To This Page.
               <br />
               You Will Be Redirected Soon.
