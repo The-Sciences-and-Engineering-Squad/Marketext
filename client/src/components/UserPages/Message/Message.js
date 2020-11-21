@@ -45,8 +45,8 @@ export default class Message extends React.Component {
     });
   }
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       messages: []
     };
@@ -95,7 +95,7 @@ export default class Message extends React.Component {
                 <Col xs="5" sm="4" md="3">
                   <ListGroup>
                     <ListGroup.Item>
-                      <h4 className="header">Messages</h4>
+                      <h4 data-testid="text" className="header">Messages</h4>
                     </ListGroup.Item>
                     {
                       this.state.messages.map((list, index) => (
@@ -125,10 +125,10 @@ export default class Message extends React.Component {
                                   </Col>
                                 </Row>
                                 <Row className="justify-content-center">
-                                  <Button variant="danger" className="m-2" onClick={this.handleManage(index)}>
+                                  <Button data-testid="manage" variant="danger" className="m-2" onClick={this.handleManage(index)}>
                                     Manage
                                   </Button>
-                                  <Button variant="danger" className="m-2" onClick={this.handleComplete(index)}>
+                                  <Button data-testid="complete" variant="danger" className="m-2" onClick={this.handleComplete(index)}>
                                     Mark As Completed
                                   </Button>
                                 </Row>
@@ -146,9 +146,9 @@ export default class Message extends React.Component {
                           </Row>
                           <Row>
                             <InputGroup>
-                              <FormControl as="textarea" rows={5} placeholder="Type your message..." value={list.type} onChange={this.handleType(index)}/>
+                              <FormControl data-testid="chat" as="textarea" rows={5} placeholder="Type your message..." value={list.type} onChange={this.handleType(index)}/>
                               <InputGroup.Append>
-                                <Button variant="danger" type="submit" onClick={this.handleSubmit(index)}>
+                                <Button data-testid="send" variant="danger" type="submit" onClick={this.handleSubmit(index)}>
                                   Send
                                 </Button>
                               </InputGroup.Append>
