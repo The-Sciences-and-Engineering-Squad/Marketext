@@ -15,17 +15,15 @@ export default class Balance extends React.Component {
   componentDidMount(){
     // Replace this information with information retrieved from the backend about the user balance.
     const cookies = new Cookies();
-    if(cookies.get('token')){
-      this.setState({token: cookies.get('token')})
-      const API = new api();
-      API.getBalance({token: cookies.get('token')}).then( balance => {
-        this.setState({ currentBalance: balance });
-      })   
-    }
+    this.setState({token: cookies.get('token')})
+    const API = new api();
+    API.getBalance({token: cookies.get('token')}).then( balance => {
+      this.setState({ currentBalance: balance });
+    })   
   }
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       token: "",
       currentBalance: "",
@@ -92,17 +90,17 @@ export default class Balance extends React.Component {
             <Container fluid>
               <Row className="mt-4 justify-content-center">
                 <Col xs="auto">
-                  <h3>Current Balance: ${this.state.currentBalance}</h3>
+                  <h3 data-testid="text">Current Balance: ${this.state.currentBalance}</h3>
                 </Col>
               </Row>
               <hr />
-              { this.state.errors.length > 0 ?
-                this.state.errors.map((error,index) => {
-                  return <li key={index} className="text-warning"> {error} </li>
-              })
-              :
-              <div></div>
-              }
+              <ul data-testid="errors">
+                { this.state.errors.length > 0 &&
+                  this.state.errors.map((error,index) => {
+                    return <li key={index} className="text-warning"> {error} </li>
+                })
+                }
+              </ul>
               <Row className="py-4">
                 <Col sm="12" md="6">
                   <Form onSubmit={this.handleAdd}>
@@ -111,9 +109,9 @@ export default class Balance extends React.Component {
                       <InputGroup.Prepend>
                         <InputGroup.Text>$</InputGroup.Text>
                       </InputGroup.Prepend>
-                      <FormControl type="number" min="0.00" step="0.01" placeholder="Amount" value={this.state.addBalance} onChange={this.handleChange("addBalance")}/>
+                      <FormControl data-testid="addValue" type="number" min="0.00" step="0.01" placeholder="Amount" value={this.state.addBalance} onChange={this.handleChange("addBalance")}/>
                       <InputGroup.Append>
-                        <Button variant="danger" type="submit" onClick={this.handleAdd}>Add</Button>
+                        <Button data-testid="add" variant="danger" type="submit" onClick={this.handleAdd}>Add</Button>
                       </InputGroup.Append>
                     </InputGroup>
                   </Form>
@@ -127,9 +125,9 @@ export default class Balance extends React.Component {
                       <InputGroup.Prepend>
                         <InputGroup.Text>$</InputGroup.Text>
                       </InputGroup.Prepend>
-                      <FormControl type="number" min="0.00" step="0.01" placeholder="Amount" value={this.state.subtractBalance} onChange={this.handleChange("subtractBalance")}/>
+                      <FormControl data-testid="subtractValue" type="number" min="0.00" step="0.01" placeholder="Amount" value={this.state.subtractBalance} onChange={this.handleChange("subtractBalance")}/>
                       <InputGroup.Append>
-                        <Button variant="danger" type="submit" onClick={this.handleSubtract}>Deposit</Button>
+                        <Button data-testid="subtract" variant="danger" type="submit" onClick={this.handleSubtract}>Deposit</Button>
                       </InputGroup.Append>
                     </InputGroup>
                   </Form>

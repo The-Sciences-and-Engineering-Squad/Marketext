@@ -30,8 +30,8 @@ export default class CurrentlyListed extends React.Component {
     
   }
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       textbooks: []
     };
@@ -54,7 +54,7 @@ export default class CurrentlyListed extends React.Component {
             <Container fluid>
               <Row className="mt-4 justify-content-center">
                 <Col xs="auto">
-                  <h3>Your Currently Listed Textbooks</h3>
+                  <h3 data-testid="text">Your Currently Listed Textbooks</h3>
                 </Col>
               </Row>
               <hr />
@@ -90,7 +90,7 @@ export default class CurrentlyListed extends React.Component {
                             {list.price}
                           </td>
                           <td className="text-center">
-                            <Button variant="danger" onClick={this.handleRemove(index)}>
+                            <Button data-testid="remove" variant="danger" onClick={this.handleRemove(index)}>
                               X
                             </Button>
                           </td>

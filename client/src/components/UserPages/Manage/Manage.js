@@ -66,28 +66,28 @@ export default class Manage extends React.Component {
                   </Button>
                 </Col>
                 <Col xs="12" sm="8">
-                  <h3>Managing Textbook Between {this.state.user1} and {this.state.user2}</h3>
+                  <h3 data-testid="text">Managing Textbook Between {this.state.user1} and {this.state.user2}</h3>
                 </Col>
               </Row>
               <hr />
               <Row className="py-2">
                 <Col>
-                  { this.state.errors.length > 0 ?
-                    this.state.errors.map((error,index) => {
-                      return <li key={index} className="text-warning"> {error} </li>
-                  })
-                  :
-                  <div></div>
-                  }
+                  <ul data-testid="errors">
+                    { this.state.errors.length > 0 &&
+                      this.state.errors.map((error,index) => {
+                        return <li key={index} className="text-warning"> {error} </li>
+                    })
+                    }
+                  </ul>
                   <Form onSubmit={this.handleSubmit}>
                     <Form.Row>
                       <Form.Group as={Col} sm="12" md="6" controlId="formTextbook">
                         <Form.Label>Textbook:</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Textbook" value={this.state.textbook} readOnly/>
+                        <Form.Control data-testid="textbook" type="text" placeholder="Enter Textbook" value={this.state.textbook} readOnly/>
                       </Form.Group>
                       <Form.Group as={Col} sm="12" md="6" controlId="formCategory">
                         <Form.Label>Category:</Form.Label>
-                        <Form.Control className="manageMessages-forms" as="select" value={this.state.category} onChange={this.handleChange("category")}>
+                        <Form.Control data-testid="category" className="manageMessages-forms" as="select" value={this.state.category} onChange={this.handleChange("category")}>
                           <option value="">Choose</option>
                           <option value="Buy">Buy</option>
                           <option value="Sell">Sell</option>
@@ -99,14 +99,14 @@ export default class Manage extends React.Component {
                     <Form.Row>
                       <Form.Group as={Col} sm="12" md="6" controlId="formWithWho">
                         <Form.Label>With Who?</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Username" value={this.state.user2} readOnly/>
+                        <Form.Control data-testid="who" type="text" placeholder="Enter Username" value={this.state.user2} readOnly/>
                       </Form.Group>
                       <Form.Group as={Col} sm="12" md="6" controlId="formNegotiatedPrice">
                         <Form.Label>Negotiated Price:</Form.Label>
-                        <Form.Control className="manageMessages-forms" type="text" placeholder="Enter Price" value={this.state.price} onChange={this.handleChange("price")}/>
+                        <Form.Control data-testid="price" className="manageMessages-forms" type="text" placeholder="Enter Price" value={this.state.price} onChange={this.handleChange("price")}/>
                       </Form.Group>
                     </Form.Row>
-                    <Button variant="danger" type="submit" onClick={this.handleSubmit}>
+                    <Button data-testid="confirm" variant="danger" type="submit" onClick={this.handleSubmit}>
                       Confirm
                     </Button>
                   </Form>

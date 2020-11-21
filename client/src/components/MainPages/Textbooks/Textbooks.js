@@ -154,7 +154,7 @@ export default class Textbooks extends React.Component {
                       {list.payment}
                     </td>
                     <td className="text-center">
-                      <Button variant="danger" onClick={this.handleContact(index)}>
+                      <Button data-testid="contact" variant="danger" onClick={this.handleContact(index)}>
                         Contact
                       </Button>
                     </td>

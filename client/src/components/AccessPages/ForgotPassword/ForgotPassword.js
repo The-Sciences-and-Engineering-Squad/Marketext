@@ -6,8 +6,8 @@ import api from '../../API/api'
 import './ForgotPassword.css'
 
 export default class ForgotPassword extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       username: "",
       errors: [],
@@ -44,20 +44,20 @@ export default class ForgotPassword extends React.Component {
     return (
       <Container className="container-bg forgot-pw-container rounded px-5 py-4 mx-4">
           <h2 className="text-light text-center">Forgot Password</h2>
-          { this.state.errors.length > 0 ?
-            this.state.errors.map((error,index) => {
-              return <li key={index} className="text-warning"> {error} </li>
-          })
-          :
-          <div></div>
-          }
+          <ul data-testid="errors">
+            { this.state.errors.length > 0 &&
+              this.state.errors.map((error,index) => {
+                return <li key={index} className="text-warning"> {error} </li>
+            })
+            }
+          </ul>
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="formUsername">
               <Form.Label className="text-light">Username:</Form.Label>
-              <Form.Control type="text" placeholder="Enter Username"
+              <Form.Control data-testid="username" type="text" placeholder="Enter Username"
                 onChange={this.handleChange("username")}/>
             </Form.Group>
-            <Button variant="danger" type="submit" size="lg" block
+            <Button data-testid="ForgotPassword" variant="danger" type="submit" size="lg" block
               onClick={this.handleSubmit}>
               Send
             </Button>

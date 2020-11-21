@@ -12,8 +12,8 @@ import './Navbar2.css'
 // This Navbar is for the Login/Register/Forgot Password Pages.
 
 export default class Navbar2 extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       navExpanded: false,
     };
@@ -42,9 +42,9 @@ export default class Navbar2 extends React.Component {
           />
           Marketext
         </Navbar.Brand>
-        <Navbar.Toggle />
+        <Navbar.Toggle data-testid="toggle" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="nav m-auto" onClick={this.closeNav}>
+          <Nav data-testid="close" className="nav m-auto" onClick={this.closeNav}>
             <Nav.Link as={NavLink} to="/Login" style={{ marginRight: 30, marginLeft: 30 }}>Login</Nav.Link>
             <Nav.Link as={NavLink} to="/Register" style={{ marginRight: 30, marginLeft: 30 }}>Register</Nav.Link>
             <Nav.Link as={NavLink} to="/ForgotPassword" style={{ marginRight: 30, marginLeft: 30 }}>Forgot Password</Nav.Link>

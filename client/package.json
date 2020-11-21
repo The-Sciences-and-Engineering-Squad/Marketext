@@ -22,8 +22,8 @@
     "start": "react-scripts start",
     "dev": "flask run",
     "build": "react-scripts build",
-    "test": "CI=true react-scripts test",
-    "test:coverage": "npm test -- --coverage",
+    "test": "react-scripts test",
+    "test:coverage": "npm run test -- --coverage --watchAll=false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -45,6 +45,10 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/index.js",
+      "<rootDir>/src/serviceWorker.js"
     ],
     "coverageReporters": [
       "lcov",

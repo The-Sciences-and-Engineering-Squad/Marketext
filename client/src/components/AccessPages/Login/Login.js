@@ -9,8 +9,8 @@ import './Login.css'
 import api from '../../API/api'
 
 export default class Login extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       username: "",
       password: "",
@@ -47,31 +47,29 @@ export default class Login extends React.Component {
     this.setState(newState);
   };
 
-
-
   render() {
     return (
       <Container className="container-bg login-container rounded px-5 py-4 mx-4">
         <h2 className="text-light text-center">Login to Your Marketext Account</h2>
-          { this.state.errors.length > 0 ?
-            this.state.errors.map((error,index) => {
-              return <li key={index} className="text-warning"> {error} </li>
-          })
-          :
-          <div></div>
-          }
+          <ul data-testid="errors">
+            { this.state.errors.length > 0 &&
+              this.state.errors.map((error,index) => {
+                return <li key={index} className="text-warning"> {error} </li>
+            })
+            }
+          </ul>
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="formUsername">
               <Form.Label className="text-light">Username:</Form.Label>
-              <Form.Control type="text" placeholder="Enter Username"
+              <Form.Control data-testid="username" type="text" placeholder="Enter Username"
                 onChange={this.handleChange("username")}/>
             </Form.Group>
             <Form.Group controlId="formPassword">
               <Form.Label className="text-light">Password:</Form.Label>
-              <Form.Control type="password" placeholder="Enter Password"
+              <Form.Control data-testid="password" type="password" placeholder="Enter Password"
                 onChange={this.handleChange("password")}/>
             </Form.Group>
-            <Button variant="danger" type="submit" size="lg" block
+            <Button data-testid="Login" variant="danger" type="submit" size="lg" block
               onClick={this.handleSubmit}>
               Login
             </Button>

@@ -20,7 +20,7 @@ class RenderTextbooks extends React.Component {
       <Row className="row-resize">
         { 
           this.props.textbooks.map((list, index) => (
-            <Col key={index} sm="6" md="4" lg="3" className="book-selection" onClick={this.selectedTextbook(index)}>
+            <Col data-testid="book" key={index} sm="6" md="4" lg="3" className="book-selection" onClick={this.selectedTextbook(index)}>
               <Card className="text-center books">
                 <Card.Header>
                   <strong>
