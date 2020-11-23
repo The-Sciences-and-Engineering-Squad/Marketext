@@ -160,5 +160,30 @@ export default class API {
     return response_1['username'];
   }
 
+
+  async updateProfile(data){
+    const response = await fetch('/profile/update', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    const response_1 = await response.json();
+    return response_1['newBalance'];
+  }
+
+async getUserProfile(data){
+    const response = await fetch('/profile/getProfile', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+        body: JSON.stringify(data),
+      });
+    const response_1 = await response.json();
+    return response_1['profile']
+  }
+
 }
 

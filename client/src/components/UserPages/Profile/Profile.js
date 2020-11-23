@@ -7,7 +7,7 @@ import Sidebar from '../../Sidebar/Sidebar';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import Form from 'react-bootstrap/Form';
-
+import api from '../../API/api'
 import blankProfileImage from '../../../public/BlankProfileImage.png';
 import jwt_decode from "jwt-decode";
 import './Profile.css';
@@ -15,25 +15,31 @@ import './Profile.css';
 export default class Profile extends React.Component {
   componentDidMount(){
     // Replace this information with information retrieved from the backend about the user.
+    
     const cookies = new Cookies();
-    if(cookies.get('token')){
+    this.setState({token: cookies.get('token')})
+    const API = new api();
+    API.getUserProfile({token: cookies.get('token')}).then( profile => {
       this.setState({
+        token: cookies.get('token'),
         username: jwt_decode(cookies.get('token')).username,
-        email: "user@email.com",
-        firstName: "FirstName",
-        lastName: "LastName",
-        phoneNumber: "(123) 456-7890",
-        address: "123 Main Street",
-        city: "City",
-        state: "NY",
-        zipcode: "12345",
+        email: jwt_decode(cookies.get('token')).email,
+        firstName: profile['firstName'],
+        lastName: profile['lastName'],
+        phoneNumber: profile['phoneNumber'],
+        address: profile['street'],
+        city: profile['city'],
+        state: profile['state'],
+        zipcode: profile['zipCode'],
       })
-    }
+    })  
+    
   }
 
   constructor() {
     super();
     this.state = {
+      token: "",
       username: "",
       email: "",
       Password: "",
@@ -71,8 +77,14 @@ export default class Profile extends React.Component {
         // Backend, check if the password is correct with user password in database. 
         // If so, update email, firstName, lastName, phoneNumber, address, city, state, zipcode
         // If not, return an error saying "Current Password is Incorrect"
-        console.log("email: " + email + "\nFirst Name: " + firstName + "\nLast Name: " + lastName);
-        console.log("Phone Number: " + phoneNumber + "\nAddress: " + address + "\nCity: " + city + "\nState: " + state + "\nZip Code: " + zipcode);
+        const data = this.state
+        const API = new api();
+        API.updateProfile(data).then( error => {
+          this.setState(({errors}) => ({
+            errors: errors.concat(error)
+          }));
+        });
+        console.log(data)
       }
       else{
         if (newPassword !== newPassword2) {
@@ -82,8 +94,15 @@ export default class Profile extends React.Component {
           // Backend, check if the password is correct with user password in database. 
           // If so, update password using the new password, email, firstName, lastName, phoneNumber, address, city, state, zipcode
           // If not, return an error saying "Current Password is Incorrect"
-          console.log("email: " + email + "\nFirst Name: " + firstName + "\nLast Name: " + lastName + "\nNew Password: " + newPassword);
-          console.log("Phone Number: " + phoneNumber + "\nAddress: " + address + "\nCity: " + city + "\nState: " + state + "\nZip Code: " + zipcode);
+          const data = this.state
+          const API = new api();
+          API.updateProfile(data).then( error => {
+            this.setState(({errors}) => ({
+              errors: errors.concat(error)
+            }));
+            console.log(error)
+          });
+          console.log(data)
         }
       }
     }
