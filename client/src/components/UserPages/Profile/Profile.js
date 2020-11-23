@@ -64,7 +64,7 @@ export default class Profile extends React.Component {
   // eventually api call to call the backend
   handleSubmit = (e) => {
     e.preventDefault();
-    const { email, Password, newPassword, newPassword2, firstName, lastName, phoneNumber, address, city, state, zipcode } = this.state;
+    const { Password, newPassword, newPassword2 } = this.state;
     var newState = Object.assign({}, this.state);
     newState.errors = [];
     // Users are allowed to change their information as long as they enter their current password.
@@ -84,7 +84,6 @@ export default class Profile extends React.Component {
             errors: errors.concat(error)
           }));
         });
-        console.log(data)
       }
       else{
         if (newPassword !== newPassword2) {
@@ -100,9 +99,7 @@ export default class Profile extends React.Component {
             this.setState(({errors}) => ({
               errors: errors.concat(error)
             }));
-            console.log(error)
           });
-          console.log(data)
         }
       }
     }

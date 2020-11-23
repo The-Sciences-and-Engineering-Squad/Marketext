@@ -170,7 +170,7 @@ export default class API {
       body: JSON.stringify(data),
     });
     const response_1 = await response.json();
-    return response_1['newBalance'];
+    return response_1['error'];
   }
 
 async getUserProfile(data){
