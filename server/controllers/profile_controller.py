@@ -60,7 +60,7 @@ def updateProfile():
 
 @bp.route('/getProfile',methods=['GET', 'POST'])
 @token_required
-def getBalance():
+def getProfile():
     userProfile = profile_model.ProfileModel(session['userId'])
     profile = {'firstName': userProfile.getFirstName(),'lastName': userProfile.getLastName(), 'phoneNumber':userProfile.getPhoneNumber(), 'street': userProfile.getStreet(), 'city': userProfile.getCity(),'state': userProfile.getState(), 'country': userProfile.getCountry(), 'zipCode': userProfile.getZipCode()}
     return json.dumps({'profile': profile})
