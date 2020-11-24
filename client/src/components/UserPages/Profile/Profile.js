@@ -140,7 +140,7 @@ export default class Profile extends React.Component {
                     <Form.Row>
                       <Form.Group as={Col} sm="12" md="6" controlId="formEmail">
                         <Form.Label>Email:</Form.Label>
-                        <Form.Control data-testid="email" className="profile-forms" type="email" placeholder="Enter E-mail" value={this.state.email} onChange={this.handleChange("email")}/>
+                        <Form.Control data-testid="email" type="email" placeholder="Enter E-mail" value={this.state.email} readOnly />
                       </Form.Group>
                     </Form.Row>
                     <Form.Row>

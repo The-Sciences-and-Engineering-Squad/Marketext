@@ -51,9 +51,6 @@ def updateProfile():
         if req['newPassword']:
             user.updateField('password',req['newPassword'])
 
-        if req['email'] != user.getEmail():
-            user.updateField('email',req['email'])
-
         return json.dumps({'error': 'Updated'})
 
     return json.dumps({'error': 'Current Password is Incorrect'})
