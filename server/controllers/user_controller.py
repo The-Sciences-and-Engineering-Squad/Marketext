@@ -1,6 +1,6 @@
 from hashlib import md5
 from io import SEEK_CUR
-
+from server.models import profile_model
 from server.models import user_model
 from server.models import balance_model
 from flask import (
@@ -39,7 +39,8 @@ def login():
             session.clear()
             session['userId'] = user.getUserId()
             session['username'] = user.getUserName()
-            token = jwt.encode({'userId': user.getUserId(), 'username': user.getUserName(), 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=50)}, app.config['SECRET_KEY'])
+            session['email'] = user.getEmail()
+            token = jwt.encode({'userId': user.getUserId(), 'username': user.getUserName(), 'email': user.getEmail(), 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=50)}, app.config['SECRET_KEY'])
             return json.dumps({'authenticated': True, 'token': token.decode('UTF-8')})
 
         flash(error)
@@ -59,7 +60,7 @@ def register():
 
         user = user_model.UserModel()
         userBalance = balance_model.BalanceModel()
-
+        userProfile = profile_model.ProfileModel()
 
         if user.isExist("userName", username):
             error = 'Username already taken'
@@ -72,6 +73,7 @@ def register():
             user.insertUser()
             user.setUser(username)
             userBalance.initBalance(user.getUserId(),'USD')
+            userProfile.initProfile(user.getUserId())
             return json.dumps({'registered': True})
 
     return json.dumps({'registered': False, 'error': error})
