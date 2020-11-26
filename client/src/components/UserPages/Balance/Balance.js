@@ -19,7 +19,7 @@ export default class Balance extends React.Component {
     const API = new api();
     API.getBalance({token: cookies.get('token')}).then( balance => {
       this.setState({ currentBalance: balance });
-    })   
+    })
   }
 
   constructor() {
@@ -83,11 +83,9 @@ export default class Balance extends React.Component {
     return (
       <Container fluid>
         <Row>
-          <Col xs="4" sm="3" md="2">
-            <Sidebar />
-          </Col>
-          <Col xs="8" sm="9" md="10">
-            <Container fluid>
+          <div className="sidebar-useroption-container">
+            <Sidebar className="sidebar-container-page"/>
+            <Container fluid className="p-2 m-3">
               <Row className="mt-4 justify-content-center">
                 <Col xs="auto">
                   <h3 data-testid="text">Current Balance: ${this.state.currentBalance}</h3>
@@ -134,7 +132,7 @@ export default class Balance extends React.Component {
                 </Col>
               </Row>
             </Container>
-          </Col> 
+          </div>
         </Row>
       </Container>
     );

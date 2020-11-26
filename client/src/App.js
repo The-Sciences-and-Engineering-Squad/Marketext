@@ -51,11 +51,11 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      authorization: false,
+      authorization: true,
     };
   }
 
-  // Add navbar here correspoding to there pages. if need a new case add it with the correct path 
+  // Add navbar here correspoding to there pages. if need a new case add it with the correct path
   changeNav = (path) => {
     switch(path){
       case '/login':
