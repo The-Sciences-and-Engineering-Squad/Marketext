@@ -10,6 +10,6 @@ afterEach(cleanup);
 
 describe('Sidebar', () => {
   test('Renders Sidebar Component', () => {
-    const { } = render(<Router><Sidebar /></Router>);
+    render(<Router><Sidebar /></Router>);
   });
 });

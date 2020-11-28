@@ -10,6 +10,6 @@ afterEach(cleanup);
 
 describe('Buy', () => {
   test('Renders Buy Component', () => {
-    const { } = render(<Router><Buy /></Router>);
+    render(<Router><Buy /></Router>);
   });
 });
