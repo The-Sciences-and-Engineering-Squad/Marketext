@@ -13,7 +13,174 @@ Marketext is a web application where users can buy, sell, trade, and swap school
 ## Tools:
 - **Frontend**: React, Bootstrap
 - **Backend**: Python, Flask
-- **Others**: Travis CI
+- **Others**: Travis CI, SonarCloud Coverage
+
+# Project Structure:
+```
+.
+├── LICENSE.md
+├── README.md
+├── client
+│   ├── README.md
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── logo192.png
+│   │   ├── logo512.png
+│   │   └── manifest.json
+│   └── src
+│       ├── App.css
+│       ├── App.js
+│       ├── App.test.js
+│       ├── components
+│       │   ├── API
+│       │   │   └── api.js
+│       │   ├── AccessPages
+│       │   │   ├── ForgotPassword
+│       │   │   │   ├── ForgotPassword.css
+│       │   │   │   ├── ForgotPassword.js
+│       │   │   │   └── ForgotPassword.test.js
+│       │   │   ├── Login
+│       │   │   │   ├── Login.css
+│       │   │   │   ├── Login.js
+│       │   │   │   └── Login.test.js
+│       │   │   └── Register
+│       │   │       ├── Register.css
+│       │   │       ├── Register.js
+│       │   │       └── Register.test.js
+│       │   ├── Footer
+│       │   │   ├── Footer.css
+│       │   │   └── Footer.js
+│       │   ├── MainPages
+│       │   │   ├── Buy
+│       │   │   │   ├── Buy.css
+│       │   │   │   ├── Buy.js
+│       │   │   │   └── Buy.test.js
+│       │   │   ├── Home
+│       │   │   │   ├── Home.css
+│       │   │   │   └── Home.js
+│       │   │   ├── RenderTextbooks
+│       │   │   │   ├── RenderTextbooks.css
+│       │   │   │   ├── RenderTextbooks.js
+│       │   │   │   └── RenderTextbooks.test.js
+│       │   │   ├── Searchbar
+│       │   │   │   ├── Searchbar.css
+│       │   │   │   ├── Searchbar.js
+│       │   │   │   └── Searchbar.test.js
+│       │   │   ├── Sell
+│       │   │   │   ├── Sell.css
+│       │   │   │   ├── Sell.js
+│       │   │   │   └── Sell.test.js
+│       │   │   ├── Swap
+│       │   │   │   ├── Swap.css
+│       │   │   │   ├── Swap.js
+│       │   │   │   └── Swap.test.js
+│       │   │   ├── Textbooks
+│       │   │   │   ├── Textbooks.css
+│       │   │   │   ├── Textbooks.js
+│       │   │   │   └── Textbooks.test.js
+│       │   │   └── Trade
+│       │   │       ├── Trade.css
+│       │   │       ├── Trade.js
+│       │   │       └── Trade.test.js
+│       │   ├── Navbar1
+│       │   │   ├── Navbar1.css
+│       │   │   ├── Navbar1.js
+│       │   │   └── Navbar1.test.js
+│       │   ├── Navbar2
+│       │   │   ├── Navbar2.css
+│       │   │   ├── Navbar2.js
+│       │   │   └── Navbar2.test.js
+│       │   ├── Others
+│       │   │   ├── NoAccess.js
+│       │   │   ├── NoAccess.test.js
+│       │   │   ├── ScrollToTop.js
+│       │   │   └── ScrollToTop.test.js
+│       │   ├── Sidebar
+│       │   │   ├── Sidebar.css
+│       │   │   ├── Sidebar.js
+│       │   │   └── Sidebar.test.js
+│       │   └── UserPages
+│       │       ├── AddNew
+│       │       │   ├── AddNew.css
+│       │       │   ├── AddNew.js
+│       │       │   └── AddNew.test.js
+│       │       ├── Balance
+│       │       │   ├── Balance.css
+│       │       │   ├── Balance.js
+│       │       │   └── Balance.test.js
+│       │       ├── CurrentlyListed
+│       │       │   ├── CurrentlyListed.css
+│       │       │   ├── CurrentlyListed.js
+│       │       │   └── CurrentlyListed.test.js
+│       │       ├── Manage
+│       │       │   ├── Manage.css
+│       │       │   ├── Manage.js
+│       │       │   └── Manage.test.js
+│       │       ├── Message
+│       │       │   ├── Message.css
+│       │       │   ├── Message.js
+│       │       │   └── Message.test.js
+│       │       ├── Profile
+│       │       │   ├── Profile.css
+│       │       │   ├── Profile.js
+│       │       │   └── Profile.test.js
+│       │       └── TransactionHistory
+│       │           ├── TransactionHistory.css
+│       │           ├── TransactionHistory.js
+│       │           └── TransactionHistory.test.js
+│       ├── index.css
+│       ├── index.js
+│       ├── public
+│       │   ├── BlankProfileImage.png
+│       │   ├── Buy.png
+│       │   ├── Checklist.png
+│       │   ├── Goods.png
+│       │   ├── Sell.png
+│       │   ├── Send.png
+│       │   ├── Swap.png
+│       │   ├── Trade.png
+│       │   ├── logo192.png
+│       │   ├── sampletextbook.jpg
+│       │   └── textbook.png
+│       ├── serviceWorker.js
+│       └── setupTests.js
+├── package-lock.json
+├── server
+│   ├── README.md
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   └── __init__.cpython-37.pyc
+│   ├── controllers
+│   │   ├── __pycache__
+│   │   │   ├── balance_controller.cpython-37.pyc
+│   │   │   ├── books_controller.cpython-37.pyc
+│   │   │   ├── currently_controller.cpython-37.pyc
+│   │   │   └── user_controller.cpython-37.pyc
+│   │   ├── balance_controller.py
+│   │   ├── books_controller.py
+│   │   ├── currently_controller.py
+│   │   ├── profile_controller.py
+│   │   ├── token.py
+│   │   └── user_controller.py
+│   ├── database.sql
+│   ├── models
+│   │   ├── __pycache__
+│   │   │   ├── balance_model.cpython-37.pyc
+│   │   │   ├── books_model.cpython-37.pyc
+│   │   │   ├── currently_model.cpython-37.pyc
+│   │   │   └── user_model.cpython-37.pyc
+│   │   ├── balance_model.py
+│   │   ├── books_model.py
+│   │   ├── currently_model.py
+│   │   ├── profile_model.py
+│   │   └── user_model.py
+│   └── requirements.txt
+└── sonar-project.properties
+
+```
 
 ## App Demo
 Please refer to this [video link](https://www.youtube.com/watch?v=kHUlsg4tUJk&feature=youtu.be) for a brief overview to our application.
@@ -22,17 +189,11 @@ Please refer to this [video link](https://www.youtube.com/watch?v=kHUlsg4tUJk&fe
 This is a our final project for CSc 473 - Website Design Course, with Prof. Michelle Sasson, at the City College of New York
 
 ## License
+This project is licensed under the terms of the MIT license.
 
-    Copyright [2020] [Marketext]
+# Badges
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=The-Sciences-and-Engineering-Squad_Marketext&metric=coverage)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=The-Sciences-and-Engineering-Squad_Marketext)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
 
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
