@@ -25,3 +25,8 @@
   background-color: #C80000;
   border-color: #C80000;
 }
+
+.sidebar-user-profile-container {
+  display: flex;
+  width: 100%;
+}

@@ -55,7 +55,7 @@ class App extends React.Component {
     };
   }
 
-  // Add navbar here correspoding to there pages. if need a new case add it with the correct path 
+  // Add navbar here correspoding to there pages. if need a new case add it with the correct path
   changeNav = (path) => {
     switch(path){
       case '/login':

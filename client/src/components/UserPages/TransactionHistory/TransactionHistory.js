@@ -14,7 +14,7 @@ export default class TransactionHistory extends React.Component {
     var token = cookies.get('token');
     console.log(token);
     // Insert Backend to get transaction history for user.
-    this.setState({ 
+    this.setState({
       textbooks: [
         {transactionNo:"1", title: "C++", category: "Sell", price: "$75"},
         {transactionNo:"2", title: "Python", category: "Buy", price: "$50"},
@@ -36,11 +36,9 @@ export default class TransactionHistory extends React.Component {
     return (
       <Container fluid>
         <Row>
-          <Col xs="4" sm="3" md="2">      
-            <Sidebar/>
-          </Col>
-          <Col xs="8" sm="9" md="10">
-            <Container fluid>
+          <div className="sidebar-user-transactions-container">
+            <Sidebar className="sidebar-container-page"/>
+            <Container fluid className="p-2 m-3">
               <Row className="mt-4 justify-content-center">
                 <Col xs="auto">
                   <h3 data-testid="text">Your Transaction History</h3>
@@ -88,7 +86,7 @@ export default class TransactionHistory extends React.Component {
                 </Col>
               </Row>
             </Container>
-          </Col> 
+          </div>
         </Row>
       </Container>
     );

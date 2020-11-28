@@ -86,83 +86,83 @@ export default class Message extends React.Component {
     return (
       <Container fluid>
         <Row>
-          <Col xs="4" sm="3" md="2">
-            <Sidebar />
-          </Col>
-          <Col xs="8" sm="9" md="10" className="message-container pb-4">
-            <Tab.Container defaultActiveKey={0}>
-              <Row>
-                <Col xs="5" sm="4" md="3">
-                  <ListGroup>
-                    <ListGroup.Item>
-                      <h4 data-testid="text" className="header">Messages</h4>
-                    </ListGroup.Item>
+          <div className="sidebar-message-board-container">
+            <Sidebar className="sidebar-container-page"/>
+            <Container fluid className="message-board-container">
+              <Tab.Container defaultActiveKey={0}>
+                <Row>
+                  <Col xs="5" sm="4" md="3" className="past-users-messaged-container">
+                    <ListGroup>
+                      <ListGroup.Item>
+                        <h4 data-testid="text" className="user-list-messages-header">Messages</h4>
+                      </ListGroup.Item>
+                      {
+                        this.state.messages.map((list, index) => (
+                          <ListGroup.Item className="messageTab" action eventKey={index} key={index}>
+                            <h5 className="past-users-messaged">{list.username}</h5>
+                            <p className="previewText">{list.messagesList[list.messagesList.length-1].messageBody}</p>
+                          </ListGroup.Item>
+                        ))
+                      }
+                    </ListGroup>
+                  </Col>
+                  <Col xs="7" sm="8" md="9" className="message-screen">
+                    <Tab.Content>
                     {
                       this.state.messages.map((list, index) => (
-                        <ListGroup.Item className="messageTab" action eventKey={index} key={index}>
-                          <h5 className="past-users-messaged">{list.username}</h5>
-                          <p className="previewText">{list.messagesList[list.messagesList.length-1].messageBody}</p>
-                        </ListGroup.Item>
+                        <Tab.Pane eventKey={index} key={index}>
+                          <Container>
+                            <Row className="message-header px-4">
+                              <h3 className="message-header-tag">{list.username}</h3>
+                            </Row>
+                            <Row className="message-history">
+                              <Col>
+                                <Container className="message-board">
+                                  <Row className="justify-content-center">
+                                    <Col xs="auto">
+                                      <h6> This is the message board regarding {list.textbook} Textbook</h6>
+                                    </Col>
+                                  </Row>
+                                  <Row className="justify-content-center">
+                                    <Button data-testid="manage" variant="danger" className="manage-btn" onClick={this.handleManage(index)}>
+                                      Manage
+                                    </Button>
+                                    <Button data-testid="complete" variant="danger" className="mark-as-completed-btn" onClick={this.handleComplete(index)}>
+                                      Mark As Completed
+                                    </Button>
+                                  </Row>
+                                </Container>
+                              </Col>
+                              {
+                                list.messagesList.map((list2, index2) => (
+                                  <Col xs="12" key={index2}>
+                                    <p>
+                                      <b>{list2.sender}:</b> {list2.messageBody}
+                                    </p>
+                                  </Col>
+                                ))
+                              }
+                            </Row>
+                            <Row className="send-message-area">
+                              <InputGroup>
+                                <FormControl data-testid="chat" as="textarea" rows={5} placeholder="Type your message..." value={list.type} onChange={this.handleType(index)}/>
+                                <InputGroup.Append>
+                                  <Button data-testid="send" variant="danger" type="submit" onClick={this.handleSubmit(index)}>
+                                    Send
+                                  </Button>
+                                </InputGroup.Append>
+                              </InputGroup>
+                            </Row>
+                          </Container>
+                        </Tab.Pane>
                       ))
                     }
-                  </ListGroup>
-                </Col>
-                <Col xs="7" sm="8" md="9" className="message-screen">
-                  <Tab.Content>
-                  {
-                    this.state.messages.map((list, index) => (
-                      <Tab.Pane eventKey={index} key={index}>
-                        <Container>
-                          <Row className="message-header px-4">
-                            <h3>{list.username}</h3>
-                          </Row>
-                          <Row className="message-history p-4">
-                            <Col>
-                              <Container className="message-board p-4">
-                                <Row className="justify-content-center">
-                                  <Col xs="auto">
-                                    <h6> This is the message board regarding {list.textbook} Textbook</h6>
-                                  </Col>
-                                </Row>
-                                <Row className="justify-content-center">
-                                  <Button data-testid="manage" variant="danger" className="m-2" onClick={this.handleManage(index)}>
-                                    Manage
-                                  </Button>
-                                  <Button data-testid="complete" variant="danger" className="m-2" onClick={this.handleComplete(index)}>
-                                    Mark As Completed
-                                  </Button>
-                                </Row>
-                              </Container>
-                            </Col>
-                            {
-                              list.messagesList.map((list2, index2) => (
-                                <Col xs="12" key={index2}>
-                                  <p>
-                                    <b>{list2.sender}:</b> {list2.messageBody}
-                                  </p>
-                                </Col>
-                              ))
-                            }
-                          </Row>
-                          <Row>
-                            <InputGroup>
-                              <FormControl data-testid="chat" as="textarea" rows={5} placeholder="Type your message..." value={list.type} onChange={this.handleType(index)}/>
-                              <InputGroup.Append>
-                                <Button data-testid="send" variant="danger" type="submit" onClick={this.handleSubmit(index)}>
-                                  Send
-                                </Button>
-                              </InputGroup.Append>
-                            </InputGroup>
-                          </Row>
-                        </Container>
-                      </Tab.Pane>
-                    ))
-                  }
-                  </Tab.Content>
-                </Col>
-              </Row>
-            </Tab.Container>
-          </Col>
+                    </Tab.Content>
+                  </Col>
+                </Row>
+              </Tab.Container>
+            </Container>
+          </div>
         </Row>
       </Container>
     );

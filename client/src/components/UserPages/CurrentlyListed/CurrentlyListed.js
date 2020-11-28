@@ -21,13 +21,13 @@ export default class CurrentlyListed extends React.Component {
       for(let i = 0; i < books.length; i++){
           API.getBookDetails(books[i]['ISBN']).then(booksInfo => {
             listBooks.push({title: booksInfo['title'], category: books[i]['category'],price: books[i]['price']})
-            this.setState({ 
+            this.setState({
               textbooks: listBooks
             })
-          }) 
+          })
       }
     })
-    
+
   }
 
   constructor() {
@@ -47,14 +47,12 @@ export default class CurrentlyListed extends React.Component {
     return (
       <Container fluid>
         <Row>
-          <Col xs="4" sm="3" md="2">      
-            <Sidebar />
-          </Col>
-          <Col xs="8" sm="9" md="10">
-            <Container fluid>
+          <div className="sidebar-currently-listed-container">
+            <Sidebar className="sidebar-container-page"/>
+            <Container fluid className="currently-listed-container">
               <Row className="mt-4 justify-content-center">
                 <Col xs="auto">
-                  <h3 data-testid="text">Your Currently Listed Textbooks</h3>
+                  <h3 data-testid="text" className="current-listed-header">Your Currently Listed Textbooks</h3>
                 </Col>
               </Row>
               <hr />
@@ -106,7 +104,7 @@ export default class CurrentlyListed extends React.Component {
                 </Col>
               </Row>
             </Container>
-          </Col> 
+          </div>
         </Row>
       </Container>
     );
