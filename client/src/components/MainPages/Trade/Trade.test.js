@@ -10,6 +10,6 @@ afterEach(cleanup);
 
 describe('Trade', () => {
   test('Renders Trade Component', () => {
-    const { } = render(<Router><Trade /></Router>);
+    render(<Router><Trade /></Router>);
   });
 });

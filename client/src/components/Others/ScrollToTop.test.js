@@ -10,7 +10,7 @@ afterEach(cleanup);
 
 describe('ScrollToTop', () => {
   test('Renders ScrollToTop Component', () => {
-    const { } = render(<Router><ScrollToTop /></Router>);
+    render(<Router><ScrollToTop /></Router>);
     
   });
 });
