@@ -4,13 +4,13 @@
   overflow-y: auto;
 }
 
+.currently-listed-container {
+  margin-left: 8px;
+}
+
 .sidebar-currently-listed-container {
   display: flex;
   width: 100%;
-}
-
-.currently-listed-container {
-  margin-left: 8px;
 }
 
 @media screen and (max-width:644px){

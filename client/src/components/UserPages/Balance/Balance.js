@@ -83,12 +83,12 @@ export default class Balance extends React.Component {
     return (
       <Container fluid>
         <Row>
-          <div className="sidebar-useroption-container">
+          <div className="sidebar-balance-container">
             <Sidebar className="sidebar-container-page"/>
-            <Container fluid className="p-2 m-3">
+            <Container fluid className="balance-container">
               <Row className="mt-4 justify-content-center">
                 <Col xs="auto">
-                  <h3 data-testid="text">Current Balance: ${this.state.currentBalance}</h3>
+                  <h3 data-testid="text" className="current-balance-header">Current Balance: ${this.state.currentBalance}</h3>
                 </Col>
               </Row>
               <hr />
