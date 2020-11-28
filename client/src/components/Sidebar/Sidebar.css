@@ -14,8 +14,11 @@
   width: 150px;
 }
 
+/* do something like this (only for messages page)*/
 .navbar-button-container, .navbar-button-container.active {
-  margin-right: 10px;
+  /* margin-right: 10px;
+
+  */
 }
 
 .navbar-button-container {

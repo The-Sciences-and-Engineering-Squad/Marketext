@@ -36,7 +36,7 @@ export default class TransactionHistory extends React.Component {
     return (
       <Container fluid>
         <Row>
-          <div className="sidebar-useroption-container">
+          <div className="sidebar-user-transactions-container">
             <Sidebar className="sidebar-container-page"/>
             <Container fluid className="p-2 m-3">
               <Row className="mt-4 justify-content-center">
