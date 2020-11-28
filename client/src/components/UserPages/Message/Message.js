@@ -86,15 +86,15 @@ export default class Message extends React.Component {
     return (
       <Container fluid>
         <Row>
-          <div className="sidebar-useroption-container">
+          <div className="sidebar-message-board-container">
             <Sidebar className="sidebar-container-page"/>
-            <Container fluid>
+            <Container fluid className="message-board-container">
               <Tab.Container defaultActiveKey={0}>
                 <Row>
-                  <Col xs="5" sm="4" md="3">
+                  <Col xs="5" sm="4" md="3" className="past-users-messaged-container">
                     <ListGroup>
                       <ListGroup.Item>
-                        <h4 data-testid="text" className="header">Messages</h4>
+                        <h4 data-testid="text" className="user-list-messages-header">Messages</h4>
                       </ListGroup.Item>
                       {
                         this.state.messages.map((list, index) => (
@@ -113,21 +113,21 @@ export default class Message extends React.Component {
                         <Tab.Pane eventKey={index} key={index}>
                           <Container>
                             <Row className="message-header px-4">
-                              <h3>{list.username}</h3>
+                              <h3 className="message-header-tag">{list.username}</h3>
                             </Row>
-                            <Row className="message-history p-4">
+                            <Row className="message-history">
                               <Col>
-                                <Container className="message-board p-4">
+                                <Container className="message-board">
                                   <Row className="justify-content-center">
                                     <Col xs="auto">
                                       <h6> This is the message board regarding {list.textbook} Textbook</h6>
                                     </Col>
                                   </Row>
                                   <Row className="justify-content-center">
-                                    <Button data-testid="manage" variant="danger" className="m-2" onClick={this.handleManage(index)}>
+                                    <Button data-testid="manage" variant="danger" className="manage-btn" onClick={this.handleManage(index)}>
                                       Manage
                                     </Button>
-                                    <Button data-testid="complete" variant="danger" className="m-2" onClick={this.handleComplete(index)}>
+                                    <Button data-testid="complete" variant="danger" className="mark-as-completed-btn" onClick={this.handleComplete(index)}>
                                       Mark As Completed
                                     </Button>
                                   </Row>
@@ -143,7 +143,7 @@ export default class Message extends React.Component {
                                 ))
                               }
                             </Row>
-                            <Row>
+                            <Row className="send-message-area">
                               <InputGroup>
                                 <FormControl data-testid="chat" as="textarea" rows={5} placeholder="Type your message..." value={list.type} onChange={this.handleType(index)}/>
                                 <InputGroup.Append>
