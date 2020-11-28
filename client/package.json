@@ -23,8 +23,8 @@
     "start": "react-scripts start",
     "dev": "flask run",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "test:coverage": "npm run test -- --coverage --watchAll=false",
+    "test": "react-scripts test --env=jsdom",
+    "coverage": "npm test -- --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

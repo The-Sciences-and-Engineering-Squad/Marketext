@@ -15,7 +15,7 @@ jobs:
       script:
         - npm run build
         - npm test
-        - npm run test:coverage
+        - npm run test
     - stage: test
       name: "Backend using Python"
       language: python
