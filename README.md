@@ -191,7 +191,7 @@ This is a our final project for CSc 473 - Website Design Course, with Prof. Mich
 ## License
 This project is licensed under the terms of the MIT license.
 
-# Badges
+## Badges
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=The-Sciences-and-Engineering-Squad_Marketext&metric=coverage)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
 
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=The-Sciences-and-Engineering-Squad_Marketext)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
