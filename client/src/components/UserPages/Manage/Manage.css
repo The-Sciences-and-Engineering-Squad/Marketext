@@ -5,3 +5,8 @@
 .manageMessages-forms:focus {
     background-color: white;
 }
+
+.sidebar-manage-container {
+  display: flex;
+  width: 100%;
+}
