@@ -66,4 +66,9 @@ class CurrentlyModel:
         if results:
             return True
         return False
+
+    def getOneListing(self,listedId):
+        self.dataCur.execute('SELECT * FROM CurrentlyListed WHERE listedId = ' + "'" + str(listedId) + "'" )
+        results = self.dataCur.fetchone()
+        return results
     

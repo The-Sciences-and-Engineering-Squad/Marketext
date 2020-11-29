@@ -37,7 +37,7 @@ export default class Textbooks extends React.Component {
         let listBooks = []
         for(let i = 0;i < list.length;i++){
             API.getUserName({userId: list[i]['userId']}).then(username => {
-              listBooks.push({username: username, condition: list[i]['condition'], additional: list[i]['additional'], payment: list[i]['price']})
+              listBooks.push({listedId: list[i]['listedId'], userId:  list[i]['userId'], username: username, condition: list[i]['condition'], additional: list[i]['additional'], payment: list[i]['price']})
               this.setState({ users: listBooks})
             })
         }  
@@ -60,7 +60,12 @@ export default class Textbooks extends React.Component {
     // Insert Backend to link logged in user with user clicked. 
     // Make a call to create a message board with the logged in user with the user clicked.
     // User information is below.
-    console.log(this.state.users[input]);
+    const data = {'listedId': this.state.users[input]['listedId'],'userTwoId': this.state.users[input]['userId'],'ISBN': this.state.textbook.ISBN[1]['identifier']}
+    const API = new api();
+    console.log(data)
+    API.contactUser(data).then( newBalance => {
+      this.setState({ currentBalance:  newBalance });
+    })
   };
 
   target(){

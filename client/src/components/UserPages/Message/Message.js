@@ -9,8 +9,9 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
-
+import jwt_decode from "jwt-decode";
 import './Message.css'
+import api from '../../API/api'
 
 export default class Message extends React.Component {
   componentDidMount() {
@@ -18,31 +19,34 @@ export default class Message extends React.Component {
     var token = cookies.get('token');
     console.log(token);
     // Insert Backend to retrieve users messages.
-    this.setState({ messages: [
-      { username: "Kevin",
-        id: 3,
-        messagesList: [
-          {sender: "Albert", messageBody: "Hi, how much is this book?"},
-          {sender: "Kevin", messageBody: "It is $25 dollars."}
-        ],
-        textbook: "Art 100",
-        category: "Sell",
-        price: "$100",
-        type: "",
-      },
-      { username: "Bob",
-        id: 20,
-        messagesList: [
-          {sender: "Dor", messageBody: "Hey, can you sell this book for $10 off?"},
-          {sender: "Eddie", messageBody: "No, sorry."}
-        ],
-        textbook: "Math 200",
-        category: "Buy",
-        price: "$200",
-        type: "",
-      }
-    ]
-    });
+    const API = new api();
+    API.getContact({token: cookies.get('token')}).then(list => {
+      let listMessages = []
+      for(let i = 0;i < list.length;i++){
+          API.getUserName({userId: list[i]['userTwoId']}).then(username => {
+            API.getBookDetails(list[i]['ISBN']).then(book => {
+            listMessages.push(
+
+              { username: username,
+              id: 3,
+              messagesList: [
+                {sender: jwt_decode(cookies.get('token')).username, messageBody: "Hi, how much is this book?"},
+                {sender: username, messageBody: "It is $25 dollars."}
+              ],
+              textbook: book['title'],
+              category: book['category'],
+              price: book['price'],
+              type: "",
+            }
+
+
+            )
+            this.setState({ messages: listMessages})
+          })
+        })
+        
+      }  
+    })
   }
 
   constructor() {
