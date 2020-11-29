@@ -185,5 +185,64 @@ async getUserProfile(data){
     return response_1['profile']
   }
 
+
+async contactUser(data){
+    const response = await fetch('/messages/contact', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+        body: JSON.stringify(data),
+      });
+    const response_1 = await response.json();
+    if (response_1['Login']) {
+      const cookies = new Cookies();
+      window.location.href = '/Message';
+    } else {
+      return response_1['error'];
+    }
+  }
+
+async getContact(data){
+    const response = await fetch('/messages/contactList', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+        body: JSON.stringify(data),
+      });
+    const response_1 = await response.json();
+    return response_1['contactList'];
+  }
+
+  async getCurrentlyListed(data){
+    const response = await fetch('/messages/contactList', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+        body: JSON.stringify(data),
+      });
+    const response_1 = await response.json();
+    return response_1['contactList'];
+  }
+
+async removeListing(data){
+    const response = await fetch('/currently/remove', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+        body: JSON.stringify(data),
+      });
+    const response_1 = await response.json();
+    if (response_1['Remove']) {
+      const cookies = new Cookies();
+      window.location.href = '/CurrentlyListed';
+    } else {
+      return response_1['error'];
+    }
+  }
+
 }
 

@@ -58,3 +58,12 @@ CREATE TABLE Transaction (
     FOREIGN KEY (listedId) REFERENCES CurrentlyListed(listedId)
 );
 
+CREATE Table ContactUser (
+    contactUserId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userOneId INT NOT NULL,
+    userTwoId INT NOT NULL,
+    listedId INT NOT NULL,
+    FOREIGN KEY (userOneId) REFERENCES User(userId),
+    FOREIGN KEY (userTwoId) REFERENCES User(userId),
+    FOREIGN KEY (listedId) REFERENCES CurrentlyListed(listedId)
+);

@@ -12,6 +12,7 @@ class CurrentlyModel:
         self.condition = None
         self.isbn  = None
         self.additional = None
+        self.books = None
         if userId is not None:
             self.dataCur.execute('SELECT * FROM CurrentlyListed WHERE userId = ' + "'" + str(userId) + "'" )
             results = self.dataCur.fetchall()
@@ -66,4 +67,14 @@ class CurrentlyModel:
         if results:
             return True
         return False
-    
+
+    def getOneListing(self,listedId):
+        self.dataCur.execute('SELECT * FROM CurrentlyListed WHERE listedId = ' + "'" + str(listedId) + "'" )
+        results = self.dataCur.fetchone()
+        return results
+
+    def removeListing(self,ISBN,category):
+        self.dataCur.execute('DELETE FROM ContactUser WHERE listedId IN (SELECT listedId FROM CurrentlyListed WHERE ISBN = ' + "'" + str(ISBN) + "'" + ' AND category = ' + "'" + str(category) + "'"  ' AND userId = ' + "'" + str(self.userId) + "'" + ')')
+        self.dataCur.execute('DELETE FROM CurrentlyListed WHERE ISBN = ' + "'" + str(ISBN) + "'" + ' AND category = ' + "'" + str(category) + "'"  ' AND userId = ' + "'" + str(self.userId) + "'" )
+        self.database.commit()
+        

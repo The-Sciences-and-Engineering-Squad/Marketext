@@ -47,6 +47,9 @@ def create_app():
     from server.controllers import profile_controller
     app.register_blueprint(profile_controller.bp)
 
+    from server.controllers import contact_controller
+    app.register_blueprint(contact_controller.bp)
+
     return app
 
     

@@ -18,14 +18,16 @@ export default class CurrentlyListed extends React.Component {
     const API = new api();
     let listBooks = []
     API.getUserList(tokens).then( books => {
+      if(books != null){
       for(let i = 0; i < books.length; i++){
           API.getBookDetails(books[i]['ISBN']).then(booksInfo => {
-            listBooks.push({title: booksInfo['title'], category: books[i]['category'],price: books[i]['price']})
-            this.setState({
+            listBooks.push({ISBN: books[i]['ISBN'], title: booksInfo['title'], category: books[i]['category'],price: books[i]['price']})
+            this.setState({ 
               textbooks: listBooks
             })
           })
       }
+    }
     })
 
   }
@@ -41,6 +43,11 @@ export default class CurrentlyListed extends React.Component {
     e.preventDefault();
     // Insert Backend to remove the listing from the user.
     console.log(this.state.textbooks[input]);
+    const data = this.state.textbooks[input]
+    const API = new api();
+    API.removeListing(data).then( error => {
+      this.setState({ errors:  error });
+    })
   }
 
   render() {
