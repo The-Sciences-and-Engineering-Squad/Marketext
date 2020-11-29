@@ -20,7 +20,6 @@ class ContactModel:
 
     
     def initContact(self,userOneId,userTwoId,listedId):
-        print(listedId)
         self.dataCur.execute('INSERT INTO ContactUser(userOneId,userTwoId,listedId) VALUES (' +  "'" + str(userOneId) + "'," +  "'" + str(userTwoId) + "'," +  "'" + str(listedId) + "'" ')')
         self.database.commit()
 

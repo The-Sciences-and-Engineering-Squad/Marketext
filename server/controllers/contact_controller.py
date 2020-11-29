@@ -36,7 +36,6 @@ def showListing():
     contact = contact_model.ContactModel()
     currentlyListed = currently_model.CurrentlyModel()
     req = request.json
-    print(contact.showContact(session['userId'])[0])
     contactList = contact.showContact(session['userId'])
     for i in range(len(contactList)):
         listedId = contactList[i]['listedId']
