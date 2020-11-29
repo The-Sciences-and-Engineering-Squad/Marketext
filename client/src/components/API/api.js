@@ -227,5 +227,22 @@ async getContact(data){
     return response_1['contactList'];
   }
 
+async removeListing(data){
+    const response = await fetch('/currently/remove', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+        body: JSON.stringify(data),
+      });
+    const response_1 = await response.json();
+    if (response_1['Remove']) {
+      const cookies = new Cookies();
+      window.location.href = '/CurrentlyListed';
+    } else {
+      return response_1['error'];
+    }
+  }
+
 }
 

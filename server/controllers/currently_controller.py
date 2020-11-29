@@ -31,10 +31,22 @@ def addBook():
     return json.dumps({'Added': False, 'error': error})
 
 @bp.route('/remove',methods=['GET', 'POST'])
-@token_required
 def removeBook():
-    currently = currently_model.CurrentlyModel()
-    return None
+    error = None
+    if request.method == 'POST':
+        currently = currently_model.CurrentlyModel(session['userId'])
+        req = request.json
+
+        if not currently.isExist(req['ISBN'],req['category']):
+            error = 'Listing does not exist'
+      
+        if error is None:
+            currently = currently_model.CurrentlyModel(session['userId'])
+            currently.removeListing(req['ISBN'],req['category'])
+            return json.dumps({'Remove': True})
+
+    return json.dumps({'Remove': False, 'error': error})
+
 
 @bp.route('/userList',methods=['GET', 'POST'])
 @token_required

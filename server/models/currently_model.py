@@ -71,4 +71,9 @@ class CurrentlyModel:
         self.dataCur.execute('SELECT * FROM CurrentlyListed WHERE listedId = ' + "'" + str(listedId) + "'" )
         results = self.dataCur.fetchone()
         return results
-    
+
+    def removeListing(self,ISBN,category):
+        self.dataCur.execute('DELETE FROM ContactUser WHERE listedId IN (SELECT listedId FROM CurrentlyListed WHERE ISBN = ' + "'" + str(ISBN) + "'" + ' AND category = ' + "'" + str(category) + "'"  ' AND userId = ' + "'" + str(self.userId) + "'" + ')')
+        self.dataCur.execute('DELETE FROM CurrentlyListed WHERE ISBN = ' + "'" + str(ISBN) + "'" + ' AND category = ' + "'" + str(category) + "'"  ' AND userId = ' + "'" + str(self.userId) + "'" )
+        self.database.commit()
+        
