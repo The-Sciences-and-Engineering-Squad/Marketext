@@ -18,6 +18,7 @@ export default class CurrentlyListed extends React.Component {
     const API = new api();
     let listBooks = []
     API.getUserList(tokens).then( books => {
+      if(books != null){
       for(let i = 0; i < books.length; i++){
           API.getBookDetails(books[i]['ISBN']).then(booksInfo => {
             listBooks.push({ISBN: books[i]['ISBN'], title: booksInfo['title'], category: books[i]['category'],price: books[i]['price']})
@@ -26,6 +27,7 @@ export default class CurrentlyListed extends React.Component {
             })
           }) 
       }
+    }
     })
     
   }

@@ -12,6 +12,7 @@ class CurrentlyModel:
         self.condition = None
         self.isbn  = None
         self.additional = None
+        self.books = None
         if userId is not None:
             self.dataCur.execute('SELECT * FROM CurrentlyListed WHERE userId = ' + "'" + str(userId) + "'" )
             results = self.dataCur.fetchall()
