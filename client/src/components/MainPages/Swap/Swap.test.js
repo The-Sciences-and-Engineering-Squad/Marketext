@@ -10,6 +10,6 @@ afterEach(cleanup);
 
 describe('Swap', () => {
   test('Renders Swap Component', () => {
-    const { } = render(<Router><Swap /></Router>);
+    render(<Router><Swap /></Router>);
   });
 });

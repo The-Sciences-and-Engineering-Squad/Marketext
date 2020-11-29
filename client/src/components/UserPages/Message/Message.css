@@ -31,12 +31,79 @@
   color: white;
 }
 
+.sidebar-message-board-container {
+  display: flex;
+  width: 100%;
+}
+
+.message-board-container {
+  margin-left: 14px;
+}
+
+.manage-btn, .mark-as-completed-btn {
+  margin: 10px;
+}
+
+.message-board {
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+@media screen and (max-width: 770px) {
+  .user-list-messages-header, .message-header-tag {
+    font-size: 20px;
+  }
+}
+
 @media screen and (max-width:700px){
+  .user-list-messages-header {
+    font-size: 15px;
+    word-wrap: break-word;
+    margin: 0;
+  }
+
+  .past-users-messaged {
+    font-size: 15px;
+  }
+
+  .previewText {
+    font-size: 13px;
+  }
+
+}
+
+@media screen and (max-width: 530px) {
+  .message-screen {
+    margin: 0;
+    padding: 0;
+  }
+
   .previewText {
     display: none;
   }
 
-  .header {
-    font-size: 2vw;
+  .past-users-messaged {
+    font-size: 14px;
+  }
+
+  .past-users-messaged-container {
+     margin: 0;
+     padding: 0;
+  }
+
+  .manage-btn, .mark-as-completed-btn {
+    width: 90%;
+    margin-top: 10px;
+  }
+
+  .message-board {
+    margin-top: 10px;
+    width: 100%;
+    word-wrap: break-word;
+  }
+
+  .send-message-area {
+    padding-bottom: 30px;
   }
 }
