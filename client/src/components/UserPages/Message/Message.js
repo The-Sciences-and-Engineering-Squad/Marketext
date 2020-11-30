@@ -28,15 +28,18 @@ export default class Message extends React.Component {
             listMessages.push(
 
               { username: username,
-              id: 3,
+              id: list[i]['listedId'],
               messagesList: [
                 {sender: jwt_decode(cookies.get('token')).username, messageBody: "Hi, how much is this book?"},
                 {sender: username, messageBody: "It is $25 dollars."}
               ],
               textbook: book['title'],
-              category: book['category'],
-              price: book['price'],
+              category: list[i]['category'],
+              price: list[i]['price'],
               type: "",
+              userOneId: jwt_decode(cookies.get('token')).userId,
+              userTwoId: list[i]['userTwoId'],
+              ISBN: list[i]['ISBN']
             }
 
 
@@ -71,6 +74,19 @@ export default class Message extends React.Component {
     // Performing a trade, subtracting balance from user and adding it to the other user.
     // Both have to agree that the transaction has been completed.
     console.log(this.state.messages[index]);
+
+    const data = this.state.messages[index]
+    const API = new api();
+
+    API.addTransaction(data).then( error => {
+      this.setState({ errors:  error });
+    })
+
+    API.removeListing(data).then( error => {
+      this.setState({ errors:  error });
+    })
+
+   
   }
 
   // Handle field change

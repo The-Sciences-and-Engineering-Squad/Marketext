@@ -238,10 +238,39 @@ async removeListing(data){
     const response_1 = await response.json();
     if (response_1['Remove']) {
       const cookies = new Cookies();
-      window.location.href = '/CurrentlyListed';
+      if(window.location.pathname == '/Message'){
+        window.location.href = '/TransactionHistory';
+      }else{
+        window.location.href = '/CurrentlyListed';
+      }
+      
     } else {
       return response_1['error'];
     }
+  }
+
+async addTransaction(data){
+    const response = await fetch('/transaction/add', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+        body: JSON.stringify(data),
+      });
+    const response_1 = await response.json();
+   
+  }
+
+  async getTransaction(data){
+    const response = await fetch('/transaction/showList', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+        body: JSON.stringify(data),
+      });
+    const response_1 = await response.json();
+    return response_1['transactionList']
   }
 
 }

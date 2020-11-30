@@ -50,6 +50,9 @@ def create_app():
     from server.controllers import contact_controller
     app.register_blueprint(contact_controller.bp)
 
+    from server.controllers import transaction_controller
+    app.register_blueprint(transaction_controller.bp)
+
     return app
 
     

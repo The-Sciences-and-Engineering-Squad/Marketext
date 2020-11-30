@@ -51,11 +51,13 @@ CREATE TABLE CurrentlyListed (
 CREATE TABLE Transaction (
     transactionId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     price VARCHAR(255) NOT NULL,
-    transactionDate DATETIME NOT NULL,
-    quantity INT NOT NULL,
-    paymentMethod VARCHAR(255) NOT NULL,
-    listedId INT NOT NULL,
-    FOREIGN KEY (listedId) REFERENCES CurrentlyListed(listedId)
+    transactionDate VARCHAR(255) NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    ISBN VARCHAR(255) NOT NULL,
+    userOneId INT NOT NULL,
+    userTwoId INT NOT NULL,
+    FOREIGN KEY (userOneId) REFERENCES User(userId),
+    FOREIGN KEY (userTwoId) REFERENCES User(userId)
 );
 
 CREATE Table ContactUser (
