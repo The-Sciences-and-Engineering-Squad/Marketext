@@ -62,16 +62,14 @@ export default class AddNew extends React.Component {
     }
     this.setState(newState);
   };
-  
+
   render() {
     return (
       <Container fluid>
         <Row>
-          <Col xs="4" sm="3" md="2">      
-            <Sidebar />
-          </Col>
-          <Col xs="8" sm="9" md="10">
-            <Container fluid>
+          <div className="sidebar-addnew-container">
+            <Sidebar className="sidebar-container-page"/>
+            <Container fluid className="p-2 m-3">
               <Row className="mt-4">
                 <Col xs="12" sm="4">
                   <Button as={Link} to="/CurrentlyListed" variant="danger">Back</Button>
@@ -158,7 +156,7 @@ export default class AddNew extends React.Component {
                             For sellers, it's how much you want for your textbook. <br/>
                             For buyers, it's how much you're willing to pay for that textbook. <br/>
                             For trade, it's what you're willing to trade for your textbook. Something more specific and equal of value. <br/>
-                            For swap, it's what you're willing to swap for your textbook. Could be less specific and less or more of value. 
+                            For swap, it's what you're willing to swap for your textbook. Could be less specific and less or more of value.
                           </p>
                           <hr/>
                           <h5>
@@ -175,7 +173,7 @@ export default class AddNew extends React.Component {
                 </Col>
               </Row>
             </Container>
-          </Col> 
+          </div>
         </Row>
       </Container>
     );

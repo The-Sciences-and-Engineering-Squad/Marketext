@@ -19,11 +19,6 @@ describe('Profile', () => {
     fireEvent.click(getByTestId('save'));
     // Checks the errors to confirm
     expect(getByTestId('errors')).toHaveTextContent('Please Enter Current Password to Make Any Changes');
-    // Added Email in Field
-    fireEvent.change(getByTestId('email'), { target: { value: 'Test@gmail.com' } })
-    expect(getByTestId('email').value).toBe('Test@gmail.com') 
-    fireEvent.click(getByTestId('save'));
-    expect(getByTestId('errors')).toHaveTextContent('Please Enter Current Password to Make Any Changes');
     // Added Password in Field
     fireEvent.change(getByTestId('password'), { target: { value: '123' } })
     expect(getByTestId('password').value).toBe('123') 

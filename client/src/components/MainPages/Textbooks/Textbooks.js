@@ -26,9 +26,9 @@ export default class Textbooks extends React.Component {
         data = {page: page, ISBN: result.volumeInfo.industryIdentifiers[1]['identifier']}
         this.setState({ textbook: {
           title: result.volumeInfo.title,
-          author: result.volumeInfo.authors, 
+          author: result.volumeInfo.authors,
           image: result.volumeInfo.imageLinks.thumbnail,
-          description: result.volumeInfo.description,
+          description: result.volumeInfo.description.replace(/<(.|\n)*?>/g, ''),
           ISBN: hasISBN !== undefined ? result.volumeInfo.industryIdentifiers:null, 
         }
         })
@@ -40,7 +40,7 @@ export default class Textbooks extends React.Component {
               listBooks.push({listedId: list[i]['listedId'], userId:  list[i]['userId'], username: username, condition: list[i]['condition'], additional: list[i]['additional'], payment: list[i]['price']})
               this.setState({ users: listBooks})
             })
-        }  
+        }
       })
     })
   }
@@ -56,8 +56,8 @@ export default class Textbooks extends React.Component {
   }
 
   handleContact = (input) => (e) => {
-    e.preventDefault(); 
-    // Insert Backend to link logged in user with user clicked. 
+    e.preventDefault();
+    // Insert Backend to link logged in user with user clicked.
     // Make a call to create a message board with the logged in user with the user clicked.
     // User information is below.
     const data = {'listedId': this.state.users[input]['listedId'],'userTwoId': this.state.users[input]['userId'],'ISBN': this.state.textbook.ISBN[1]['identifier']}
@@ -120,7 +120,7 @@ export default class Textbooks extends React.Component {
           <Col sm="6" md="8" lg="9">
             <Card className="text-center">
               {this.state.textbook.description}
-            </Card>      
+            </Card>
           </Col>
         </Row>
         <Row className="px-4 py-3 textbooks-table">

@@ -25,7 +25,7 @@ export default class Manage extends React.Component {
       errors: [],
     };
   }
-  
+
   handleChange = (input) => (e) => {
     this.setState({ [input]: e.target.value });
   };
@@ -49,16 +49,14 @@ export default class Manage extends React.Component {
     }
     this.setState(newState);
   }
-  
+
   render() {
     return (
       <Container fluid>
         <Row>
-          <Col xs="4" sm="3" md="2">
-            <Sidebar />
-          </Col>
-          <Col xs="8" sm="9" md="10">
-            <Container fluid>
+          <div className="sidebar-manage-container">
+            <Sidebar className="sidebar-container-page"/>
+            <Container fluid className="p-2 m-3">
               <Row className="mt-4">
                 <Col xs="12" sm="4">
                   <Button as={Link} to="/Message" variant="danger">
@@ -113,7 +111,7 @@ export default class Manage extends React.Component {
                 </Col>
               </Row>
             </Container>
-          </Col>
+          </div>
         </Row>
       </Container>
     );
