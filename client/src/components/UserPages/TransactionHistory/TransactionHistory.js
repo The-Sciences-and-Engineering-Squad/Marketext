@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Sidebar from '../../Sidebar/Sidebar';
 import Cookies from 'universal-cookie';
 import Table from 'react-bootstrap/Table';
-
+import api from '../../API/api'
 import './TransactionHistory.css'
 
 export default class TransactionHistory extends React.Component {
@@ -14,13 +14,20 @@ export default class TransactionHistory extends React.Component {
     var token = cookies.get('token');
     console.log(token);
     // Insert Backend to get transaction history for user.
-    this.setState({
-      textbooks: [
-        {transactionNo:"1", title: "C++", category: "Sell", price: "$75"},
-        {transactionNo:"2", title: "Python", category: "Buy", price: "$50"},
-        {transactionNo:"3", title: "Computer Organization", category: "Trade", price: "$250 + Assembly"},
-        {transactionNo:"4", title: "Electrical Engineering", category: "Swap", price: "$25 + Computer Organization"},
-      ]
+    const API = new api();
+    API.getTransaction({token: cookies.get('token')}).then(list => {
+      let transactionList = []
+      for(let i = 0;i < list.length;i++){
+            API.getBookDetails(list[i]['ISBN']).then(book => {
+              transactionList.push(
+
+                {transactionNo:list[i]['transactionId'], title: book['title'], category: list[i]['category'], price: list[i]['price']},
+            )
+            this.setState({ textbooks: transactionList})
+          })
+        
+        
+      }  
     })
   }
 
