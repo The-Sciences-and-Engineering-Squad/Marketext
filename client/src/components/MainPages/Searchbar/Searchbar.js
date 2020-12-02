@@ -34,8 +34,6 @@ export default class Searchbar extends React.Component {
             if (result.items[i].volumeInfo.imageLinks === undefined ){
               continue;
             }
-            console.log(result.items[i].volumeInfo)
-            console.log(result.items[i].volumeInfo.imageLinks)
             textbooks = textbooks.concat({
               id: result.items[i].id,
               title: result.items[i].volumeInfo.title,

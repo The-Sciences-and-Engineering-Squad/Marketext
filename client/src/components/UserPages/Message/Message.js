@@ -10,13 +10,16 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import jwt_decode from "jwt-decode";
-import './Message.css'
-import api from '../../API/api'
+
+import api from '../../API/api';
+import './Message.css';
 
 export default class Message extends React.Component {
   componentDidMount() {
     const cookies = new Cookies();
-    this.setState({ currentUser: jwt_decode(cookies.get('token')).username});
+    if(cookies.get('token')){
+      this.setState({ currentUser: jwt_decode(cookies.get('token')).username });
+    }
     // Insert Backend to retrieve users messages.
     const API = new api();
     API.getContact({token: cookies.get('token')}).then(list => {
