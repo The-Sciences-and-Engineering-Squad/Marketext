@@ -13,7 +13,7 @@ export default class Buy extends React.Component {
     .then(result => {
         if(result.items !== null){
           for(let i=0;i<result.items.length;i++){
-            if (result.items[i].volumeInfo.imageLinks === null ){
+            if (result.items[i].volumeInfo.imageLinks === undefined ){
               continue;
             }
             var books = this.state.textbooks.concat({
