@@ -42,7 +42,6 @@ export default class CurrentlyListed extends React.Component {
   handleRemove = (input) => (e) => {
     e.preventDefault();
     // Insert Backend to remove the listing from the user.
-    console.log(this.state.textbooks[input]);
     const data = this.state.textbooks[input]
     const API = new api();
     API.removeListing(data).then( error => {

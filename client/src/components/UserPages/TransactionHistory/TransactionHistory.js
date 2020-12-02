@@ -12,7 +12,6 @@ export default class TransactionHistory extends React.Component {
   componentDidMount() {
     const cookies = new Cookies();
     var token = cookies.get('token');
-    console.log(token);
     // Insert Backend to get transaction history for user.
     const API = new api();
     API.getTransaction({token: cookies.get('token')}).then(list => {
