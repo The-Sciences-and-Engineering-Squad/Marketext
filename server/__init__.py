@@ -9,9 +9,24 @@ load_dotenv()
 
 db = MySQL()
 
+
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
+
+
+@app.errorhandler(404)
+def not_found(e):
+    return app.send_static_file('index.html')
+
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
+
+
 def create_app():
     # create and configure the app
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder='../../client/build', static_url_path='/')
     app.config['SECRET_KEY'] = os.urandom(12)
     # database connection credentials
     app.config['MYSQL_USER'] = os.getenv("MYSQL_USER")
@@ -22,16 +37,16 @@ def create_app():
     app.config['SESSION_COOKIE_SAMESITE'] = "Strict"
 
     app.config.update(
-        MAIL_SERVER =  os.getenv("MAIL_SERVER"),
-        MAIL_PORT = os.getenv("MAIL_PORT"),
-        MAIL_USE_SSL = True,
-        MAIL_USERNAME = os.getenv("MAIL_USERNAME"),
-        MAIL_PASSWORD = os.getenv("MAIL_PASSWORD"),
+        MAIL_SERVER=os.getenv("MAIL_SERVER"),
+        MAIL_PORT=os.getenv("MAIL_PORT"),
+        MAIL_USE_SSL=True,
+        MAIL_USERNAME=os.getenv("MAIL_USERNAME"),
+        MAIL_PASSWORD=os.getenv("MAIL_PASSWORD"),
         MAIL_DEFAULT_SENDER=os.getenv("MAIL_DEFAULT_SENDER")
-    )   
+    )
 
     db.init_app(app)
-    
+
     from server.controllers import user_controller
     app.register_blueprint(user_controller.bp)
 
@@ -54,5 +69,3 @@ def create_app():
     app.register_blueprint(transaction_controller.bp)
 
     return app
-
-    
