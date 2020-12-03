@@ -3,7 +3,6 @@ import Container from 'react-bootstrap/Container';
 
 import Searchbar from '../Searchbar/Searchbar';
 import RenderTextbooks from '../RenderTextbooks/RenderTextbooks';
-import './Sell.css'
 
 export default class Sell extends React.Component {
   componentDidMount() {

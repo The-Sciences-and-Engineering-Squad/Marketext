@@ -3,7 +3,6 @@ import Container from 'react-bootstrap/Container';
 
 import Searchbar from '../Searchbar/Searchbar';
 import RenderTextbooks from '../RenderTextbooks/RenderTextbooks';
-import './Trade.css'
 
 export default class Trade extends React.Component {
   componentDidMount() {

@@ -3,7 +3,6 @@ import Container from 'react-bootstrap/Container';
 
 import Searchbar from '../Searchbar/Searchbar';
 import RenderTextbooks from '../RenderTextbooks/RenderTextbooks';
-import './Buy.css'
 
 export default class Buy extends React.Component {
   componentDidMount() {

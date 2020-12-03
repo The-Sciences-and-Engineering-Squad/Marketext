@@ -32,8 +32,6 @@ import AddNew from './components/UserPages/AddNew/AddNew';
 import TransactionHistory from './components/UserPages/TransactionHistory/TransactionHistory';
 import NoAccess from './components/Others/NoAccess';
 import Footer from './components/Footer/Footer';
-import './App.css';
-
 
 class App extends React.Component {
   componentDidMount() {
