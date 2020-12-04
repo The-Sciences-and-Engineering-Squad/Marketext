@@ -23,7 +23,9 @@
 .message-board {
   background-color: #DCDCDC;
   width: 80%;
-  margin: auto;
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .messageTab:active, .messageTab:focus, .messageTab:hover {
@@ -42,12 +44,6 @@
 
 .manage-btn, .mark-as-completed-btn {
   margin: 10px;
-}
-
-.message-board {
-  margin-top: 10px;
-  border-radius: 10px;
-  padding: 10px;
 }
 
 @media screen and (max-width: 770px) {

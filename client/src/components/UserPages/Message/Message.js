@@ -10,14 +10,16 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import jwt_decode from "jwt-decode";
-import './Message.css'
-import api from '../../API/api'
+
+import api from '../../API/api';
+import './Message.css';
 
 export default class Message extends React.Component {
   componentDidMount() {
     const cookies = new Cookies();
-    var token = cookies.get('token');
-    console.log(token);
+    if(cookies.get('token')){
+      this.setState({ currentUser: jwt_decode(cookies.get('token')).username });
+    }
     // Insert Backend to retrieve users messages.
     const API = new api();
     API.getContact({token: cookies.get('token')}).then(list => {
@@ -26,12 +28,10 @@ export default class Message extends React.Component {
           API.getUserName({userId: list[i]['userTwoId']}).then(username => {
             API.getBookDetails(list[i]['ISBN']).then(book => {
             listMessages.push(
-
               { username: username,
               id: list[i]['listedId'],
               messagesList: [
-                {sender: jwt_decode(cookies.get('token')).username, messageBody: "Hi, how much is this book?"},
-                {sender: username, messageBody: "It is $25 dollars."}
+                {sender: username, messageBody: `Hi. I see that you're interested in ${book['title']}`},
               ],
               textbook: book['title'],
               category: list[i]['category'],
@@ -41,8 +41,6 @@ export default class Message extends React.Component {
               userTwoId: list[i]['userTwoId'],
               ISBN: list[i]['ISBN']
             }
-
-
             )
             this.setState({ messages: listMessages})
           })
@@ -55,6 +53,7 @@ export default class Message extends React.Component {
   constructor() {
     super();
     this.state = {
+      currentUser: "",
       messages: []
     };
   }
@@ -99,7 +98,10 @@ export default class Message extends React.Component {
   handleSubmit = (index) => (e) => {
     e.preventDefault();
     // Insert Backend to Submit this message
-    console.log(this.state.messages[index].type);
+    var newState = Object.assign({}, this.state);
+    newState.messages[index].messagesList.push({sender: this.state.currentUser, messageBody: newState.messages[index].type})
+    newState.messages[index].type = "";
+    this.setState({ newState })
   }
 
   render() {

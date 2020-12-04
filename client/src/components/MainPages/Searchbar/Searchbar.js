@@ -31,7 +31,7 @@ export default class Searchbar extends React.Component {
         if(result.items !== null){
           var textbooks = [];
           for(let i=0;i<result.items.length;i++){
-            if (result.items[i].volumeInfo.imageLinks === null ){
+            if (result.items[i].volumeInfo.imageLinks === undefined ){
               continue;
             }
             textbooks = textbooks.concat({
