@@ -10,18 +10,48 @@ load_dotenv()
 db = MySQL()
 
 
-@app.route('/')
-def index():
-    return app.send_static_file('index.html')
+# @app.route('/')
+# def index():
+#     return app.send_static_file('index.html')
+#
+#
+# @app.errorhandler(404)
+# def not_found(e):
+#     return app.send_static_file('index.html')
+#
+#
+# if __name__ == "__main__":
+#     app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
+
+assets = Environment(app)
+assets.register(bundles)
 
 
-@app.errorhandler(404)
-def not_found(e):
-    return app.send_static_file('index.html')
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html'), 500
 
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
+@app.route("/")
+@app.route('/<path:path>')
+def home(path=None):
+    return render_template('./build/templates/index.html')
+
+
+@app.route("/manifest.json")
+def manifest():
+    return app.send_static_file("./build/manifest.json")
+
+
+@app.route("/service-worker.js")
+def service():
+    return app.send_static_file("./build/service-worker.js")
+
+
+@app.route("/precache-manifest.11e2223c4fce4224cba124fb9325d82e.js")  # This should match file below
+def precache():
+    # This should match above decorator route
+    return app.send_static_file("./build/precache-manifest.11e2223c4fce4224cba124fb9325d82e.js")
 
 
 def create_app():
