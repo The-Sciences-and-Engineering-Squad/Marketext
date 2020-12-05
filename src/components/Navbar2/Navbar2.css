@@ -1,0 +1,25 @@
+/* For the background color of Navbar, and center the items */
+.navbar {
+  background-color: #0069B6;
+  color: white !important;
+  text-align: center;
+}
+/* To Fully Center the Content in the Navbar */
+#basic-navbar-nav {
+  margin-right: 10% !important;
+}
+/* Text In the Navbar Styling */
+.nav a {
+  border-bottom: 3px solid transparent;
+}
+/* Underline the Current Page */
+.nav a.active {
+  text-decoration: none;
+  border-bottom: 3px solid #F93C3C !important;
+  font-weight: bold;
+}
+/* Underline the Hovered Pages */
+.nav a:hover{
+  text-decoration: none;
+  border-bottom: 3px solid #F93C3C !important;
+}

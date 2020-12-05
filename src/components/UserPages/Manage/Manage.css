@@ -1,0 +1,12 @@
+.manageMessages-forms {
+    background-color: #DCDCDC;
+}
+
+.manageMessages-forms:focus {
+    background-color: white;
+}
+
+.sidebar-manage-container {
+  display: flex;
+  width: 100%;
+}

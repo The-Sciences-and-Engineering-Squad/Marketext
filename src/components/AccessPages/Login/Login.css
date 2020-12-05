@@ -1,0 +1,8 @@
+.login-container{
+  min-width: 250px;
+  width: 50%;
+  max-width: 500px;
+  background-color: #0069B6;
+  margin-top: 8vh;
+  margin-bottom: 6vh;
+}

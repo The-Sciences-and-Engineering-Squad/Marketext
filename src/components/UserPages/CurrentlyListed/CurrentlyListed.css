@@ -1,0 +1,27 @@
+.currentlisted-table {
+  max-height: 75vh;
+  display: block;
+  overflow-y: auto;
+}
+
+.currently-listed-container {
+  margin-left: 8px;
+}
+
+.sidebar-currently-listed-container {
+  display: flex;
+  width: 100%;
+}
+
+@media screen and (max-width:644px){
+  .sidebar-currently-listed-container {
+    width: 30vh;
+  }
+
+}
+
+@media screen and (max-width:375px) {
+  .sidebar-currently-listed-container {
+    width: 26.5vh;
+  }
+}

@@ -1,0 +1,32 @@
+.profileDescription {
+  color: #0069B6;
+}
+
+.profileImg {
+  border-radius: 50%;
+  background: #0069B6;
+  width: 150px;
+}
+
+.profile-forms {
+  background-color: #DCDCDC;
+}
+
+.profile-forms:focus {
+  background-color: white;
+}
+
+.saveChangesBtn {
+  background-color: #F00000;
+  border-color: #F00000;
+}
+
+.saveChangesBtn:hover {
+  background-color: #C80000;
+  border-color: #C80000;
+}
+
+.sidebar-user-profile-container {
+  display: flex;
+  width: 100%;
+}
