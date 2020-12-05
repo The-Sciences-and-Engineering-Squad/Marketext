@@ -23,7 +23,14 @@ export default class Textbooks extends React.Component {
     .then(result => {
       if(result.items !== null){
         let hasISBN = result.volumeInfo.industryIdentifiers;
-        data = {page: page, ISBN: result.volumeInfo.industryIdentifiers[1]['identifier']}
+        let ISBN = "";
+        for(let i = 0; i < hasISBN.length ; i++){
+          if(hasISBN[i].type === "ISBN_13"){
+            ISBN = result.volumeInfo.industryIdentifiers[i].identifier;
+            break;
+          }
+        }
+        data = {page: page, ISBN: ISBN}
         this.setState({ textbook: {
           title: result.volumeInfo.title,
           author: result.volumeInfo.authors,
