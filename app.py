@@ -9,11 +9,9 @@ from server.controllers import user_controller
 import os
 from flask import Flask, jsonify
 from flask_cors import CORS
-from flask_mysqldb import MySQL
 
 '''Main wrapper for app creation'''
 
-db = MySQL()
 
 # create and configure the app
 app = Flask(__name__, static_folder='./build', static_url_path='/')
@@ -49,12 +47,6 @@ app.register_blueprint(profile_controller.bp)
 app.register_blueprint(contact_controller.bp)
 
 app.register_blueprint(transaction_controller.bp)
-
-
-@app.route('/api/items')
-def items():
-    '''Sample API route for data'''
-    return jsonify([{'title': 'A'}, {'title': 'B'}])
 
 
 @app.route('/')
