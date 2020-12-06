@@ -9,11 +9,6 @@ from flask_mysqldb import MySQL
 app = Flask(__name__, static_folder='./build', static_url_path='/')
 CORS(app)
 
-load_dotenv()
-
-
-db = MySQL()
-
 
 @app.route('/api/items')
 def items():
