@@ -1,9 +1,6 @@
 '''server/app.py - main api app declaration'''
-import os
-from dotenv import load_dotenv
 from flask import Flask, jsonify, send_from_directory
 from flask_cors import CORS
-from flask_mysqldb import MySQL
 
 '''Main wrapper for app creation'''
 app = Flask(__name__, static_folder='./build', static_url_path='/')
