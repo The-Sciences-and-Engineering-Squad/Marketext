@@ -36,7 +36,7 @@ export default class Textbooks extends React.Component {
           author: result.volumeInfo.authors,
           image: result.volumeInfo.imageLinks.thumbnail,
           description: result.volumeInfo.description.replace(/<(.|\n)*?>/g, ''),
-          ISBN: hasISBN !== undefined ? result.volumeInfo.industryIdentifiers:null, 
+          ISBN: hasISBN !== undefined ? ISBN:null, 
         }
         })
       }
@@ -55,7 +55,6 @@ export default class Textbooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      token: "",
       page: "",
       textbook: {},
       users: [],
@@ -67,7 +66,7 @@ export default class Textbooks extends React.Component {
     // Insert Backend to link logged in user with user clicked.
     // Make a call to create a message board with the logged in user with the user clicked.
     // User information is below.
-    const data = {'listedId': this.state.users[input]['listedId'],'userTwoId': this.state.users[input]['userId'],'ISBN': this.state.textbook.ISBN[1]['identifier']}
+    const data = {'listedId': this.state.users[input]['listedId'],'userTwoId': this.state.users[input]['userId'],'ISBN': this.state.textbook.ISBN}
     const API = new api();
     console.log(data)
     API.contactUser(data).then( newBalance => {
@@ -111,6 +110,11 @@ export default class Textbooks extends React.Component {
         <Row className="px-5 py-3">
           <Col sm="6" md="4" lg="3">
             <Card className="text-center">
+              <Card.Header>
+                <strong>
+                  ISBN: {this.state.textbook.ISBN}
+                </strong>
+              </Card.Header>
               <Card.Img className="textbook-img" src={this.state.textbook.image} />
               <ListGroup variant="flush">
                 <ListGroupItem>
