@@ -12,6 +12,9 @@ from flask_cors import CORS
 from flask_mysqldb import MySQL
 
 '''Main wrapper for app creation'''
+
+db = MySQL()
+
 # create and configure the app
 app = Flask(__name__, static_folder='./build', static_url_path='/')
 CORS(app)
