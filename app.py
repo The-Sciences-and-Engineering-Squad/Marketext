@@ -49,6 +49,12 @@ app.register_blueprint(contact_controller.bp)
 app.register_blueprint(transaction_controller.bp)
 
 
+@app.route('/api/items')
+def items():
+    '''Sample API route for data'''
+    return jsonify([{'title': 'A'}, {'title': 'B'}])
+
+
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
