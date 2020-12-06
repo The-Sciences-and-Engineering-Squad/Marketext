@@ -9,6 +9,7 @@ from server.controllers import user_controller
 import os
 from flask import Flask, jsonify
 from flask_cors import CORS
+from flask_mysqldb import MySQL
 
 '''Main wrapper for app creation'''
 # create and configure the app
