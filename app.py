@@ -6,6 +6,7 @@ from flask_cors import CORS
 '''Main wrapper for app creation'''
 app = Flask(__name__, static_folder='./build', static_url_path='/')
 CORS(app)
+app.config['SECRET_KEY'] = os.urandom(12)
 
 
 @app.route('/api/items')
