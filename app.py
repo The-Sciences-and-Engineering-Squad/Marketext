@@ -4,7 +4,6 @@ from flask import jsonify
 from flask_cors import CORS
 from server import app
 '''Main wrapper for app creation'''
-# create and configure the app
 CORS(app)
 
 
