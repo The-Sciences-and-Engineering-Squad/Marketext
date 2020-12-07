@@ -1,4 +1,4 @@
-from server import db
+from server.__init__ import db
 
 
 # User table from the database

@@ -1,4 +1,4 @@
-from server import db
+from server.__init__ import db
 from hashlib import md5
 
 # User table from the database
