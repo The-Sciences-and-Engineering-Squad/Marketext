@@ -1,4 +1,4 @@
-from Marketext import db
+from Marketext.app import db
 
 
 # User table from the database
