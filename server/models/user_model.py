@@ -1,4 +1,4 @@
-from . import db
+from Marketext import db
 import hashlib
 from hashlib import md5
 import random

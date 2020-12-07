@@ -1,4 +1,4 @@
-from . import db
+from Marketext import db
 from hashlib import md5
 
 # User table from the database
