@@ -4,7 +4,7 @@
 # from server.controllers import currently_controller
 # from server.controllers import balance_controller
 # from server.controllers import books_controller
-# from server.controllers import user_controller
+from server.controllers import user_controller
 import os
 from dotenv import load_dotenv
 from flask import Flask
@@ -38,7 +38,7 @@ app.config.update(
 
 db.init_app(app)
 
-# app.register_blueprint(user_controller.bp)
+app.register_blueprint(user_controller.bp)
 #
 # app.register_blueprint(books_controller.bp)
 #
