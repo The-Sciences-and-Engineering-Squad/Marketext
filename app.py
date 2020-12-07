@@ -38,8 +38,8 @@ app.config.update(
     MAIL_DEFAULT_SENDER=os.getenv("MAIL_DEFAULT_SENDER")
 )
 
-# db.init_app(app)
-#
+db.init_app(app)
+
 app.register_blueprint(user_controller.bp)
 
 app.register_blueprint(books_controller.bp)
