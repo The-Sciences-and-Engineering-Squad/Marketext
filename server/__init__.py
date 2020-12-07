@@ -1,13 +1,17 @@
 # import os
-# from dotenv import load_dotenv
-# from flask import Flask
-# from flask_mysqldb import MySQL
+from dotenv import load_dotenv
+from flask import Flask
+from flask_mysqldb import MySQL
 #
 #
-# load_dotenv()
+load_dotenv()
 #
+
+app = Flask(__name__)
+
 #
-# db = MySQL()
+db = MySQL()
+db.init_app(app)
 #
 #
 # def create_app():
