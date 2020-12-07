@@ -1,4 +1,4 @@
-from server import db
+from . import db
 
 
 # User table from the database
