@@ -10,11 +10,11 @@ import os
 # from dotenv import load_dotenv
 from flask import Flask, jsonify
 from flask_cors import CORS
-# from flask_mysqldb import MySQL
+from flask_mysqldb import MySQL
 
 # load_dotenv()
 
-# db = MySQL()
+db = MySQL()
 
 '''Main wrapper for app creation'''
 # create and configure the app

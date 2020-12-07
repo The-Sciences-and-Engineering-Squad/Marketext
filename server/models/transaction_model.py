@@ -1,9 +1,11 @@
-from server import db
+from app import db
 from hashlib import md5
 
 # User table from the database
+
+
 class TransactionModel:
-    def __init__(self,userId = None):
+    def __init__(self, userId=None):
         self.database = db.connection
         self.dataCur = db.connection.cursor()
         self.transactionId = None
@@ -15,7 +17,8 @@ class TransactionModel:
         self.userTwoId = None
 
         if userId is not None:
-            self.dataCur.execute('SELECT * FROM Transaction WHERE userOneId = ' + "'" + str(userId) + "'" + ' OR userTwoId = ' + "'" + str(userId) + "'" )
+            self.dataCur.execute('SELECT * FROM Transaction WHERE userOneId = ' +
+                                 "'" + str(userId) + "'" + ' OR userTwoId = ' + "'" + str(userId) + "'")
             results = self.dataCur.fetchone()
             if results:
                 self.transactionId = results['transactionId']
@@ -25,11 +28,13 @@ class TransactionModel:
                 self.userOneId = results['userOneId']
                 self.userTwoId = results['userTwoId']
 
-    def addTransaction(self,price,category,ISBN,userOneId,userTwoId):
-        self.dataCur.execute('INSERT INTO Transaction(price,transactionDate,category,ISBN,userOneId,userTwoId) VALUES (' + "'" + str(price) + "',"  + 'NOW(), ' + "'" + str(category) + "'," "'" + str(ISBN) + "'," + "'" + str(userOneId) + "'," +  "'" + str(userTwoId) + "'" + ')')
+    def addTransaction(self, price, category, ISBN, userOneId, userTwoId):
+        self.dataCur.execute('INSERT INTO Transaction(price,transactionDate,category,ISBN,userOneId,userTwoId) VALUES (' + "'" + str(price) +
+                             "'," + 'NOW(), ' + "'" + str(category) + "'," "'" + str(ISBN) + "'," + "'" + str(userOneId) + "'," + "'" + str(userTwoId) + "'" + ')')
         self.database.commit()
 
-    def getTransaction(self,userId):
-        self.dataCur.execute('SELECT * FROM Transaction WHERE userOneId = ' + "'" + str(userId) + "'" + ' OR userTwoId = ' + "'" + str(userId) + "'")
+    def getTransaction(self, userId):
+        self.dataCur.execute('SELECT * FROM Transaction WHERE userOneId = ' +
+                             "'" + str(userId) + "'" + ' OR userTwoId = ' + "'" + str(userId) + "'")
         results = self.dataCur.fetchall()
         return results
