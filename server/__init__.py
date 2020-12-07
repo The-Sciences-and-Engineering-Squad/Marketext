@@ -8,13 +8,13 @@
 import os
 # from dotenv import load_dotenv
 from flask import Flask
-# from flask_mysqldb import MySQL
+from flask_mysqldb import MySQL
 
 
 # load_dotenv()
 
 
-# db = MySQL()
+db = MySQL()
 
 
 app = Flask(__name__, static_folder='../client/build', static_url_path='/')
@@ -36,7 +36,7 @@ app.config.update(
     MAIL_DEFAULT_SENDER=os.getenv("MAIL_DEFAULT_SENDER")
 )
 
-# db.init_app(app)
+db.init_app(app)
 
 # app.register_blueprint(user_controller.bp)
 #
