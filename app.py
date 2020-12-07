@@ -1,10 +1,13 @@
 '''server/app.py - main api app declaration'''
+import os
 from flask import Flask, jsonify, send_from_directory
 from flask_cors import CORS
 
 '''Main wrapper for app creation'''
+# create and configure the app
 app = Flask(__name__, static_folder='./build', static_url_path='/')
 CORS(app)
+app.config['SECRET_KEY'] = os.urandom(12)
 
 
 @app.route('/api/items')
