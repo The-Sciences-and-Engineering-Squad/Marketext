@@ -1,4 +1,4 @@
-from server.__init__ import db
+from server import db
 import hashlib
 from hashlib import md5
 import random
