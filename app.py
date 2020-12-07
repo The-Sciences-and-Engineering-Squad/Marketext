@@ -10,7 +10,7 @@ import os
 # from dotenv import load_dotenv
 from flask import Flask, jsonify
 from flask_cors import CORS
-from flask_mysqldb import MySQL
+# from flask_mysqldb import MySQL
 
 # load_dotenv()
 
@@ -39,7 +39,7 @@ app.config.update(
 )
 
 # db.init_app(app)
-
+#
 # app.register_blueprint(user_controller.bp)
 #
 # app.register_blueprint(books_controller.bp)
