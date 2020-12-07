@@ -1,11 +1,11 @@
 '''server/app.py - main api app declaration'''
-from server.controllers import transaction_controller
-from server.controllers import contact_controller
-from server.controllers import profile_controller
-from server.controllers import currently_controller
-from server.controllers import balance_controller
-from server.controllers import books_controller
-from server.controllers import user_controller
+# from server.controllers import transaction_controller
+# from server.controllers import contact_controller
+# from server.controllers import profile_controller
+# from server.controllers import currently_controller
+# from server.controllers import balance_controller
+# from server.controllers import books_controller
+# from server.controllers import user_controller
 import os
 # from dotenv import load_dotenv
 from flask import Flask, jsonify
@@ -14,7 +14,7 @@ from flask_mysqldb import MySQL
 
 # load_dotenv()
 
-db = MySQL()
+# db = MySQL()
 
 '''Main wrapper for app creation'''
 # create and configure the app
@@ -38,21 +38,21 @@ app.config.update(
     MAIL_DEFAULT_SENDER=os.getenv("MAIL_DEFAULT_SENDER")
 )
 
-db.init_app(app)
+# db.init_app(app)
 
-app.register_blueprint(user_controller.bp)
-
-app.register_blueprint(books_controller.bp)
-
-app.register_blueprint(balance_controller.bp)
-
-app.register_blueprint(currently_controller.bp)
-
-app.register_blueprint(profile_controller.bp)
-
-app.register_blueprint(contact_controller.bp)
-
-app.register_blueprint(transaction_controller.bp)
+# app.register_blueprint(user_controller.bp)
+#
+# app.register_blueprint(books_controller.bp)
+#
+# app.register_blueprint(balance_controller.bp)
+#
+# app.register_blueprint(currently_controller.bp)
+#
+# app.register_blueprint(profile_controller.bp)
+#
+# app.register_blueprint(contact_controller.bp)
+#
+# app.register_blueprint(transaction_controller.bp)
 
 
 @app.route('/api/items')
