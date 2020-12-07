@@ -1,6 +1,6 @@
 '''server/app.py - main api app declaration'''
 import os
-from flask import Flask, jsonify, send_from_directory
+from flask import Flask, jsonify
 from flask_cors import CORS
 
 '''Main wrapper for app creation'''
