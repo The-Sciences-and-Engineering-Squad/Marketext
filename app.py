@@ -2,8 +2,10 @@
 import os
 from flask import jsonify
 from flask_cors import CORS
-from server import app
+from server import create_app
 '''Main wrapper for app creation'''
+
+app = create_app()
 CORS(app)
 
 
