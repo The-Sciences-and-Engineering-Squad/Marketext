@@ -6,12 +6,12 @@
 # from server.controllers import books_controller
 # from server.controllers import user_controller
 import os
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 from flask import Flask
 from flask_mysqldb import MySQL
 
 
-# load_dotenv()
+load_dotenv()
 
 
 db = MySQL()
