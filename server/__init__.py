@@ -17,7 +17,7 @@ from flask import Flask
 # db = MySQL()
 
 
-app = Flask(__name__, static_folder='../build', static_url_path='/')
+app = Flask(__name__, static_folder='../client/build', static_url_path='/')
 app.config['SECRET_KEY'] = os.urandom(12)
 # database connection credentials
 app.config['MYSQL_USER'] = os.getenv("MYSQL_USER")
