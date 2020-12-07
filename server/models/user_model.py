@@ -1,4 +1,4 @@
-from app import db
+import db
 import hashlib
 from hashlib import md5
 import random
