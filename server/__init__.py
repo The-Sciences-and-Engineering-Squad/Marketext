@@ -8,7 +8,7 @@ from server.controllers import user_controller
 import os
 from dotenv import load_dotenv
 from flask import Flask
-from flask_mysqldb import MySQL
+from flaskext.mysql import MySQL
 
 
 load_dotenv()
