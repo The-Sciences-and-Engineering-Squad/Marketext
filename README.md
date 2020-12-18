@@ -1,3 +1,15 @@
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=The-Sciences-and-Engineering-Squad_Marketext&metric=bugs)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=The-Sciences-and-Engineering-Squad_Marketext&metric=code_smells)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=The-Sciences-and-Engineering-Squad_Marketext&metric=coverage)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=The-Sciences-and-Engineering-Squad_Marketext&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=The-Sciences-and-Engineering-Squad_Marketext&metric=ncloc)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=The-Sciences-and-Engineering-Squad_Marketext&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=The-Sciences-and-Engineering-Squad_Marketext&metric=alert_status)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=The-Sciences-and-Engineering-Squad_Marketext&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=The-Sciences-and-Engineering-Squad_Marketext&metric=security_rating)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=The-Sciences-and-Engineering-Squad_Marketext&metric=sqale_index)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=The-Sciences-and-Engineering-Squad_Marketext&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
+
 ## Marketext
 School project for CSc 473 - Website Design Course, with Prof. Michelle Sasson, at the City College of New York
 
@@ -186,18 +198,8 @@ Marketext is a web application where users can buy, sell, trade, and swap school
 └── sonar-project.properties
 ```
 
-## App Demo
-Please refer to this [video link](https://www.youtube.com/watch?v=kHUlsg4tUJk&feature=youtu.be) for a brief overview to our application.
-
 ## Notes
 This is a our final project for CSc 473 - Website Design Course, with Prof. Michelle Sasson, at the City College of New York
 
 ## License
 This project is licensed under the terms of the MIT license.
-
-## Badges
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=The-Sciences-and-Engineering-Squad_Marketext&metric=coverage)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
-
-[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=The-Sciences-and-Engineering-Squad_Marketext)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
-
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=The-Sciences-and-Engineering-Squad_Marketext)
