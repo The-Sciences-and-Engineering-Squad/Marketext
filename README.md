@@ -36,7 +36,8 @@ Marketext is a web application where users can buy, sell, trade, and swap school
 │       ├── App.test.js
 │       ├── components
 │       │   ├── API
-│       │   │   └── api.js
+│       │   │   ├── api.js
+│       │   │   └── api.test.js
 │       │   ├── AccessPages
 │       │   │   ├── ForgotPassword
 │       │   │   │   ├── ForgotPassword.css
@@ -161,9 +162,11 @@ Marketext is a web application where users can buy, sell, trade, and swap school
 │   │   │   └── user_controller.cpython-37.pyc
 │   │   ├── balance_controller.py
 │   │   ├── books_controller.py
+│   │   ├── contact_controller.py
 │   │   ├── currently_controller.py
 │   │   ├── profile_controller.py
 │   │   ├── token.py
+│   │   ├── transaction_controller.py
 │   │   └── user_controller.py
 │   ├── database.sql
 │   ├── models
@@ -174,12 +177,13 @@ Marketext is a web application where users can buy, sell, trade, and swap school
 │   │   │   └── user_model.cpython-37.pyc
 │   │   ├── balance_model.py
 │   │   ├── books_model.py
+│   │   ├── contact_model.py
 │   │   ├── currently_model.py
 │   │   ├── profile_model.py
+│   │   ├── transaction_model.py
 │   │   └── user_model.py
 │   └── requirements.txt
 └── sonar-project.properties
-
 ```
 
 ## App Demo
