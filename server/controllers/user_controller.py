@@ -30,7 +30,7 @@ def login():
         password = req['password']
         user = user_model.UserModel()
         user.setUser(username)
-        app = current_app._get_current_object()    
+        app = current_app._get_current_object()
 
         if user.getUserName() is None or user.getPassword() != md5(password.encode('utf-8')).hexdigest():
             error = 'Invalid username or password.'
@@ -40,7 +40,8 @@ def login():
             session['userId'] = user.getUserId()
             session['username'] = user.getUserName()
             session['email'] = user.getEmail()
-            token = jwt.encode({'userId': user.getUserId(), 'username': user.getUserName(), 'email': user.getEmail(), 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=50)}, app.config['SECRET_KEY'])
+            token = jwt.encode({'userId': user.getUserId(), 'username': user.getUserName(), 'email': user.getEmail(
+            ), 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=50)}, app.config['SECRET_KEY'])
             return json.dumps({'authenticated': True, 'token': token.decode('UTF-8')})
 
         flash(error)
@@ -56,7 +57,6 @@ def register():
         username = req['username']
         email = req['email']
         password = req['password']
-        
 
         user = user_model.UserModel()
         userBalance = balance_model.BalanceModel()
@@ -72,7 +72,7 @@ def register():
             user.setPassword(password)
             user.insertUser()
             user.setUser(username)
-            userBalance.initBalance(user.getUserId(),'USD')
+            userBalance.initBalance(user.getUserId(), 'USD')
             userProfile.initProfile(user.getUserId())
             return json.dumps({'registered': True})
 
@@ -80,19 +80,19 @@ def register():
 
 
 @bp.route('/forgot_password', methods=['GET', 'POST'])
-def forgot_password(): 
+def forgot_password():
     req = request.json
     user = user_model.UserModel()
     user.setUser(req['username'])
     app = current_app._get_current_object()
 
     if user.getUserName() is not None:
-         #forgot password procedure
+        # forgot password procedure
         random_password = user.get_random_password(16)
-        user.updateField("password",random_password)
+        user.updateField("password", random_password)
         mail = Mail(app)
         msg = Message("Password Change - Marketext",
-                  recipients=[user.getEmail()])
+                      recipients=[user.getEmail()])
         msg.html = "<b>\
                         \
             Hi Marketext user: " + user.getUserName() + "! <br><br> \
@@ -102,9 +102,9 @@ def forgot_password():
             Hope our website continues to be of your service!<br><br> \
             - The Marketext Team\
               </b>"
-       
+
         mail.send(msg)
-        return json.dumps({'userExist': True}) 
+        return json.dumps({'userExist': True})
 
     return json.dumps({'userExist': False, 'error': 'User does not exist'})
 
@@ -114,6 +114,7 @@ def forgot_password():
 def profile():
     user = user_model.UserModel()
     return None
+
 
 @bp.route('/getUserName', methods=['GET', 'POST'])
 def getUserName():
